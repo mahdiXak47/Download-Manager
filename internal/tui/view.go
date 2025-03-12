@@ -1,35 +1,113 @@
 package tui
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/charmbracelet/lipgloss"
+)
+
+var (
+	// Styles
+	titleStyle = lipgloss.NewStyle().
+			Bold(true).
+			Foreground(lipgloss.Color("#FF875F")).
+			MarginLeft(2)
+
+	urlStyle = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("#5F87FF"))
+
+	statusStyle = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("#5FFF87"))
+
+	errorStyle = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("#FF5F5F"))
+
+	selectedStyle = lipgloss.NewStyle().
+			Background(lipgloss.Color("#3A3A3A"))
+)
 
 func (m Model) View() string {
-	s := "Download Manager v0.1\n\n"
+	var s strings.Builder
+
+	// Header
+	s.WriteString(titleStyle.Render("Download Manager v0.1\n\n"))
+
+	// Error message if any
+	if m.ErrorMessage != "" {
+		s.WriteString(errorStyle.Render(m.ErrorMessage + "\n\n"))
+	}
 
 	switch m.Menu {
 	case "add":
-		s += "Add Download\n"
-		s += "URL: " + m.InputURL + "\n"
-		s += "Queue: " + m.InputQueue + "\n"
-		s += "\nPress Enter to add, Esc to cancel"
-
+		s.WriteString(renderAddMenu(m))
 	case "list":
-		s += "Downloads:\n"
-		for i, d := range m.Downloads {
-			cursor := " "
-			if i == m.Selected {
-				cursor = ">"
-			}
-			s += fmt.Sprintf("%s %s [%s] %.1f%%\n", cursor, d.URL, d.Status, d.Progress)
-		}
-
+		s.WriteString(renderDownloadList(m))
 	default:
-		s += "Commands:\n"
-		s += "a: Add download\n"
-		s += "l: List downloads\n"
-		s += "p: Pause selected\n"
-		s += "r: Resume selected\n"
-		s += "q: Quit\n"
+		s.WriteString(renderMainMenu(m))
 	}
 
-	return s
+	// Help
+	s.WriteString("\n" + renderHelp(m))
+
+	return s.String()
+}
+
+func renderAddMenu(m Model) string {
+	var s strings.Builder
+	s.WriteString(titleStyle.Render("Add Download\n\n"))
+	s.WriteString("URL: " + urlStyle.Render(m.InputURL) + "█\n")
+	s.WriteString("Queue: " + m.InputQueue + "\n")
+	s.WriteString("\nPress Enter to add, Esc to cancel")
+	return s.String()
+}
+
+func renderDownloadList(m Model) string {
+	var s strings.Builder
+	s.WriteString(titleStyle.Render("Downloads\n\n"))
+
+	if len(m.Downloads) == 0 {
+		s.WriteString("No downloads yet. Press 'a' to add one.\n")
+		return s.String()
+	}
+
+	for i, d := range m.Downloads {
+		item := fmt.Sprintf("%s [%s] %.1f%%",
+			urlStyle.Render(d.URL),
+			statusStyle.Render(d.Status),
+			d.Progress,
+		)
+
+		if i == m.Selected {
+			item = selectedStyle.Render("> " + item)
+		} else {
+			item = "  " + item
+		}
+
+		s.WriteString(item + "\n")
+	}
+
+	return s.String()
+}
+
+func renderMainMenu(m Model) string {
+	return `Commands:
+  a: Add download
+  l: List downloads
+  p: Pause selected
+  r: Resume selected
+  q: Quit
+  ↑/k: Move up
+  ↓/j: Move down`
+}
+
+func renderHelp(m Model) string {
+	switch m.Menu {
+	case "add":
+		return "Enter: Save • Esc: Cancel"
+	case "list":
+		return "p: Pause • r: Resume • Esc: Back"
+	default:
+		return "q: Quit"
+	}
 }
