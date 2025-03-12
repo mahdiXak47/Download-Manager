@@ -2,39 +2,45 @@ package tui
 
 import (
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/mahdiXak47/Download-Manager/internal/downloader"
 )
 
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
+	case tea.WindowSizeMsg:
+		m.UpdateSize(msg.Width, msg.Height)
+		return m, nil
+
 	case tea.KeyMsg:
+		// First check if we're in input mode
+		if m.InputMode {
+			model, cmd := m.HandleInput(msg)
+			return model, cmd
+		}
+
+		// If not in input mode, handle navigation
 		switch msg.String() {
 		case "q", "ctrl+c":
 			return m, tea.Quit
 		case "a":
-			if !m.InputMode {
-				m.Menu = "add"
-				m.InputMode = true
-			}
+			m.Menu = "add"
+			m.InputMode = true
 		case "l":
 			m.Menu = "list"
-			m.InputMode = false
 		case "p":
-			if m.Selected >= 0 && m.Selected < len(m.Downloads) {
-				m.Downloads[m.Selected].Status = "paused"
-			}
+			m.PauseDownload()
 		case "r":
-			if m.Selected >= 0 && m.Selected < len(m.Downloads) {
-				m.Downloads[m.Selected].Status = "downloading"
+			m.ResumeDownload()
+		case "j", "down":
+			if m.Selected < len(m.Downloads)-1 {
+				m.Selected++
+			}
+		case "k", "up":
+			if m.Selected > 0 {
+				m.Selected--
 			}
 		case "enter":
 			if m.InputMode && m.Menu == "add" {
-				m.Downloads = append(m.Downloads, downloader.Download{
-					URL:      m.InputURL,
-					Queue:    m.InputQueue,
-					Status:   "pending",
-					Progress: 0,
-				})
+				m.AddDownload(m.InputURL, m.InputQueue)
 				m.InputMode = false
 				m.InputURL = ""
 				m.Menu = "main"
