@@ -3,95 +3,90 @@ package tui
 import (
 	"fmt"
 	"strings"
-
-	"github.com/charmbracelet/lipgloss"
-)
-
-var (
-	// Styles
-	titleStyle = lipgloss.NewStyle().
-			Bold(true).
-			Foreground(lipgloss.Color("#FF875F")).
-			MarginLeft(2)
-
-	urlStyle = lipgloss.NewStyle().
-			Foreground(lipgloss.Color("#5F87FF"))
-
-	statusStyle = lipgloss.NewStyle().
-			Foreground(lipgloss.Color("#5FFF87"))
-
-	errorStyle = lipgloss.NewStyle().
-			Foreground(lipgloss.Color("#FF5F5F"))
-
-	selectedStyle = lipgloss.NewStyle().
-			Background(lipgloss.Color("#3A3A3A"))
 )
 
 func (m Model) View() string {
 	var s strings.Builder
 
+	// Create main container
+	container := baseStyle.Width(m.Width - 4).Margin(2)
+
 	// Header
-	s.WriteString(titleStyle.Render("Download Manager v0.1\n\n"))
+	header := titleStyle.Render("Download Manager v0.1")
+	s.WriteString(container.Render(header))
 
 	// Error message if any
 	if m.ErrorMessage != "" {
-		s.WriteString(errorStyle.Render(m.ErrorMessage + "\n\n"))
+		s.WriteString("\n" + errorStyle.Render(m.ErrorMessage))
 	}
 
+	// Content
+	content := ""
 	switch m.Menu {
 	case "add":
-		s.WriteString(renderAddMenu(m))
+		content = renderAddMenu(m)
 	case "list":
-		s.WriteString(renderDownloadList(m))
+		content = renderDownloadList(m)
 	default:
-		s.WriteString(renderMainMenu(m))
+		content = renderMainMenu(m)
 	}
+	s.WriteString("\n" + container.Render(content))
 
 	// Help
-	s.WriteString("\n" + renderHelp(m))
+	help := renderHelp(m)
+	s.WriteString("\n" + helpStyle.Render(help))
 
 	return s.String()
 }
 
 func renderAddMenu(m Model) string {
 	var s strings.Builder
-	s.WriteString(titleStyle.Render("Add Download\n\n"))
-	s.WriteString("URL: " + urlStyle.Render(m.InputURL) + "█\n")
-	s.WriteString("Queue: " + m.InputQueue + "\n")
-	s.WriteString("\nPress Enter to add, Esc to cancel")
+	s.WriteString(titleStyle.Render("Add Download"))
+	s.WriteString("\n\n")
+	s.WriteString("URL: " + urlStyle.Render(m.InputURL+"█"))
+	s.WriteString("\nQueue: " + urlStyle.Render(m.InputQueue))
 	return s.String()
 }
 
 func renderDownloadList(m Model) string {
 	var s strings.Builder
-	s.WriteString(titleStyle.Render("Downloads\n\n"))
+	s.WriteString(titleStyle.Render("Downloads"))
+	s.WriteString("\n\n")
 
 	if len(m.Downloads) == 0 {
-		s.WriteString("No downloads yet. Press 'a' to add one.\n")
-		return s.String()
+		return s.String() + "No downloads yet. Press 'a' to add one."
 	}
 
 	for i, d := range m.Downloads {
-		item := fmt.Sprintf("%s [%s] %.1f%%",
+		// URL and status
+		item := fmt.Sprintf("%s %s",
 			urlStyle.Render(d.URL),
-			statusStyle.Render(d.Status),
-			d.Progress,
+			RenderStatus(d.Status),
 		)
 
-		if i == m.Selected {
-			item = selectedStyle.Render("> " + item)
-		} else {
-			item = "  " + item
+		// Progress bar
+		progressWidth := m.Width - 40 // Adjust based on other content
+		item += "\n" + RenderProgressBar(progressWidth, d.Progress)
+
+		// Speed
+		if d.Speed > 0 {
+			item += fmt.Sprintf(" %.1f MB/s", float64(d.Speed)/(1024*1024))
 		}
 
-		s.WriteString(item + "\n")
+		// Selection highlight
+		if i == m.Selected {
+			item = selectedStyle.Render(item)
+		}
+
+		s.WriteString(item + "\n\n")
 	}
 
 	return s.String()
 }
 
 func renderMainMenu(m Model) string {
-	return `Commands:
+	menu := `
+Commands:
   a: Add download
   l: List downloads
   p: Pause selected
@@ -99,6 +94,8 @@ func renderMainMenu(m Model) string {
   q: Quit
   ↑/k: Move up
   ↓/j: Move down`
+
+	return titleStyle.Render("Main Menu") + menu
 }
 
 func renderHelp(m Model) string {
