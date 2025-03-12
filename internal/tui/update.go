@@ -12,32 +12,32 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "q", "ctrl+c":
 			return m, tea.Quit
 		case "a":
-			if !m.inputMode {
-				m.menu = "add"
-				m.inputMode = true
+			if !m.InputMode {
+				m.Menu = "add"
+				m.InputMode = true
 			}
 		case "l":
-			m.menu = "list"
-			m.inputMode = false
+			m.Menu = "list"
+			m.InputMode = false
 		case "p":
-			if m.selected >= 0 && m.selected < len(m.downloads) {
-				m.downloads[m.selected].Status = "paused"
+			if m.Selected >= 0 && m.Selected < len(m.Downloads) {
+				m.Downloads[m.Selected].Status = "paused"
 			}
 		case "r":
-			if m.selected >= 0 && m.selected < len(m.downloads) {
-				m.downloads[m.selected].Status = "downloading"
+			if m.Selected >= 0 && m.Selected < len(m.Downloads) {
+				m.Downloads[m.Selected].Status = "downloading"
 			}
 		case "enter":
-			if m.inputMode && m.menu == "add" {
-				m.downloads = append(m.downloads, downloader.Download{
-					URL:      m.inputURL,
-					Queue:    m.inputQueue,
+			if m.InputMode && m.Menu == "add" {
+				m.Downloads = append(m.Downloads, downloader.Download{
+					URL:      m.InputURL,
+					Queue:    m.InputQueue,
 					Status:   "pending",
 					Progress: 0,
 				})
-				m.inputMode = false
-				m.inputURL = ""
-				m.menu = "main"
+				m.InputMode = false
+				m.InputURL = ""
+				m.Menu = "main"
 			}
 		}
 	}
