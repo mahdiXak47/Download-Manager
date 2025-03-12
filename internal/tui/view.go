@@ -3,16 +3,18 @@ package tui
 import (
 	"fmt"
 	"strings"
+
+	"github.com/charmbracelet/lipgloss"
 )
 
 func (m Model) View() string {
 	var s strings.Builder
 
-	// Create main container
+	// Create main container with dynamic width
 	container := baseStyle.Width(m.Width - 4).Margin(2)
 
-	// Header
-	header := titleStyle.Render("Download Manager v0.1")
+	// Header with app name and version
+	header := titleStyle.Width(m.Width - 8).Render("Download Manager v0.1")
 	s.WriteString(container.Render(header))
 
 	// Error message if any
@@ -20,7 +22,7 @@ func (m Model) View() string {
 		s.WriteString("\n" + errorStyle.Render(m.ErrorMessage))
 	}
 
-	// Content
+	// Content with help text integrated
 	content := ""
 	switch m.Menu {
 	case "add":
@@ -32,45 +34,65 @@ func (m Model) View() string {
 	}
 	s.WriteString("\n" + container.Render(content))
 
-	// Help
-	help := renderHelp(m)
-	s.WriteString("\n" + helpStyle.Render(help))
-
 	return s.String()
 }
 
 func renderAddMenu(m Model) string {
 	var s strings.Builder
-	s.WriteString(titleStyle.Render("Add Download"))
+	s.WriteString(menuHeaderStyle.Render("New Download"))
 	s.WriteString("\n\n")
-	s.WriteString("URL: " + urlStyle.Render(m.InputURL+"█"))
-	s.WriteString("\nQueue: " + urlStyle.Render(m.InputQueue))
+
+	inputBox := lipgloss.NewStyle().
+		PaddingLeft(2).
+		PaddingRight(2).
+		BorderStyle(lipgloss.RoundedBorder()).
+		BorderForeground(subtle)
+
+	s.WriteString(inputBox.Render(
+		menuItemStyle.Render("URL:    "+urlStyle.Render(m.InputURL+"_")) + "\n" +
+			menuItemStyle.Render("Queue:  "+urlStyle.Render(m.InputQueue)),
+	))
+
+	// Help text in the middle
+	s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Save   [ Esc ] Cancel"))
+
 	return s.String()
 }
 
 func renderDownloadList(m Model) string {
 	var s strings.Builder
-	s.WriteString(titleStyle.Render("Downloads"))
+	s.WriteString(menuHeaderStyle.Render("Downloads"))
 	s.WriteString("\n\n")
 
 	if len(m.Downloads) == 0 {
-		return s.String() + "No downloads yet. Press 'a' to add one."
+		s.WriteString(menuItemStyle.Render("No downloads yet. Press 'a' to add one."))
+		s.WriteString("\n\n" + helpStyle.Render("[ a ] Add New Download"))
+		return s.String()
 	}
+
+	// Help text at the top
+	s.WriteString(helpStyle.Render("[ p ] Pause   [ r ] Resume   [ Esc ] Back"))
+	s.WriteString("\n\n")
 
 	for i, d := range m.Downloads {
 		// URL and status
-		item := fmt.Sprintf("%s %s",
+		item := fmt.Sprintf("%s    %s",
 			urlStyle.Render(d.URL),
 			RenderStatus(d.Status),
 		)
 
-		// Progress bar
-		progressWidth := m.Width - 40 // Adjust based on other content
-		item += "\n" + RenderProgressBar(progressWidth, d.Progress)
+		// Progress bar with spinner for active downloads
+		progressWidth := m.Width - 50
+		if d.Status == "downloading" {
+			frame := spinnerFrames[int(d.Progress)%len(spinnerFrames)]
+			item += "\n" + spinnerStyle.Render(frame) + " " + RenderProgressBar(progressWidth, d.Progress)
+		} else {
+			item += "\n  " + RenderProgressBar(progressWidth, d.Progress)
+		}
 
 		// Speed
 		if d.Speed > 0 {
-			item += fmt.Sprintf(" %.1f MB/s", float64(d.Speed)/(1024*1024))
+			item += fmt.Sprintf("  %s", formatSpeed(d.Speed))
 		}
 
 		// Selection highlight
@@ -78,33 +100,44 @@ func renderDownloadList(m Model) string {
 			item = selectedStyle.Render(item)
 		}
 
-		s.WriteString(item + "\n\n")
+		s.WriteString(menuItemStyle.Render(item) + "\n\n")
 	}
 
 	return s.String()
 }
 
 func renderMainMenu(m Model) string {
-	menu := `
-Commands:
-  a: Add download
-  l: List downloads
-  p: Pause selected
-  r: Resume selected
-  q: Quit
-  ↑/k: Move up
-  ↓/j: Move down`
+	var s strings.Builder
+	s.WriteString(menuHeaderStyle.Render("Main Menu"))
+	s.WriteString("\n\n")
 
-	return titleStyle.Render("Main Menu") + menu
+	menuBox := lipgloss.NewStyle().
+		PaddingLeft(2).
+		PaddingRight(2).
+		BorderStyle(lipgloss.RoundedBorder()).
+		BorderForeground(subtle)
+
+	// Menu items
+	menuItems := menuItemStyle.Render(`
+    [a]  Add download
+    [l]  List downloads
+    [p]  Pause selected
+    [r]  Resume selected
+    [q]  Quit
+   [↑]  Move up
+   [↓]  Move down`)
+
+	// Help text in the middle of the menu box
+	helpText := "\n\n" + helpStyle.Render("[ q ] Quit") + "\n"
+
+	s.WriteString(menuBox.Render(menuItems + helpText))
+
+	return s.String()
 }
 
-func renderHelp(m Model) string {
-	switch m.Menu {
-	case "add":
-		return "Enter: Save • Esc: Cancel"
-	case "list":
-		return "p: Pause • r: Resume • Esc: Back"
-	default:
-		return "q: Quit"
+func formatSpeed(speed int64) string {
+	if speed > 1024*1024 {
+		return fmt.Sprintf("%.1f MB/s", float64(speed)/(1024*1024))
 	}
+	return fmt.Sprintf("%.1f KB/s", float64(speed)/1024)
 }
