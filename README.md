@@ -43,20 +43,53 @@ A sophisticated download manager application written in Go with Terminal User In
 
 ```
 .
-├── cmd/                    # Application entry points
-│   └── download-manager/   # Main application
-├── internal/              # Private application code
-│   ├── tui/              # Terminal UI components
-│   ├── downloader/       # Download management
-│   ├── queue/            # Queue management
-│   ├── scheduler/        # Time scheduling
-│   └── config/           # Configuration management
-├── pkg/                  # Public libraries
-│   ├── protocol/         # Download protocols
-│   └── utils/            # Utility functions
-├── configs/              # Configuration files
-└── docs/                 # Documentation
-```
+├── cmd/
+│   └── download-manager/
+│       └── main.go
+├── internal/
+│   ├── tui/
+│   │   ├── model.go
+│   │   ├── update.go
+│   │   ├── view.go
+│   │   ├── components/
+│   │   │   ├── progress.go
+│   │   │   ├── queue.go
+│   │   │   ├── status.go
+│   │   │   └── tabs.go
+│   │   ├── constants.go
+│   │   └── messages.go
+│   ├── downloader/
+│   ├── queue/
+│   ├── scheduler/
+│   └── config/
+├── pkg/
+│   ├── protocol/
+│   └── utils/
+├── configs/
+├── docs/
+│   ├── architecture.md
+│   ├── api.md
+│   ├── user-guide.md
+│   └── dev-guide.md
+├── logs/
+│   └── download.log
+├── scripts/
+│   ├── install.sh
+│   ├── setup.sh
+│   └── test.sh
+├── tests/
+│   ├── downloader/
+│   ├── queue/
+│   ├── scheduler/
+│   └── tui/
+├── Makefile
+├── Dockerfile
+├── go.mod
+├── go.sum
+├── .gitignore
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+└── README.md
 
 ## Technical Stack
 
@@ -64,7 +97,6 @@ A sophisticated download manager application written in Go with Terminal User In
 - Key Libraries (Planned):
   - [bubbletea](https://github.com/charmbracelet/bubbletea) - Terminal UI framework
   - [lipgloss](https://github.com/charmbracelet/lipgloss) - Style definitions
-  - [cobra](https://github.com/spf13/cobra) - CLI commands
   - [viper](https://github.com/spf13/viper) - Configuration management
 
 ## Development Phases
