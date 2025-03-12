@@ -83,7 +83,7 @@ func handleInputMode(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-// handleNavigationMode handles keyboard input when not in input mode
+// Handles navigation (e.g., switching menus, pausing/resuming downloads).
 func handleNavigationMode(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	switch msg.String() {
 	case "a":
@@ -138,7 +138,7 @@ func handleError(m Model, msg ErrorMsg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-// handleTick processes periodic updates
+// Handles periodic updates (e.g., checking for active downloads).
 func handleTick(m Model) (tea.Model, tea.Cmd) {
 	// Update active downloads
 	hasActive := false
@@ -155,7 +155,7 @@ func handleTick(m Model) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-// tickCmd returns a tick command that fires after a short delay
+// Schedules a periodic update
 func tickCmd() tea.Cmd {
 	return tea.Tick(time.Second/2, func(t time.Time) tea.Msg {
 		return TickMsg{}
