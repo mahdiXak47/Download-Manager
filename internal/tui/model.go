@@ -2,6 +2,7 @@ package tui
 
 import (
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/mahdiXak47/Download-Manager/internal/config"
 	"github.com/mahdiXak47/Download-Manager/internal/downloader"
 )
 
@@ -17,22 +18,37 @@ type Model struct {
 	InputQueue string
 
 	// Data
-	Downloads []downloader.Download
+	Downloads    []downloader.Download
+	Config       *config.Config
+	ErrorMessage string
 
 	// UI State
-	ErrorMessage string
-	Width        int
-	Height       int
+	Width  int
+	Height int
 }
 
 // NewModel creates and initializes a new model
 func NewModel() Model {
+	// Load config
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		return Model{
+			Menu:         "list",
+			Downloads:    make([]downloader.Download, 0),
+			Selected:     0,
+			Width:        80,
+			Height:       24,
+			ErrorMessage: "Failed to load config: " + err.Error(),
+		}
+	}
+
 	return Model{
-		Menu:      "main",
-		Downloads: make([]downloader.Download, 0),
+		Menu:      "list", // Start with downloads list
+		Downloads: cfg.Downloads,
+		Config:    cfg,
 		Selected:  0,
-		Width:     80, // default terminal width
-		Height:    24, // default terminal height
+		Width:     80,
+		Height:    24,
 	}
 }
 
@@ -82,12 +98,27 @@ func (m *Model) AddDownload(url, queue string) {
 		Progress: 0,
 	}
 	m.Downloads = append(m.Downloads, download)
+
+	// Update config with new download
+	if m.Config != nil {
+		m.Config.Downloads = m.Downloads
+		if err := config.SaveConfig(m.Config); err != nil {
+			m.ErrorMessage = "Failed to save config: " + err.Error()
+		}
+	}
 }
 
 // PauseDownload pauses the selected download
 func (m *Model) PauseDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
 		m.Downloads[m.Selected].Status = "paused"
+		// Save state
+		if m.Config != nil {
+			m.Config.Downloads = m.Downloads
+			if err := config.SaveConfig(m.Config); err != nil {
+				m.ErrorMessage = "Failed to save config: " + err.Error()
+			}
+		}
 	}
 }
 
@@ -95,5 +126,12 @@ func (m *Model) PauseDownload() {
 func (m *Model) ResumeDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
 		m.Downloads[m.Selected].Status = "downloading"
+		// Save state
+		if m.Config != nil {
+			m.Config.Downloads = m.Downloads
+			if err := config.SaveConfig(m.Config); err != nil {
+				m.ErrorMessage = "Failed to save config: " + err.Error()
+			}
+		}
 	}
 }
