@@ -1,7 +1,6 @@
 package tui
 
 import (
-	"github.com/atotto/clipboard"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/mahdiXak47/Download-Manager/internal/config"
 	"github.com/mahdiXak47/Download-Manager/internal/downloader"
@@ -89,16 +88,6 @@ func (m *Model) HandleInput(msg tea.KeyMsg) (Model, tea.Cmd) {
 	case tea.KeyRunes:
 		if m.InputMode {
 			m.InputURL += string(msg.Runes)
-		}
-		return *m, nil
-
-	case tea.KeyCtrlV:
-		if m.InputMode {
-			// Get clipboard content
-			clipboard, err := clipboard.ReadAll()
-			if err == nil && clipboard != "" {
-				m.InputURL += clipboard
-			}
 		}
 		return *m, nil
 	}
