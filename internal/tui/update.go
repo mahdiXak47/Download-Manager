@@ -89,31 +89,41 @@ func handleInputMode(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 
 // Handles navigation (e.g., switching menus, pausing/resuming downloads).
 func handleNavigationMode(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
+	switch msg.Type {
+	case tea.KeyUp:
+		if m.Menu == "list" && len(m.Downloads) > 0 {
+			if m.Selected > 0 {
+				m.Selected--
+			} else {
+				m.Selected = len(m.Downloads) - 1
+			}
+		}
+	case tea.KeyDown:
+		if m.Menu == "list" && len(m.Downloads) > 0 {
+			m.Selected = (m.Selected + 1) % len(m.Downloads)
+		}
+	}
+
 	switch msg.String() {
 	case "a":
 		m.Menu = "add"
 		m.InputMode = true
-
 	case "l":
 		m.Menu = "list"
-
 	case "p":
 		if m.Menu == "list" {
 			m.PauseDownload()
 		}
-
 	case "r":
 		if m.Menu == "list" {
 			m.ResumeDownload()
 			return m, tickCmd()
 		}
-
-	case "j", "down":
+	case "j":
 		if m.Menu == "list" && len(m.Downloads) > 0 {
 			m.Selected = (m.Selected + 1) % len(m.Downloads)
 		}
-
-	case "k", "up":
+	case "k":
 		if m.Menu == "list" && len(m.Downloads) > 0 {
 			if m.Selected > 0 {
 				m.Selected--
