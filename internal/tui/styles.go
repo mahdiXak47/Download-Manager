@@ -135,6 +135,13 @@ func RenderStatus(status string) string {
 			BorderStyle(lipgloss.RoundedBorder()).
 			BorderForeground(CurrentTheme.Danger).
 			Render(" " + status + " ")
+	case "cancelled":
+		return statusStyle.Copy().
+			Background(CurrentTheme.Danger).
+			Foreground(lipgloss.Color(CurrentTheme.Background)).
+			BorderStyle(lipgloss.RoundedBorder()).
+			BorderForeground(CurrentTheme.Danger).
+			Render(" " + status + " ")
 	default:
 		return statusStyle.Copy().
 			Background(CurrentTheme.Subtle).

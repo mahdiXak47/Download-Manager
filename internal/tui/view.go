@@ -48,7 +48,7 @@ func renderAddMenu(m Model) string {
 	))
 
 	// Help text
-	s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Save   [ Esc ] Cancel"))
+	s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Save   [ Esc ] Cancel Input   [ Backspace ] Delete"))
 
 	return s.String()
 }
@@ -65,7 +65,7 @@ func renderDownloadList(m Model) string {
 	}
 
 	// Help text at the top
-	s.WriteString(helpStyle.Render("[ p ] Pause   [ r ] Resume   [ ↑/↓ ] Navigate   [ Esc ] Back"))
+	s.WriteString(helpStyle.Render("[ p ] Pause   [ r ] Resume   [ c ] Cancel   [ ↑/↓ ] Navigate   [ Esc ] Back"))
 	s.WriteString("\n\n")
 
 	for i, d := range m.Downloads {

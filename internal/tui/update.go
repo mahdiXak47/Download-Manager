@@ -119,6 +119,10 @@ func handleNavigationMode(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 			m.ResumeDownload()
 			return m, tickCmd()
 		}
+	case "c":
+		if m.Menu == "list" {
+			m.CancelDownload()
+		}
 	case "j":
 		if m.Menu == "list" && len(m.Downloads) > 0 {
 			m.Selected = (m.Selected + 1) % len(m.Downloads)
@@ -165,7 +169,7 @@ func handleTick(m Model) (tea.Model, tea.Cmd) {
 	// Update active downloads
 	hasActive := false
 	for _, d := range m.Downloads {
-		if d.Status == "downloading" {
+		if d.Status == "downloading" || d.Status == "paused" {
 			hasActive = true
 			break
 		}

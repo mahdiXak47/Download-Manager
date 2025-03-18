@@ -70,7 +70,10 @@ func (m Model) Init() tea.Cmd {
 func (m *Model) HandleInput(msg tea.KeyMsg) (Model, tea.Cmd) {
 	switch msg.Type {
 	case tea.KeyEsc:
+		// Cancel input and clear fields
 		m.InputMode = false
+		m.InputURL = ""
+		m.InputQueue = ""
 		m.Menu = "main"
 		return *m, nil
 
@@ -85,6 +88,16 @@ func (m *Model) HandleInput(msg tea.KeyMsg) (Model, tea.Cmd) {
 	case tea.KeyRunes:
 		if m.InputMode {
 			m.InputURL += string(msg.Runes)
+		}
+		return *m, nil
+
+	case tea.KeyCtrlV:
+		if m.InputMode {
+			// Get clipboard content
+			clipboard := tea.GetClipboard()
+			if clipboard != "" {
+				m.InputURL += clipboard
+			}
 		}
 		return *m, nil
 	}
@@ -137,6 +150,37 @@ func (m *Model) ResumeDownload() {
 		download := &m.Downloads[m.Selected]
 		if download.Status == "paused" {
 			m.QueueManager.ResumeDownload(download.URL)
+		}
+	}
+}
+
+// CancelDownload removes the selected download from the queue and downloads list
+func (m *Model) CancelDownload() {
+	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
+		download := m.Downloads[m.Selected]
+
+		// Cancel the download if it's active
+		if download.Status == "downloading" || download.Status == "paused" {
+			download.Cancel()
+		}
+
+		// Remove from queue manager
+		m.QueueManager.RemoveDownload(download.URL)
+
+		// Remove from downloads list
+		m.Downloads = append(m.Downloads[:m.Selected], m.Downloads[m.Selected+1:]...)
+
+		// Adjust selection if needed
+		if m.Selected >= len(m.Downloads) {
+			m.Selected = len(m.Downloads) - 1
+		}
+
+		// Update config
+		if m.Config != nil {
+			m.Config.Downloads = m.Downloads
+			if err := config.SaveConfig(m.Config); err != nil {
+				m.ErrorMessage = "Failed to save config: " + err.Error()
+			}
 		}
 	}
 }

@@ -160,3 +160,25 @@ func (m *Manager) startDownload(d *downloader.Download, q *config.QueueConfig) {
 		}
 	}()
 }
+
+// RemoveDownload removes a download from the queue
+func (m *Manager) RemoveDownload(url string) {
+	m.mutex.Lock()
+	defer m.mutex.Unlock()
+
+	// Remove from active downloads
+	delete(m.downloads, url)
+
+	// Remove from config downloads
+	for i, d := range m.config.Downloads {
+		if d.URL == url {
+			m.config.Downloads = append(m.config.Downloads[:i], m.config.Downloads[i+1:]...)
+			break
+		}
+	}
+
+	// Update active jobs count if needed
+	if d, exists := m.downloads[url]; exists && d.Status == "downloading" {
+		m.activeJobs[d.Queue]--
+	}
+}
