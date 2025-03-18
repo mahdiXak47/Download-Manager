@@ -4,21 +4,48 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/mahdiXak47/Download-Manager/internal/downloader"
 )
 
+type QueueConfig struct {
+	Name          string `json:"name"`
+	MaxConcurrent int    `json:"max_concurrent"`
+	StartTime     string `json:"start_time"`  // Format: "HH:MM"
+	EndTime       string `json:"end_time"`    // Format: "HH:MM"
+	SpeedLimit    int64  `json:"speed_limit"` // Bytes per second, 0 for unlimited
+	Enabled       bool   `json:"enabled"`
+}
+
 type Config struct {
-	DefaultQueue  string                `json:"default_queue"`
-	MaxConcurrent int                   `json:"max_concurrent"`
-	SavePath      string                `json:"save_path"`
-	Downloads     []downloader.Download `json:"downloads"`
+	DefaultQueue string                `json:"default_queue"`
+	SavePath     string                `json:"save_path"`
+	Downloads    []downloader.Download `json:"downloads"`
+	Queues       []QueueConfig         `json:"queues"`
 }
 
 var defaultConfig = Config{
-	DefaultQueue:  "default",
-	MaxConcurrent: 3,
-	SavePath:      "downloads",
+	DefaultQueue: "default",
+	SavePath:     "downloads",
+	Queues: []QueueConfig{
+		{
+			Name:          "default",
+			MaxConcurrent: 3,
+			StartTime:     "00:00",
+			EndTime:       "23:59",
+			SpeedLimit:    0,
+			Enabled:       true,
+		},
+		{
+			Name:          "night",
+			MaxConcurrent: 5,
+			StartTime:     "23:00",
+			EndTime:       "06:00",
+			SpeedLimit:    0,
+			Enabled:       true,
+		},
+	},
 }
 
 const configFileName = "download-manager.json"
@@ -73,4 +100,41 @@ func SaveConfig(config *Config) error {
 	}
 
 	return os.WriteFile(GetConfigPath(), data, 0644)
+}
+
+// IsTimeAllowed checks if downloads are allowed for a queue at the current time
+func (q *QueueConfig) IsTimeAllowed() bool {
+	if !q.Enabled {
+		return false
+	}
+
+	now := time.Now()
+	current, _ := time.Parse("15:04", now.Format("15:04"))
+
+	// Parse time window
+	start, err := time.Parse("15:04", q.StartTime)
+	if err != nil {
+		return false
+	}
+	end, err := time.Parse("15:04", q.EndTime)
+	if err != nil {
+		return false
+	}
+
+	// Handle overnight windows (e.g., 23:00-06:00)
+	if start.After(end) {
+		return current.After(start) || current.Before(end)
+	}
+
+	return current.After(start) && current.Before(end)
+}
+
+// GetQueue returns a queue configuration by name
+func (c *Config) GetQueue(name string) *QueueConfig {
+	for i := range c.Queues {
+		if c.Queues[i].Name == name {
+			return &c.Queues[i]
+		}
+	}
+	return nil
 }

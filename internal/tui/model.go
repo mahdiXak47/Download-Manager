@@ -4,6 +4,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/mahdiXak47/Download-Manager/internal/config"
 	"github.com/mahdiXak47/Download-Manager/internal/downloader"
+	"github.com/mahdiXak47/Download-Manager/internal/queue"
 )
 
 // Model represents the application state
@@ -20,6 +21,7 @@ type Model struct {
 	// Data
 	Downloads    []downloader.Download
 	Config       *config.Config
+	QueueManager *queue.Manager
 	ErrorMessage string
 
 	// UI State
@@ -42,13 +44,18 @@ func NewModel() Model {
 		}
 	}
 
+	// Create queue manager
+	queueManager := queue.NewManager(cfg)
+	queueManager.Start()
+
 	return Model{
-		Menu:      "list", // Start with downloads list
-		Downloads: cfg.Downloads,
-		Config:    cfg,
-		Selected:  0,
-		Width:     80,
-		Height:    24,
+		Menu:         "list",
+		Downloads:    cfg.Downloads,
+		Config:       cfg,
+		QueueManager: queueManager,
+		Selected:     0,
+		Width:        80,
+		Height:       24,
 	}
 }
 
@@ -91,6 +98,10 @@ func (m *Model) UpdateSize(width, height int) {
 
 // AddDownload adds a new download to the model
 func (m *Model) AddDownload(url, queue string) {
+	if queue == "" {
+		queue = m.Config.DefaultQueue
+	}
+
 	download := downloader.Download{
 		URL:      url,
 		Queue:    queue,
@@ -111,13 +122,9 @@ func (m *Model) AddDownload(url, queue string) {
 // PauseDownload pauses the selected download
 func (m *Model) PauseDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
-		m.Downloads[m.Selected].Status = "paused"
-		// Save state
-		if m.Config != nil {
-			m.Config.Downloads = m.Downloads
-			if err := config.SaveConfig(m.Config); err != nil {
-				m.ErrorMessage = "Failed to save config: " + err.Error()
-			}
+		download := &m.Downloads[m.Selected]
+		if download.Status == "downloading" {
+			m.QueueManager.PauseDownload(download.URL)
 		}
 	}
 }
@@ -125,13 +132,9 @@ func (m *Model) PauseDownload() {
 // ResumeDownload resumes the selected download
 func (m *Model) ResumeDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
-		m.Downloads[m.Selected].Status = "downloading"
-		// Save state
-		if m.Config != nil {
-			m.Config.Downloads = m.Downloads
-			if err := config.SaveConfig(m.Config); err != nil {
-				m.ErrorMessage = "Failed to save config: " + err.Error()
-			}
+		download := &m.Downloads[m.Selected]
+		if download.Status == "paused" {
+			m.QueueManager.ResumeDownload(download.URL)
 		}
 	}
 }
