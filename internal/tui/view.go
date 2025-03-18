@@ -42,18 +42,12 @@ func renderAddMenu(m Model) string {
 	s.WriteString(menuHeaderStyle.Render("New Download"))
 	s.WriteString("\n\n")
 
-	inputBox := lipgloss.NewStyle().
-		PaddingLeft(2).
-		PaddingRight(2).
-		BorderStyle(lipgloss.RoundedBorder()).
-		BorderForeground(subtle)
-
-	s.WriteString(inputBox.Render(
+	s.WriteString(inputBoxStyle.Render(
 		menuItemStyle.Render("URL:    "+urlStyle.Render(m.InputURL+"_")) + "\n" +
 			menuItemStyle.Render("Queue:  "+urlStyle.Render(m.InputQueue)),
 	))
 
-	// Help text in the middle
+	// Help text
 	s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Save   [ Esc ] Cancel"))
 
 	return s.String()
@@ -71,10 +65,23 @@ func renderDownloadList(m Model) string {
 	}
 
 	// Help text at the top
-	s.WriteString(helpStyle.Render("[ p ] Pause   [ r ] Resume   [ Esc ] Back"))
+	s.WriteString(helpStyle.Render("[ p ] Pause   [ r ] Resume   [ ↑/↓ ] Navigate   [ Esc ] Back"))
 	s.WriteString("\n\n")
 
 	for i, d := range m.Downloads {
+		// Create download item container
+		itemStyle := lipgloss.NewStyle().
+			PaddingLeft(1).
+			PaddingRight(1).
+			MarginBottom(1)
+
+		if i == m.Selected {
+			itemStyle = itemStyle.Copy().
+				Border(lipgloss.RoundedBorder()).
+				BorderForeground(CurrentTheme.Highlight).
+				Background(lipgloss.Color(CurrentTheme.Background))
+		}
+
 		// URL and status
 		item := fmt.Sprintf("%s    %s",
 			urlStyle.Render(d.URL),
@@ -95,12 +102,7 @@ func renderDownloadList(m Model) string {
 			item += fmt.Sprintf("  %s", formatSpeed(d.Speed))
 		}
 
-		// Selection highlight
-		if i == m.Selected {
-			item = selectedStyle.Render(item)
-		}
-
-		s.WriteString(menuItemStyle.Render(item) + "\n\n")
+		s.WriteString(itemStyle.Render(item) + "\n")
 	}
 
 	return s.String()
@@ -112,23 +114,24 @@ func renderMainMenu(m Model) string {
 	s.WriteString("\n\n")
 
 	menuBox := lipgloss.NewStyle().
-		PaddingLeft(2).
-		PaddingRight(2).
 		BorderStyle(lipgloss.RoundedBorder()).
-		BorderForeground(subtle)
+		BorderForeground(CurrentTheme.Highlight).
+		Padding(1, 2).
+		Background(lipgloss.Color(CurrentTheme.Background))
 
-	// Menu items
-	menuItems := menuItemStyle.Render(`
-    [a]  Add download
-    [l]  List downloads
-    [p]  Pause selected
-    [r]  Resume selected
-    [q]  Quit
-   [↑]  Move up
-   [↓]  Move down`)
+	// Menu items with icons
+	menuItems := menuItemStyle.Render(fmt.Sprintf(`
+    [+] Add download
+    [≡] List downloads
+    [⏸] Pause selected
+    [▶] Resume selected
+    [t] Switch theme (%s)
+    [q] Quit
+   [↑] Move up
+   [↓] Move down`, m.CurrentTheme))
 
-	// Help text in the middle of the menu box
-	helpText := "\n\n" + helpStyle.Render("[ q ] Quit") + "\n"
+	// Help text
+	helpText := "\n\n" + helpStyle.Render("Use arrow keys to navigate, Enter to select, 't' to switch theme") + "\n"
 
 	s.WriteString(menuBox.Render(menuItems + helpText))
 

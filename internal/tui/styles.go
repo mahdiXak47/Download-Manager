@@ -8,33 +8,22 @@ import (
 )
 
 var (
-	// Color palette - red tones
-	subtle    = lipgloss.AdaptiveColor{Light: "#FFD1D1", Dark: "#8B0000"}
-	highlight = lipgloss.AdaptiveColor{Light: "#FF4D4D", Dark: "#FF6B6B"}
-	special   = lipgloss.AdaptiveColor{Light: "#FF7676", Dark: "#FF8989"}
-	accent    = lipgloss.AdaptiveColor{Light: "#FF3333", Dark: "#FF4444"}
-	muted     = lipgloss.AdaptiveColor{Light: "#FFB3B3", Dark: "#CC0000"}
-
-	// Base styles with subtle gradient border
+	// Base styles
 	baseStyle = lipgloss.NewStyle().
-			BorderStyle(lipgloss.DoubleBorder()).
-			BorderForeground(highlight).
-			Padding(1, 2)
+			BorderStyle(lipgloss.RoundedBorder()).
+			Padding(1).
+			MarginBottom(1)
 
-	// Header styles with more prominence
+	// Header styles
 	titleStyle = lipgloss.NewStyle().
 			Bold(true).
-			Foreground(lipgloss.Color("#FFFFFF")).
-			Background(highlight).
 			Padding(1, 3).
 			MarginBottom(1).
 			Align(lipgloss.Center).
-			BorderStyle(lipgloss.RoundedBorder()).
-			BorderForeground(highlight)
+			BorderStyle(lipgloss.DoubleBorder())
 
 	// Content styles
 	urlStyle = lipgloss.NewStyle().
-			Foreground(accent).
 			Bold(true).
 			PaddingLeft(2)
 
@@ -48,71 +37,61 @@ var (
 
 	selectedStyle = lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
-			BorderForeground(highlight).
-			Padding(0, 1).
-			Background(lipgloss.Color("#FFF0F0")).
-			Foreground(lipgloss.Color("#000000"))
+			Padding(0, 1)
 
-	// Help style with better visibility and centered positioning
+	// Help style
 	helpStyle = lipgloss.NewStyle().
-			Foreground(highlight).
 			Bold(true).
-			Padding(1, 2).
+			Padding(1).
 			MarginTop(1).
 			MarginBottom(1).
 			Align(lipgloss.Center).
-			Background(lipgloss.Color("#FFF5F5")).
-			BorderStyle(lipgloss.RoundedBorder()).
-			BorderForeground(subtle)
+			BorderStyle(lipgloss.RoundedBorder())
 
-	// Error style with better contrast
+	// Error style
 	errorStyle = lipgloss.NewStyle().
-			Foreground(lipgloss.Color("#FF0000")).
 			Bold(true).
 			MarginTop(1).
-			Padding(1, 2).
+			Padding(1).
 			Align(lipgloss.Center).
-			BorderStyle(lipgloss.RoundedBorder()).
-			BorderForeground(lipgloss.Color("#FF0000"))
+			BorderStyle(lipgloss.RoundedBorder())
 
-	// Progress bar styles with rounded corners
+	// Progress bar styles
 	progressBarStyle = lipgloss.NewStyle().
 				MarginLeft(2).
 				MarginRight(2)
 
-	progressBarFilledStyle = lipgloss.NewStyle().
-				Background(accent).
-				Foreground(lipgloss.Color("#FFFFFF"))
+	progressBarFilledStyle = lipgloss.NewStyle()
 
-	progressBarEmptyStyle = lipgloss.NewStyle().
-				Background(subtle).
-				Foreground(lipgloss.Color("#FFFFFF"))
+	progressBarEmptyStyle = lipgloss.NewStyle()
 
-	// Menu styles with better hierarchy
+	// Menu styles
 	menuItemStyle = lipgloss.NewStyle().
 			PaddingLeft(4).
 			PaddingRight(4)
 
 	menuHeaderStyle = lipgloss.NewStyle().
 			Bold(true).
-			Foreground(highlight).
-			Background(lipgloss.Color("#FFF0F0")).
-			PaddingLeft(2).
-			PaddingRight(2).
-			PaddingTop(1).
-			PaddingBottom(1).
+			Padding(1, 2).
 			MarginBottom(1).
 			Width(30).
-			Align(lipgloss.Center)
+			Align(lipgloss.Center).
+			BorderStyle(lipgloss.RoundedBorder())
 
-	// Spinner style with accent color
+	// Input box style
+	inputBoxStyle = lipgloss.NewStyle().
+			BorderStyle(lipgloss.RoundedBorder()).
+			Padding(1, 2).
+			MarginTop(1).
+			MarginBottom(1)
+
+	// Spinner style
 	spinnerStyle = lipgloss.NewStyle().
-			Foreground(special).
 			Bold(true)
 )
 
 // Spinner frames for animation
-var spinnerFrames = []string{"◐", "◓", "◑", "◒"}
+var spinnerFrames = []string{"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"}
 
 // RenderProgressBar creates a styled progress bar
 func RenderProgressBar(width int, percent float64) string {
@@ -129,32 +108,39 @@ func RenderProgressBar(width int, percent float64) string {
 func RenderStatus(status string) string {
 	switch status {
 	case "downloading":
-		return statusStyle.
-			Background(special).
-			Foreground(lipgloss.Color("#FFFFFF")).
+		return statusStyle.Copy().
+			Background(CurrentTheme.Special).
+			Foreground(lipgloss.Color(CurrentTheme.Background)).
 			BorderStyle(lipgloss.RoundedBorder()).
-			BorderForeground(special).
+			BorderForeground(CurrentTheme.Special).
 			Render(" " + status + " ")
 	case "paused":
-		return statusStyle.
-			Background(subtle).
-			Foreground(lipgloss.Color("#000000")).
+		return statusStyle.Copy().
+			Background(CurrentTheme.Warning).
+			Foreground(lipgloss.Color(CurrentTheme.Background)).
 			BorderStyle(lipgloss.RoundedBorder()).
-			BorderForeground(subtle).
+			BorderForeground(CurrentTheme.Warning).
 			Render(" " + status + " ")
 	case "completed":
-		return statusStyle.
-			Background(highlight).
-			Foreground(lipgloss.Color("#FFFFFF")).
+		return statusStyle.Copy().
+			Background(CurrentTheme.Highlight).
+			Foreground(lipgloss.Color(CurrentTheme.Foreground)).
 			BorderStyle(lipgloss.RoundedBorder()).
-			BorderForeground(highlight).
+			BorderForeground(CurrentTheme.Highlight).
+			Render(" " + status + " ")
+	case "error":
+		return statusStyle.Copy().
+			Background(CurrentTheme.Danger).
+			Foreground(lipgloss.Color(CurrentTheme.Foreground)).
+			BorderStyle(lipgloss.RoundedBorder()).
+			BorderForeground(CurrentTheme.Danger).
 			Render(" " + status + " ")
 	default:
-		return statusStyle.
-			Background(muted).
-			Foreground(lipgloss.Color("#FFFFFF")).
+		return statusStyle.Copy().
+			Background(CurrentTheme.Subtle).
+			Foreground(lipgloss.Color(CurrentTheme.Background)).
 			BorderStyle(lipgloss.RoundedBorder()).
-			BorderForeground(muted).
+			BorderForeground(CurrentTheme.Subtle).
 			Render(" " + status + " ")
 	}
 }

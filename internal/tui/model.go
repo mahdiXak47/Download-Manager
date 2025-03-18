@@ -27,6 +27,8 @@ type Model struct {
 	// UI State
 	Width  int
 	Height int
+
+	CurrentTheme string
 }
 
 // NewModel creates and initializes a new model
@@ -137,4 +139,30 @@ func (m *Model) ResumeDownload() {
 			m.QueueManager.ResumeDownload(download.URL)
 		}
 	}
+}
+
+// CycleTheme switches to the next available theme
+func (m *Model) CycleTheme() {
+	themes := map[string]Theme{
+		"modern":    ModernTheme,
+		"ocean":     OceanTheme,
+		"solarized": SolarizedTheme,
+		"nord":      NordTheme,
+	}
+
+	// Get ordered theme names
+	themeNames := []string{"modern", "ocean", "solarized", "nord"}
+	currentIndex := 0
+	for i, name := range themeNames {
+		if name == m.CurrentTheme {
+			currentIndex = i
+			break
+		}
+	}
+
+	// Switch to next theme
+	nextIndex := (currentIndex + 1) % len(themeNames)
+	m.CurrentTheme = themeNames[nextIndex]
+	CurrentTheme = themes[m.CurrentTheme]
+	UpdateStyles()
 }

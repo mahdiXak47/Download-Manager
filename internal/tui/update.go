@@ -43,6 +43,10 @@ func handleKeyPress(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 			m.InputMode = false
 			return m, nil
 		}
+	case "t":
+		if m.Menu == "main" {
+			m.CycleTheme()
+		}
 	}
 
 	// Handle menu-specific keys
@@ -94,20 +98,28 @@ func handleNavigationMode(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		m.Menu = "list"
 
 	case "p":
-		m.PauseDownload()
+		if m.Menu == "list" {
+			m.PauseDownload()
+		}
 
 	case "r":
-		m.ResumeDownload()
-		return m, tickCmd()
+		if m.Menu == "list" {
+			m.ResumeDownload()
+			return m, tickCmd()
+		}
 
 	case "j", "down":
-		if m.Selected < len(m.Downloads)-1 {
-			m.Selected++
+		if m.Menu == "list" && len(m.Downloads) > 0 {
+			m.Selected = (m.Selected + 1) % len(m.Downloads)
 		}
 
 	case "k", "up":
-		if m.Selected > 0 {
-			m.Selected--
+		if m.Menu == "list" && len(m.Downloads) > 0 {
+			if m.Selected > 0 {
+				m.Selected--
+			} else {
+				m.Selected = len(m.Downloads) - 1
+			}
 		}
 	}
 

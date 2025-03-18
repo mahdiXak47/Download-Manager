@@ -123,7 +123,10 @@ func StartDownload(d *Download, speedLimit int64) error {
 			}
 
 			if n == 0 {
-				break
+				if err == io.EOF {
+					return nil
+				}
+				continue
 			}
 
 			// Write to file
