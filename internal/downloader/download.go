@@ -147,6 +147,4 @@ func StartDownload(d *Download, speedLimit int64) error {
 			}
 		}
 	}
-
-	return nil
 }

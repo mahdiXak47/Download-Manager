@@ -121,14 +121,14 @@ func renderMainMenu(m Model) string {
 
 	// Menu items with icons
 	menuItems := menuItemStyle.Render(fmt.Sprintf(`
-    [+] Add download
-    [≡] List downloads
-    [⏸] Pause selected
-    [▶] Resume selected
+    [a] Add new download
+    [l] List downloads
+    [p] Pause selected
+    [r] Resume selected
     [t] Switch theme (%s)
     [q] Quit
-   [↑] Move up
-   [↓] Move down`, m.CurrentTheme))
+    [↑] Move up
+    [↓] Move down`, m.CurrentTheme))
 
 	// Help text
 	helpText := "\n\n" + helpStyle.Render("Use arrow keys to navigate, Enter to select, 't' to switch theme") + "\n"
