@@ -7,7 +7,6 @@ import (
 	"os"
 	"path/filepath"
 	"sync"
-
 	"time"
 )
 
@@ -24,8 +23,8 @@ type Download struct {
 	resumeChan chan struct{} `json:"-"`
 	cancelChan chan struct{} `json:"-"`
 	mutex      sync.Mutex    `json:"-"`
-	retryCount int           `json:"retry_count"`
-	maxRetries int           `json:"max_retries"`
+	RetryCount int           `json:"retry_count"`
+	MaxRetries int           `json:"max_retries"`
 	retryDelay time.Duration `json:"-"`
 }
 
@@ -46,8 +45,8 @@ func (d *Download) Initialize() {
 	if d.Status == "" {
 		d.Status = "pending"
 	}
-	if d.maxRetries == 0 {
-		d.maxRetries = 3
+	if d.MaxRetries == 0 {
+		d.MaxRetries = 3
 	}
 	if d.retryDelay == 0 {
 		d.retryDelay = 5 * time.Second
@@ -106,7 +105,7 @@ func (d *Download) Retry() error {
 		d.Error = ""
 		d.Progress = 0
 		d.Speed = 0
-		d.retryCount++
+		d.RetryCount++
 		return nil
 	}
 	return fmt.Errorf("download is not in error state")
@@ -118,7 +117,7 @@ func StartDownload(d *Download, speedLimit int64) error {
 	d.Initialize()
 	d.Status = "downloading"
 
-	for d.retryCount <= d.maxRetries {
+	for d.RetryCount <= d.MaxRetries {
 		// Create HTTP client
 		client := &http.Client{}
 
@@ -127,6 +126,26 @@ func StartDownload(d *Download, speedLimit int64) error {
 		if err != nil {
 			d.handleError(err)
 			continue
+		}
+
+		// Check if the file already exists and get its size
+		fileName := filepath.Base(d.URL)
+		file, err := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE, 0644)
+		if err != nil {
+			d.handleError(err)
+			continue
+		}
+		defer file.Close()
+
+		fileInfo, err := file.Stat()
+		if err != nil {
+			d.handleError(err)
+			continue
+		}
+
+		// If the file already exists, set the Range header to resume the download
+		if fileInfo.Size() > 0 {
+			req.Header.Set("Range", fmt.Sprintf("bytes=%d-", fileInfo.Size()))
 		}
 
 		// Send request
@@ -138,27 +157,21 @@ func StartDownload(d *Download, speedLimit int64) error {
 		defer resp.Body.Close()
 
 		// Check response
-		if resp.StatusCode != http.StatusOK {
+		if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusPartialContent {
 			err := fmt.Errorf("server returned status %d", resp.StatusCode)
 			d.handleError(err)
 			continue
 		}
 
 		// Get file size
-		fileSize := resp.ContentLength
+		fileSize := resp.ContentLength + fileInfo.Size() // Total size = downloaded + remaining
 
-		// Create output file
-		fileName := filepath.Base(d.URL)
-		file, err := os.Create(fileName)
-		if err != nil {
-			d.handleError(err)
-			continue
-		}
-		defer file.Close()
+		// Seek to the end of the file to append new data
+		file.Seek(fileInfo.Size(), io.SeekStart)
 
 		// Create buffer for speed limiting
 		buffer := make([]byte, 32*1024) // 32KB buffer
-		downloaded := int64(0)
+		downloaded := fileInfo.Size()
 		start := time.Now()
 
 		for {
@@ -170,13 +183,9 @@ func StartDownload(d *Download, speedLimit int64) error {
 				<-d.resumeChan
 				// Reset speed calculation after resume
 				start = time.Now()
-				downloaded = int64(float64(fileSize) * d.Progress / 100)
 			default:
 				// Normal download operation
-				if speedLimit > 0 && d.Speed > speedLimit {
-					time.Sleep(10 * time.Millisecond)
-					continue
-				}
+				d.limitSpeed(buffer, speedLimit)
 
 				n, err := resp.Body.Read(buffer)
 				if err != nil && err != io.EOF {
@@ -213,16 +222,30 @@ func StartDownload(d *Download, speedLimit int64) error {
 		}
 	retry:
 		// If we get here, an error occurred during download
-		if d.retryCount >= d.maxRetries {
+		if d.RetryCount >= d.MaxRetries {
 			d.Status = "error"
-			d.Error = fmt.Sprintf("download failed after %d retries", d.maxRetries)
+			d.Error = fmt.Sprintf("download failed after %d retries", d.MaxRetries)
 			return fmt.Errorf(d.Error)
 		}
-		d.retryCount++
+		d.RetryCount++
 		time.Sleep(d.retryDelay)
 	}
 
-	return fmt.Errorf("download failed after %d retries", d.maxRetries)
+	return fmt.Errorf("download failed after %d retries", d.MaxRetries)
+}
+
+// limitSpeed implements a simple speed limiter
+func (d *Download) limitSpeed(buffer []byte, speedLimit int64) {
+	if speedLimit <= 0 {
+		return
+	}
+
+	// Calculate the time required to read the buffer at the given speed limit
+	chunkSize := int64(len(buffer))
+	expectedTime := time.Duration(float64(chunkSize)/float64(speedLimit)) * time.Second
+
+	// Sleep for the required duration
+	time.Sleep(expectedTime)
 }
 
 // handleError updates the download status and error message

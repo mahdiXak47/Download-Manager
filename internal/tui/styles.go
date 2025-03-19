@@ -32,9 +32,6 @@ var (
 			PaddingLeft(1).
 			PaddingRight(1)
 
-	progressStyle = lipgloss.NewStyle().
-			PaddingLeft(2)
-
 	selectedStyle = lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
 			Padding(0, 1)
@@ -57,10 +54,6 @@ var (
 			BorderStyle(lipgloss.RoundedBorder())
 
 	// Progress bar styles
-	progressBarStyle = lipgloss.NewStyle().
-				MarginLeft(2).
-				MarginRight(2)
-
 	progressBarFilledStyle = lipgloss.NewStyle()
 
 	progressBarEmptyStyle = lipgloss.NewStyle()
