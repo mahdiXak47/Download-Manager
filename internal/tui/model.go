@@ -1,6 +1,10 @@
 package tui
 
 import (
+	"fmt"
+	"net/http"
+	"strings"
+
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/mahdiXak47/Download-Manager/internal/config"
 	"github.com/mahdiXak47/Download-Manager/internal/downloader"
@@ -105,6 +109,25 @@ func (m *Model) UpdateSize(width, height int) {
 func (m *Model) AddDownload(url, queue string) {
 	if queue == "" {
 		queue = m.Config.DefaultQueue
+	}
+
+	// Validate URL
+	if !strings.HasPrefix(url, "http://") && !strings.HasPrefix(url, "https://") {
+		m.ErrorMessage = "Invalid URL: URL must start with http:// or https://"
+		return
+	}
+
+	// Check if URL exists
+	resp, err := http.Head(url)
+	if err != nil {
+		m.ErrorMessage = "Error checking URL: " + err.Error()
+		return
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		m.ErrorMessage = fmt.Sprintf("URL not accessible: Server returned status %d", resp.StatusCode)
+		return
 	}
 
 	download := &downloader.Download{
