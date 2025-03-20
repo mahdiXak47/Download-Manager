@@ -88,6 +88,30 @@ var (
 	// Spinner style
 	spinnerStyle = lipgloss.NewStyle().
 			Bold(true)
+
+	// Tab styles
+	tabStyle = lipgloss.NewStyle().
+		Padding(0, 2).
+		Border(lipgloss.RoundedBorder(), false, true, false, false).
+		Align(lipgloss.Center)
+
+	activeTabStyle = lipgloss.NewStyle().
+		Padding(0, 2).
+		Border(lipgloss.RoundedBorder(), false, true, false, false).
+		Bold(true).
+		Align(lipgloss.Center)
+	
+	// Header style for tables
+	headerStyle = lipgloss.NewStyle().
+		Bold(true).
+		Padding(0, 1).
+		BorderStyle(lipgloss.NormalBorder()).
+		BorderBottom(true)
+
+	// Selected item style
+	selectedItemStyle = lipgloss.NewStyle().
+		Bold(true).
+		Padding(0, 1)
 )
 
 // Spinner frames for animation
@@ -150,4 +174,88 @@ func RenderStatus(status string) string {
 			BorderForeground(CurrentTheme.Subtle).
 			Render(" " + status + " ")
 	}
+}
+
+// UpdateStyles updates all styles based on the current theme
+func UpdateStyles() {
+	// Base styles
+	baseStyle = baseStyle.
+		BorderForeground(lipgloss.Color(CurrentTheme.Border.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	// Header styles
+	titleStyle = titleStyle.
+		Foreground(lipgloss.Color(CurrentTheme.Primary.Dark)).
+		BorderForeground(lipgloss.Color(CurrentTheme.Border.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	// Menu styles
+	menuHeaderStyle = menuHeaderStyle.
+		Foreground(lipgloss.Color(CurrentTheme.Primary.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	menuItemStyle = menuItemStyle.
+		Foreground(lipgloss.Color(CurrentTheme.Text.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	// Content styles
+	urlStyle = urlStyle.
+		Foreground(lipgloss.Color(CurrentTheme.Secondary.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	statusStyle = statusStyle.
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	progressStyle = progressStyle.
+		Foreground(lipgloss.Color(CurrentTheme.Text.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	selectedStyle = selectedStyle.
+		BorderForeground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
+		Foreground(lipgloss.Color(CurrentTheme.Text.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	// Help style
+	helpStyle = helpStyle.
+		Foreground(lipgloss.Color(CurrentTheme.Text.Dark)).
+		BorderForeground(lipgloss.Color(CurrentTheme.Subtle.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	// Error style
+	errorStyle = errorStyle.
+		Foreground(lipgloss.Color(CurrentTheme.Error.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	// Input style
+	inputBoxStyle = inputBoxStyle.
+		BorderForeground(lipgloss.Color(CurrentTheme.Border.Dark)).
+		Foreground(lipgloss.Color(CurrentTheme.Text.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	// Spinner style
+	spinnerStyle = spinnerStyle.
+		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+		
+	// Tab styles
+	tabStyle = tabStyle.
+		BorderForeground(lipgloss.Color(CurrentTheme.Subtle.Dark)).
+		Foreground(lipgloss.Color(CurrentTheme.Text.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+
+	activeTabStyle = activeTabStyle.
+		BorderForeground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
+		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+		
+	// Header style
+	headerStyle = headerStyle.
+		BorderForeground(lipgloss.Color(CurrentTheme.Subtle.Dark)).
+		Foreground(lipgloss.Color(CurrentTheme.Primary.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
+		
+	// Selected item style
+	selectedItemStyle = selectedItemStyle.
+		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
+		Background(lipgloss.Color(CurrentTheme.Background))
 }

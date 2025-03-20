@@ -138,16 +138,16 @@ func (m *Manager) startDownload(d *downloader.Download, q *config.QueueConfig) {
 
 	go func() {
 		// Start the actual download
-		err := downloader.StartDownload(d, q.SpeedLimit)
+		err := d.Start()
 
 		m.mutex.Lock()
 		defer m.mutex.Unlock()
 
 		// Update download status
-		if err != nil {
+		if err != nil && d.Status != "cancelled" {
 			d.Status = "error"
 			d.Error = err.Error()
-		} else {
+		} else if d.Status != "cancelled" {
 			d.Status = "completed"
 		}
 

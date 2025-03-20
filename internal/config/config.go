@@ -16,6 +16,7 @@ type QueueConfig struct {
 	EndTime       string `json:"end_time"`    // Format: "HH:MM"
 	SpeedLimit    int64  `json:"speed_limit"` // Bytes per second, 0 for unlimited
 	Enabled       bool   `json:"enabled"`
+	Path          string `json:"path"`        // Download directory path for this queue
 }
 
 type Config struct {
@@ -36,6 +37,7 @@ var defaultConfig = Config{
 			EndTime:       "23:59",
 			SpeedLimit:    0,
 			Enabled:       true,
+			Path:          "downloads/default",
 		},
 		{
 			Name:          "night",
@@ -44,6 +46,7 @@ var defaultConfig = Config{
 			EndTime:       "06:00",
 			SpeedLimit:    0,
 			Enabled:       true,
+			Path:          "downloads/night",
 		},
 	},
 }

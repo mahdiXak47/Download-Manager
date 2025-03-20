@@ -24,7 +24,8 @@ A sophisticated download manager application written in Go with Terminal User In
   - Progress tracking
   - Pause/Resume individual downloads
   - Download retry mechanism
-  - Support for various protocols (HTTP, HTTPS, FTP)
+  - Support for HTTP/HTTPS protocols
+  - Download speed limiting
 
 - Speed Control
 
@@ -39,9 +40,18 @@ A sophisticated download manager application written in Go with Terminal User In
   - Priority-based scheduling
   - Bandwidth scheduling
 
+## Recent Updates
+
+- **Improved Download Engine**: The download functionality has been fully implemented with:
+  - Robust pause/resume support using HTTP Range headers
+  - Proper error handling and retry logic
+  - Bandwidth limiting capabilities
+  - Progress tracking and speed calculation
+  - File directory management
+
 ## Project Architecture
 
-```
+````
 .
 ├── cmd/
 │   └── download-manager/
@@ -59,9 +69,11 @@ A sophisticated download manager application written in Go with Terminal User In
 │   │   ├── constants.go
 │   │   └── messages.go
 │   ├── downloader/
+│   │   └── download.go     # Consolidated download implementation
 │   ├── queue/
-│   ├── scheduler/
+│   │   └── manager.go      # Queue management system
 │   └── config/
+│       └── config.go       # Configuration management
 ├── pkg/
 │   ├── protocol/
 │   └── utils/
@@ -94,10 +106,9 @@ A sophisticated download manager application written in Go with Terminal User In
 ## Technical Stack
 
 - Go 1.21 or higher
-- Key Libraries (Planned):
+- Key Libraries:
   - [bubbletea](https://github.com/charmbracelet/bubbletea) - Terminal UI framework
   - [lipgloss](https://github.com/charmbracelet/lipgloss) - Style definitions
-  - [viper](https://github.com/spf13/viper) - Configuration management
 
 ## Development Phases
 
@@ -141,7 +152,7 @@ cd download-manager
 
 # Build the application
 go build
-```
+````
 
 ## Usage
 
@@ -150,8 +161,8 @@ go build
 ./download-manager
 ```
 
-
 ## Features
+
 - **Concurrent Downloads**: Uses Goroutines and Channels for efficient multi-threading.
 - **Download Queue Management**: Set storage folder, max simultaneous downloads, bandwidth limits, and time scheduling.
 - **Control Options**: Pause, Resume, Cancel, and Retry downloads.
@@ -160,12 +171,34 @@ go build
 - **Keyboard Shortcuts**: Navigate tabs, control downloads, and manage queues efficiently.
 
 ## User Interface
-- **Tab 1**: Add new downloads.
-- **Tab 2**: View & manage active downloads.
-- **Tab 3**: Configure and manage download queues.
+
+The Download Manager features a clean, intuitive terminal user interface with tabbed navigation:
+
+- **Tab 1 (F1)**: Add new downloads - Enter URL and choose queue.
+- **Tab 2 (F2)**: Download List - View and manage active downloads (pause, resume, cancel).
+- **Tab 3 (F3)**: Queue Management - Configure and manage download queues.
+- **Tab 4 (F4)**: Settings & Help - Change themes and view keyboard shortcuts.
+
+The interface supports keyboard navigation with tabs displayed at the bottom of the screen for easy access.
+
+## Keyboard Shortcuts
+
+- **F1-F4**: Switch between tabs (function keys work globally)
+- **↑/↓** or **j/k**: Navigate lists
+- **Enter**: Confirm/Submit
+- **Esc**: Cancel/Back or exit input mode
+- **p**: Pause selected download
+- **r**: Resume selected download
+- **c**: Cancel selected download
+- **n**: Add new queue (in Queue tab)
+- **e**: Edit selected queue (in Queue tab)
+- **d**: Delete selected queue (in Queue tab)
+- **t**: Change theme (press when not typing in an input field)
+- **q**: Quit application
 
 ## Technical Highlights
+
 - **Concurrency**: Utilizes Goroutines and Channels.
-- **Error Handling & Retry Logic**.
-- **Networking & File I/O**: Handles HTTP GET requests and file writes efficiently.
-- **TUI Library**: Uses `tview` for terminal UI.
+- **Error Handling & Retry Logic**: Implements robust retry mechanism with configurable attempts and delays.
+- **Networking & File I/O**: Handles HTTP requests and file writes efficiently.
+- **TUI Library**: Uses `bubbletea` for terminal UI.
