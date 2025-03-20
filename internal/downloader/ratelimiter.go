@@ -1,6 +1,7 @@
 package downloader
 
 import (
+	"io"
 	"sync"
 	"time"
 )
@@ -72,6 +73,18 @@ func (r *RateLimiter) GetToken(bytes int64) {
 		<-r.tokenChan
 		tokensNeeded--
 	}
+}
+
+// Read reads data from reader and applies rate limiting
+// It implements a rate-limited reader for the download process
+func (r *RateLimiter) Read(reader io.Reader, buffer []byte) (int, error) {
+	// First read data from the original reader
+	n, err := reader.Read(buffer)
+	if n > 0 {
+		// If data was read, limit the rate by getting tokens
+		r.GetToken(int64(n))
+	}
+	return n, err
 }
 
 func (r *RateLimiter) Stop() {

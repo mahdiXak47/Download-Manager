@@ -97,8 +97,10 @@ var (
 
 	activeTabStyle = lipgloss.NewStyle().
 		Padding(0, 2).
-		Border(lipgloss.RoundedBorder(), false, true, false, false).
+		Border(lipgloss.DoubleBorder(), false, true, false, false).
+		BorderBottom(true).
 		Bold(true).
+		Italic(true).
 		Align(lipgloss.Center)
 	
 	// Header style for tables
@@ -246,7 +248,7 @@ func UpdateStyles() {
 	activeTabStyle = activeTabStyle.
 		BorderForeground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
 		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
-		Background(lipgloss.Color(CurrentTheme.Background))
+		Background(lipgloss.Color(CurrentTheme.Subtle.Dark))
 		
 	// Header style
 	headerStyle = headerStyle.

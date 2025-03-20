@@ -43,11 +43,28 @@ A sophisticated download manager application written in Go with Terminal User In
 ## Recent Updates
 
 - **Improved Download Engine**: The download functionality has been fully implemented with:
+
   - Robust pause/resume support using HTTP Range headers
+  - Immediate download processing when added to queue
+  - Optimized HTTP client settings for reliability
   - Proper error handling and retry logic
   - Bandwidth limiting capabilities
   - Progress tracking and speed calculation
   - File directory management
+
+- **Comprehensive Logging System**: Added detailed logging functionality:
+
+  - Records all download activities to `download-logs.log`
+  - Tracks download starts, status changes, and completions
+  - Logs errors with detailed reasons
+  - Queue operations and system events logging
+  - Allows troubleshooting of download issues
+
+- **Enhanced Error Recovery**: Added manual retry functionality:
+  - New "Try Again" option (key: 'y') for failed downloads
+  - Clear visual feedback with color-coded messages
+  - Limited to 3 retry attempts per download
+  - Automatically processes retried downloads when queue capacity allows
 
 ## Project Architecture
 
@@ -169,27 +186,29 @@ go build
 - **Multi-part Downloading**: Supports parallel downloads for large files if the server allows `Accept-Ranges`.
 - **Persistent State**: Saves queues and downloads, resuming unfinished ones on restart.
 - **Keyboard Shortcuts**: Navigate tabs, control downloads, and manage queues efficiently.
+- **Activity Logging**: Records all download activities and errors to a log file for troubleshooting.
 
 ## User Interface
 
 The Download Manager features a clean, intuitive terminal user interface with tabbed navigation:
 
-- **Tab 1 (F1)**: Add new downloads - Enter URL and choose queue.
-- **Tab 2 (F2)**: Download List - View and manage active downloads (pause, resume, cancel).
-- **Tab 3 (F3)**: Queue Management - Configure and manage download queues.
-- **Tab 4 (F4)**: Settings & Help - Change themes and view keyboard shortcuts.
+- **Tab 1**: Add new downloads - Enter URL and choose queue.
+- **Tab 2**: Download List - View and manage active downloads (pause, resume, cancel).
+- **Tab 3**: Queue Management - Configure and manage download queues.
+- **Tab 4**: Settings & Help - Change themes and view keyboard shortcuts.
 
 The interface supports keyboard navigation with tabs displayed at the bottom of the screen for easy access.
 
 ## Keyboard Shortcuts
 
-- **F1-F4**: Switch between tabs (function keys work globally)
+- **1-4**: Switch between tabs (works globally when not in input mode)
 - **↑/↓** or **j/k**: Navigate lists
 - **Enter**: Confirm/Submit
 - **Esc**: Cancel/Back or exit input mode
 - **p**: Pause selected download
 - **r**: Resume selected download
 - **c**: Cancel selected download
+- **y**: Try again for failed downloads (limited to 3 attempts)
 - **n**: Add new queue (in Queue tab)
 - **e**: Edit selected queue (in Queue tab)
 - **d**: Delete selected queue (in Queue tab)

@@ -43,7 +43,7 @@ func (m Model) View() string {
 	return s.String()
 }
 
-// renderTabBar creates the tab bar with F1-F4 keys
+// renderTabBar creates the tab bar with number keys 1-4
 func renderTabBar(m Model) string {
 	width := m.Width - 12 // Account for margins/paddings
 	tabWidth := width / 4
@@ -54,7 +54,7 @@ func renderTabBar(m Model) string {
 	tab3Style := tabStyle.Copy().Width(tabWidth)
 	tab4Style := tabStyle.Copy().Width(tabWidth)
 
-	// Highlight active tab
+	// Highlight active tab with more distinctive styling
 	switch m.ActiveTab {
 	case AddDownloadTab:
 		tab1Style = activeTabStyle.Copy().Width(tabWidth)
@@ -66,11 +66,11 @@ func renderTabBar(m Model) string {
 		tab4Style = activeTabStyle.Copy().Width(tabWidth)
 	}
 
-	// Render tabs with F-key indicators
-	tab1 := tab1Style.Render("F1: Add Download")
-	tab2 := tab2Style.Render("F2: Download List")
-	tab3 := tab3Style.Render("F3: Queues List")
-	tab4 := tab4Style.Render("F4: Settings")
+	// Render tabs with number key indicators
+	tab1 := tab1Style.Render("1: Add Download")
+	tab2 := tab2Style.Render("2: Download List")
+	tab3 := tab3Style.Render("3: Queues List")
+	tab4 := tab4Style.Render("4: Settings")
 
 	return lipgloss.JoinHorizontal(lipgloss.Top, tab1, tab2, tab3, tab4)
 }
@@ -80,34 +80,70 @@ func renderAddDownloadTab(m Model) string {
 	s.WriteString(menuHeaderStyle.Render("Add New Download"))
 	s.WriteString("\n\n")
 
-	// URL input field
-	if m.InputMode {
-		s.WriteString(inputBoxStyle.Render(
-			menuItemStyle.Render("URL:    " + urlStyle.Render(m.InputURL+"_")),
-		))
+	// Success or error message (if any)
+	if m.AddDownloadMessage != "" {
+		msgStyle := errorStyle
+		if m.AddDownloadSuccess {
+			msgStyle = msgStyle.Copy().
+				Foreground(lipgloss.Color(CurrentTheme.Special.Dark)).
+				BorderForeground(lipgloss.Color(CurrentTheme.Special.Dark))
+		} else {
+			msgStyle = msgStyle.Copy().
+				Foreground(lipgloss.Color(CurrentTheme.Error.Dark)).
+				BorderForeground(lipgloss.Color(CurrentTheme.Error.Dark))
+		}
+		s.WriteString(msgStyle.Render(m.AddDownloadMessage) + "\n\n")
+	}
+
+	// Queue selection first
+	if m.QueueSelectionMode {
+		s.WriteString(menuHeaderStyle.Render("Select Download Queue"))
 		s.WriteString("\n\n")
 		
-		// Queue selection dropdown (simplified for now)
-		queueOptions := "Available Queues: "
-		for i, q := range m.Config.Queues {
-			if i > 0 {
-				queueOptions += ", "
-			}
-			queueOptions += q.Name
-		}
-		s.WriteString(menuItemStyle.Render(queueOptions))
+		// Available queues
+		s.WriteString(menuItemStyle.Render("Available Queues:"))
+		s.WriteString("\n\n")
 		
-		// Queue input field
-		s.WriteString("\n" + inputBoxStyle.Render(
-			menuItemStyle.Render("Queue:  " + urlStyle.Render(m.InputQueue)),
+		// List all queues
+		for i, q := range m.Config.Queues {
+			itemStyle := menuItemStyle
+			if i == m.QueueSelected {
+				itemStyle = selectedItemStyle
+			}
+			
+			activeCount := 0
+			for _, d := range m.Downloads {
+				if d.Queue == q.Name && d.Status == "downloading" {
+					activeCount++
+				}
+			}
+			
+			queueInfo := fmt.Sprintf("%s (%d/%d active)", q.Name, activeCount, q.MaxConcurrent)
+			s.WriteString(itemStyle.Render(queueInfo) + "\n")
+		}
+		
+		// Help text
+		s.WriteString("\n" + helpStyle.Render("[ ↑/↓ ] Navigate   [ Enter ] Select   [ Esc ] Cancel"))
+	} else if m.URLInputMode {
+		// URL input field
+		s.WriteString(menuHeaderStyle.Render("Enter Download URL"))
+		s.WriteString("\n\n")
+		
+		// Selected queue display
+		s.WriteString(menuItemStyle.Render("Selected Queue: " + urlStyle.Render(m.InputQueue)))
+		s.WriteString("\n\n")
+		
+		// URL input field
+		s.WriteString(inputBoxStyle.Render(
+			menuItemStyle.Render("URL: " + urlStyle.Render(m.InputURL+"_")),
 		))
 		
 		// Help text for input mode
-		s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Save   [ Esc ] Cancel   [ Backspace ] Delete"))
+		s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Start Download   [ Esc ] Back"))
 	} else {
-		// Instructions when not in input mode
+		// Initial instructions
 		s.WriteString(menuItemStyle.Render("Press Enter to add a new download"))
-		s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Start Input   [ Esc ] Back"))
+		s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Start   [ Esc ] Back"))
 	}
 
 	return s.String()
@@ -118,8 +154,25 @@ func renderDownloadListTab(m Model) string {
 	s.WriteString(menuHeaderStyle.Render("Download List"))
 	s.WriteString("\n\n")
 
+	// Show retry message if any
+	if m.DownloadListMessage != "" {
+		msgStyle := errorStyle
+		if m.DownloadListSuccess {
+			// Blue color for success messages
+			msgStyle = msgStyle.Copy().
+				Foreground(lipgloss.Color(CurrentTheme.Special.Dark)).
+				BorderForeground(lipgloss.Color(CurrentTheme.Special.Dark))
+		} else {
+			// Red color for error messages
+			msgStyle = msgStyle.Copy().
+				Foreground(lipgloss.Color(CurrentTheme.Error.Dark)).
+				BorderForeground(lipgloss.Color(CurrentTheme.Error.Dark))
+		}
+		s.WriteString(msgStyle.Render(m.DownloadListMessage) + "\n\n")
+	}
+
 	if len(m.Downloads) == 0 {
-		s.WriteString(menuItemStyle.Render("No downloads yet. Press 'F1' to add a download."))
+		s.WriteString(menuItemStyle.Render("No downloads yet. Press '1' to switch to Add Download tab."))
 	} else {
 		// Table header
 		header := lipgloss.JoinHorizontal(lipgloss.Top,
@@ -152,7 +205,8 @@ func renderDownloadListTab(m Model) string {
 	}
 
 	// Help text
-	s.WriteString("\n" + helpStyle.Render("[ ↑/↓ ] Navigate   [ p ] Pause   [ r ] Resume   [ c ] Cancel   [ a ] Add New"))
+	helpText := "[ ↑/↓ ] Navigate   [ p ] Pause   [ r ] Resume   [ c ] Cancel   [ y ] Try Again   [ a ] Add New"
+	s.WriteString("\n" + helpStyle.Render(helpText))
 
 	return s.String()
 }
@@ -264,7 +318,7 @@ func renderSettingsTab(m Model) string {
 	// Keyboard shortcuts
 	s.WriteString("\n\n" + menuHeaderStyle.Render("Keyboard Shortcuts"))
 	s.WriteString("\n")
-	s.WriteString(menuItemStyle.Render("F1-F4:          Switch tabs"))
+	s.WriteString(menuItemStyle.Render("1-4:             Switch tabs"))
 	s.WriteString("\n" + menuItemStyle.Render("↑/↓ or j/k:      Navigate lists"))
 	s.WriteString("\n" + menuItemStyle.Render("Enter:           Confirm/Submit"))
 	s.WriteString("\n" + menuItemStyle.Render("Esc:             Cancel/Back"))

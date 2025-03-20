@@ -2,6 +2,8 @@ package tui
 
 import (
 	"fmt"
+	"net/url"
+	"strings"
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
@@ -35,51 +37,167 @@ func handleWindowSize(m Model, msg tea.WindowSizeMsg) (tea.Model, tea.Cmd) {
 
 // handleKeyPress handles all keyboard input
 func handleKeyPress(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
-	// Handle global keys first
+	// When in URL input mode, only handle Esc and Enter keys, pass everything else to text input handler
+	if m.URLInputMode {
+		switch msg.Type {
+		case tea.KeyEsc:
+			// Cancel URL input and go back
+			m.URLInputMode = false
+			m.InputURL = ""
+			return m, nil
+		case tea.KeyEnter:
+			// Validate and start download
+			if m.InputURL != "" {
+				// Check if the URL is valid
+				isValidURL := validateURL(m.InputURL)
+				if !isValidURL {
+					m.AddDownloadMessage = "Error: Invalid URL format"
+					m.AddDownloadSuccess = false
+					m.URLInputMode = false
+					return m, nil
+				}
+				
+				// Check if the queue has capacity
+				queueName := m.InputQueue
+				var queue *config.QueueConfig
+				for _, q := range m.Config.Queues {
+					if q.Name == queueName {
+						queue = &q
+						break
+					}
+				}
+				
+				if queue != nil {
+					// Count active downloads in this queue
+					activeCount := 0
+					for _, d := range m.Downloads {
+						if d.Queue == queueName && d.Status == "downloading" {
+							activeCount++
+						}
+					}
+					
+					if activeCount >= queue.MaxConcurrent {
+						m.AddDownloadMessage = fmt.Sprintf("Error: Queue '%s' is at maximum capacity (%d downloads)", queueName, queue.MaxConcurrent)
+						m.AddDownloadSuccess = false
+						m.URLInputMode = false
+						return m, nil
+					}
+					
+					// All checks passed, start the download
+					cmd := func() tea.Msg {
+						return StartDownloadMsg{
+							URL:   m.InputURL,
+							Queue: m.InputQueue,
+						}
+					}
+					
+					m.AddDownloadMessage = fmt.Sprintf("Success: Download started in queue '%s'", queueName)
+					m.AddDownloadSuccess = true
+					m.URLInputMode = false
+					m.InputURL = ""
+					
+					return m, cmd
+				} else {
+					m.AddDownloadMessage = "Error: Selected queue not found"
+					m.AddDownloadSuccess = false
+					m.URLInputMode = false
+					return m, nil
+				}
+			}
+			return m, nil
+		case tea.KeyBackspace:
+			// Handle backspace
+			if len(m.InputURL) > 0 {
+				m.InputURL = m.InputURL[:len(m.InputURL)-1]
+			}
+			return m, nil
+		default:
+			// Handle all other keys as text input
+			if msg.Type == tea.KeyRunes {
+				m.InputURL += string(msg.Runes)
+			}
+			return m, nil
+		}
+	}
+
+	// When in Queue selection mode, handle navigation separately
+	if m.QueueSelectionMode {
+		switch msg.String() {
+		case "up", "k":
+			if m.QueueSelected > 0 {
+				m.QueueSelected--
+			} else if len(m.Config.Queues) > 0 {
+				m.QueueSelected = len(m.Config.Queues) - 1
+			}
+		case "down", "j":
+			if m.QueueSelected < len(m.Config.Queues)-1 {
+				m.QueueSelected++
+			} else {
+				m.QueueSelected = 0
+			}
+		case "enter":
+			if len(m.Config.Queues) > 0 {
+				// Select the queue and move to URL input
+				m.InputQueue = m.Config.Queues[m.QueueSelected].Name
+				m.QueueSelectionMode = false
+				m.URLInputMode = true
+				m.InputURL = ""
+			}
+		case "esc":
+			// Cancel queue selection
+			m.QueueSelectionMode = false
+		}
+		return m, nil
+	}
+
+	// When in Queue form mode, handle form input
+	if m.QueueFormMode {
+		return handleQueueFormInput(m, msg)
+	}
+
+	// Handle global keys first (when not in any input mode)
 	switch msg.Type {
 	case tea.KeyCtrlC:
 		return m, tea.Quit
 	case tea.KeyEsc:
-		if m.QueueFormMode {
-			m.QueueFormMode = false
+		// ESC in base mode clears messages and resets state
+		if m.ActiveTab == AddDownloadTab && m.AddDownloadMessage != "" {
+			// Clear any download messages
+			m.AddDownloadMessage = ""
+			m.AddDownloadSuccess = false
 			return m, nil
 		}
-		if m.InputMode {
-			m.InputMode = false
-			return m, nil
-		}
-	case tea.KeyF1:
-		// Switch to Add Download tab
+		return m, nil
+	}
+	
+	// Handle number keys for tab switching (when not in input mode)
+	switch msg.String() {
+	case "1":
 		m.ActiveTab = AddDownloadTab
 		m.Menu = "add"
+		// Reset add download state
+		if m.AddDownloadMessage != "" {
+			m.AddDownloadMessage = ""
+			m.AddDownloadSuccess = false
+		}
 		return m, nil
-	case tea.KeyF2:
-		// Switch to Download List tab
+	case "2":
 		m.ActiveTab = DownloadListTab
 		m.Menu = "list"
 		return m, nil
-	case tea.KeyF3:
-		// Switch to Queue List tab
+	case "3":
 		m.ActiveTab = QueueListTab
 		m.Menu = "queues"
 		return m, nil
-	case tea.KeyF4:
-		// Switch to Settings tab
+	case "4":
 		m.ActiveTab = SettingsTab
 		m.Menu = "settings"
 		return m, nil
-	}
-
-	// Handle rune keys (when not in input mode)
-	if !m.InputMode && !m.QueueFormMode {
-		switch msg.String() {
-		case "q":
-			return m, tea.Quit
-		case "t":
-			// Allow theme change from any tab when not in input mode
-			m.CycleTheme()
-			return m, nil
-		}
+	case "q":
+		return m, tea.Quit
+	case "t":
+		m.CycleTheme()
+		return m, nil
 	}
 
 	// Handle tab-specific keys
@@ -183,7 +301,15 @@ func handleNavigationMode(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 // handleStartDownload processes a new download request
 func handleStartDownload(m Model, msg StartDownloadMsg) (tea.Model, tea.Cmd) {
 	m.AddDownload(msg.URL, msg.Queue)
-	return m, tickCmd()
+	
+	// Custom command to help with UI refresh after adding a download
+	var cmd tea.Cmd = func() tea.Msg {
+		// Wait briefly for download to start
+		time.Sleep(300 * time.Millisecond)
+		return TickMsg{}
+	}
+	
+	return m, cmd
 }
 
 // handleProgress updates download progress
@@ -230,19 +356,30 @@ func tickCmd() tea.Cmd {
 
 // handleAddDownloadTab handles keys for the Add Download tab
 func handleAddDownloadTab(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
-	if m.InputMode {
-		// Handle input mode separately
-		m, cmd := m.HandleInput(msg)
-		return m, cmd
+	// We only need to handle the initial "enter" press to start the process
+	// The queue selection and URL modes are handled in handleKeyPress
+	if !m.QueueSelectionMode && !m.URLInputMode {
+		switch msg.String() {
+		case "enter":
+			// Start the process by showing queue selection
+			if len(m.Config.Queues) > 0 {
+				m.QueueSelectionMode = true
+				m.QueueSelected = 0 // Select first queue by default
+				
+				// Clear any previous messages
+				m.AddDownloadMessage = ""
+				m.AddDownloadSuccess = false
+			} else {
+				m.AddDownloadMessage = "Error: No queues configured. Please create a queue first."
+				m.AddDownloadSuccess = false
+			}
+		case "esc":
+			// Also clear any message when ESC is pressed in this context
+			m.AddDownloadMessage = ""
+			m.AddDownloadSuccess = false
+		}
 	}
-
-	switch msg.String() {
-	case "enter":
-		m.InputMode = true
-		m.InputURL = ""
-		return m, nil
-	}
-
+	
 	return m, nil
 }
 
@@ -263,10 +400,19 @@ func handleDownloadListTab(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		m.ResumeDownload()
 	case "c":
 		m.CancelDownload()
+	case "y":
+		// Retry the selected download if it's in error state
+		m.RetryDownload()
 	case "a":
 		// Switch to Add Download tab
 		m.ActiveTab = AddDownloadTab
 		m.Menu = "add"
+	case "esc":
+		// Clear any messages
+		if m.DownloadListMessage != "" {
+			m.DownloadListMessage = ""
+			m.DownloadListSuccess = false
+		}
 	}
 
 	return m, nil
@@ -356,4 +502,104 @@ func handleQueueListTab(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 func handleSettingsTab(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 	// No need to handle 't' here as it's handled globally
 	return m, nil
+}
+
+// handleQueueFormInput handles keyboard input for the queue form
+func handleQueueFormInput(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
+	switch msg.String() {
+	case "up", "shift+tab":
+		if m.QueueFormField > 0 {
+			m.QueueFormField--
+		}
+	case "down", "tab":
+		if m.QueueFormField < 5 { // 6 fields total (0-5)
+			m.QueueFormField++
+		}
+	case "enter":
+		if m.QueueFormField < 5 {
+			// Move to next field
+			m.QueueFormField++
+		} else {
+			// Submit form
+			if err := m.SaveQueueForm(); err != nil {
+				m.ErrorMessage = fmt.Sprintf("Error saving queue: %v", err)
+			} else {
+				m.ErrorMessage = ""
+			}
+			m.QueueFormMode = false
+		}
+	case "esc":
+		// Cancel form
+		m.QueueFormMode = false
+		m.InputQueueName = ""
+		m.InputQueuePath = ""
+		m.InputQueueConcurrent = ""
+		m.InputQueueSpeedLimit = ""
+		m.InputQueueStartTime = ""
+		m.InputQueueEndTime = ""
+		m.QueueFormField = 0
+	default:
+		// Handle text input based on current field
+		if msg.Type == tea.KeyBackspace {
+			switch m.QueueFormField {
+			case 0:
+				if len(m.InputQueueName) > 0 {
+					m.InputQueueName = m.InputQueueName[:len(m.InputQueueName)-1]
+				}
+			case 1:
+				if len(m.InputQueuePath) > 0 {
+					m.InputQueuePath = m.InputQueuePath[:len(m.InputQueuePath)-1]
+				}
+			case 2:
+				if len(m.InputQueueConcurrent) > 0 {
+					m.InputQueueConcurrent = m.InputQueueConcurrent[:len(m.InputQueueConcurrent)-1]
+				}
+			case 3:
+				if len(m.InputQueueSpeedLimit) > 0 {
+					m.InputQueueSpeedLimit = m.InputQueueSpeedLimit[:len(m.InputQueueSpeedLimit)-1]
+				}
+			case 4:
+				if len(m.InputQueueStartTime) > 0 {
+					m.InputQueueStartTime = m.InputQueueStartTime[:len(m.InputQueueStartTime)-1]
+				}
+			case 5:
+				if len(m.InputQueueEndTime) > 0 {
+					m.InputQueueEndTime = m.InputQueueEndTime[:len(m.InputQueueEndTime)-1]
+				}
+			}
+		} else if msg.Type == tea.KeyRunes {
+			switch m.QueueFormField {
+			case 0:
+				m.InputQueueName += string(msg.Runes)
+			case 1:
+				m.InputQueuePath += string(msg.Runes)
+			case 2:
+				m.InputQueueConcurrent += string(msg.Runes)
+			case 3:
+				m.InputQueueSpeedLimit += string(msg.Runes)
+			case 4:
+				m.InputQueueStartTime += string(msg.Runes)
+			case 5:
+				m.InputQueueEndTime += string(msg.Runes)
+			}
+		}
+	}
+	
+	return m, nil
+}
+
+// validateURL checks if the provided string is a valid URL
+func validateURL(urlStr string) bool {
+	// Check if the URL starts with http:// or https://
+	if !strings.HasPrefix(urlStr, "http://") && !strings.HasPrefix(urlStr, "https://") {
+		return false
+	}
+	
+	// Parse the URL
+	_, err := url.Parse(urlStr)
+	if err != nil {
+		return false
+	}
+	
+	return true
 }

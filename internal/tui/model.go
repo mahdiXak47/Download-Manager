@@ -1,7 +1,7 @@
 package tui
 
 import (
-	// "fmt"
+	"fmt"
 	// "net/http"
 	// "strings"
 	"path/filepath"
@@ -32,6 +32,16 @@ type Model struct {
 	InputMode  bool   // Whether we're capturing input
 	Selected   int    // Currently selected download
 	QueueSelected int // Currently selected queue
+
+	// Add Download state
+	QueueSelectionMode bool   // Whether we're in queue selection mode
+	URLInputMode bool         // Whether we're in URL input mode
+	AddDownloadMessage string // Message shown after an add download operation
+	AddDownloadSuccess bool   // Whether the last add was successful (for coloring)
+
+	// Download List state
+	DownloadListMessage string // Message shown in the download list tab
+	DownloadListSuccess bool   // Whether the last download list operation was successful (for coloring)
 
 	// Input fields
 	InputURL   string
@@ -66,12 +76,12 @@ func NewModel() Model {
 	cfg, err := config.LoadConfig()
 	if err != nil {
 		return Model{
-			ActiveTab:   DownloadListTab,
-			Menu:        "list",
-			Downloads:   make([]downloader.Download, 0),
-			Selected:    0,
-			Width:       80,
-			Height:      24,
+			ActiveTab:    DownloadListTab,
+			Menu:         "list",
+			Downloads:    make([]downloader.Download, 0),
+			Selected:     0,
+			Width:        80,
+			Height:       24,
 			ErrorMessage: "Failed to load config: " + err.Error(),
 		}
 	}
@@ -81,16 +91,19 @@ func NewModel() Model {
 	queueManager.Start()
 
 	return Model{
-		ActiveTab:    DownloadListTab,
-		Menu:         "list",
-		Downloads:    cfg.Downloads,
-		Config:       cfg,
-		QueueManager: queueManager,
-		Selected:     0,
-		QueueSelected: 0,
-		Width:        80,
-		Height:       24,
-		CurrentTheme: "modern", // Default theme
+		ActiveTab:          DownloadListTab,
+		Menu:               "list",
+		Downloads:          cfg.Downloads,
+		Config:             cfg,
+		QueueManager:       queueManager,
+		Selected:           0,
+		QueueSelected:      0,
+		QueueSelectionMode: false,
+		URLInputMode:       false,
+		AddDownloadSuccess: false,
+		Width:              80,
+		Height:             24,
+		CurrentTheme:       "modern", // Default theme
 	}
 }
 
@@ -227,6 +240,12 @@ func (m *Model) AddDownload(url, queue string) {
 	// Create and initialize download object
 	download := downloader.New(url, targetPath, queue, maxBandwidth)
 	m.Downloads = append(m.Downloads, *download)
+
+	// Add to queue manager's downloads map for tracking
+	m.QueueManager.ProcessDownload(url)
+	
+	// Process all queues immediately to start the download
+	m.QueueManager.ProcessAllQueues()
 
 	// Update config with new download
 	if m.Config != nil {
@@ -375,4 +394,45 @@ func (m *Model) SaveQueueForm() error {
 
 	// Save config
 	return config.SaveConfig(m.Config)
+}
+
+// RetryDownload retries the selected download if it's in error state
+func (m *Model) RetryDownload() {
+	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
+		download := &m.Downloads[m.Selected]
+		
+		// Check if download is in error state
+		if download.Status == "error" {
+			// Check if retry count is less than max retries (3)
+			if download.GetRetryCount() < 3 {
+				// Retry the download
+				err := download.Retry()
+				if err != nil {
+					m.DownloadListMessage = fmt.Sprintf("Error: %s", err.Error())
+					m.DownloadListSuccess = false
+				} else {
+					m.DownloadListMessage = fmt.Sprintf("Trying again to download file #%d", m.Selected+1)
+					m.DownloadListSuccess = true
+					
+					// Queue the download for processing
+					m.QueueManager.ProcessDownload(download.URL)
+					
+					// Update config
+					if m.Config != nil {
+						if err := config.SaveConfig(m.Config); err != nil {
+							m.ErrorMessage = "Failed to save config: " + err.Error()
+						}
+					}
+				}
+			} else {
+				// Max retries reached
+				m.DownloadListMessage = "Error: Maximum retry attempts (3) reached for this download"
+				m.DownloadListSuccess = false
+			}
+		} else {
+			// Not in error state
+			m.DownloadListMessage = "Error: Only downloads in error state can be retried"
+			m.DownloadListSuccess = false
+		}
+	}
 }
