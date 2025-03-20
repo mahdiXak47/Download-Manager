@@ -19,10 +19,10 @@ type QueueConfig struct {
 }
 
 type Config struct {
-	DefaultQueue string                 `json:"default_queue"`
-	SavePath     string                 `json:"save_path"`
-	Downloads    []*downloader.Download `json:"downloads"`
-	Queues       []QueueConfig          `json:"queues"`
+	DefaultQueue string                `json:"default_queue"`
+	SavePath     string                `json:"save_path"`
+	Downloads    []downloader.Download `json:"downloads"`
+	Queues       []QueueConfig         `json:"queues"`
 }
 
 var defaultConfig = Config{
@@ -31,7 +31,7 @@ var defaultConfig = Config{
 	Queues: []QueueConfig{
 		{
 			Name:          "default",
-			MaxConcurrent: 5,
+			MaxConcurrent: 3,
 			StartTime:     "00:00",
 			EndTime:       "23:59",
 			SpeedLimit:    0,

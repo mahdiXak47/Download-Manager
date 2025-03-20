@@ -23,7 +23,7 @@ type Model struct {
 	InputQueue string
 
 	// Data
-	Downloads    []*downloader.Download
+	Downloads    []downloader.Download
 	Config       *config.Config
 	QueueManager *queue.Manager
 	ErrorMessage string
@@ -42,7 +42,7 @@ func NewModel() Model {
 	if err != nil {
 		return Model{
 			Menu:         "list",
-			Downloads:    make([]*downloader.Download, 0),
+			Downloads:    make([]downloader.Download, 0),
 			Selected:     0,
 			Width:        80,
 			Height:       24,
@@ -111,6 +111,7 @@ func (m *Model) AddDownload(url, queue string) {
 		queue = m.Config.DefaultQueue
 	}
 
+<<<<<<< HEAD
 	// Validate URL
 	if !strings.HasPrefix(url, "http://") && !strings.HasPrefix(url, "https://") {
 		m.ErrorMessage = "Invalid URL: URL must start with http:// or https://"
@@ -131,26 +132,29 @@ func (m *Model) AddDownload(url, queue string) {
 	}
 
 	download := &downloader.Download{
+=======
+	download := downloader.Download{
+>>>>>>> parent of f0ae88c (Dubug and resolve some warnings)
 		URL:      url,
 		Queue:    queue,
 		Status:   "pending",
 		Progress: 0,
 	}
-
-	// Initialize the download
-	download.Initialize()
-
-	// Add to queue manager
-	m.QueueManager.AddDownload(download)
-
-	// Add to local downloads list
 	m.Downloads = append(m.Downloads, download)
+
+	// Update config with new download
+	if m.Config != nil {
+		m.Config.Downloads = m.Downloads
+		if err := config.SaveConfig(m.Config); err != nil {
+			m.ErrorMessage = "Failed to save config: " + err.Error()
+		}
+	}
 }
 
 // PauseDownload pauses the selected download
 func (m *Model) PauseDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
-		download := m.Downloads[m.Selected]
+		download := &m.Downloads[m.Selected]
 		if download.Status == "downloading" {
 			m.QueueManager.PauseDownload(download.URL)
 		}
@@ -160,7 +164,7 @@ func (m *Model) PauseDownload() {
 // ResumeDownload resumes the selected download
 func (m *Model) ResumeDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
-		download := m.Downloads[m.Selected]
+		download := &m.Downloads[m.Selected]
 		if download.Status == "paused" {
 			m.QueueManager.ResumeDownload(download.URL)
 		}

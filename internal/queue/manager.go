@@ -21,11 +21,12 @@ func NewManager(cfg *config.Config) *Manager {
 		config:     cfg,
 		activeJobs: make(map[string]int),
 		downloads:  make(map[string]*downloader.Download),
-		ticker:     time.NewTicker(time.Second),
+		ticker:     time.NewTicker(time.Minute),
 	}
 
 	// Initialize existing downloads
-	for _, d := range cfg.Downloads {
+	for i := range cfg.Downloads {
+		d := &cfg.Downloads[i]
 		m.downloads[d.URL] = d
 		if d.Status == "downloading" {
 			m.activeJobs[d.Queue]++
@@ -115,10 +116,11 @@ func (m *Manager) processQueues() {
 		}
 
 		// Find pending downloads for this queue
-		for _, d := range m.config.Downloads {
-			if d.Queue == queueCfg.Name && d.Status == "pending" {
-				m.startDownload(d, &queueCfg)
-				m.downloads[d.URL] = d
+		for i := range m.config.Downloads {
+			download := &m.config.Downloads[i]
+			if download.Queue == queueCfg.Name && download.Status == "pending" {
+				m.startDownload(download, &queueCfg)
+				m.downloads[download.URL] = download
 
 				activeCount++
 				if activeCount >= queueCfg.MaxConcurrent {
@@ -178,28 +180,5 @@ func (m *Manager) RemoveDownload(url string) {
 	// Update active jobs count if needed
 	if d, exists := m.downloads[url]; exists && d.Status == "downloading" {
 		m.activeJobs[d.Queue]--
-	}
-}
-
-// AddDownload adds a new download to the queue and starts it if possible
-func (m *Manager) AddDownload(d *downloader.Download) {
-	m.mutex.Lock()
-	defer m.mutex.Unlock()
-
-	// Add to downloads map
-	m.downloads[d.URL] = d
-
-	// Add to config downloads
-	m.config.Downloads = append(m.config.Downloads, d)
-
-	// Try to start the download immediately
-	queueCfg := m.config.GetQueue(d.Queue)
-	if queueCfg != nil && queueCfg.IsTimeAllowed() && m.activeJobs[d.Queue] < queueCfg.MaxConcurrent {
-		m.startDownload(d, queueCfg)
-	}
-
-	// Save state
-	if err := config.SaveConfig(m.config); err != nil {
-		// Handle error
 	}
 }
