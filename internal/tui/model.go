@@ -111,30 +111,7 @@ func (m *Model) AddDownload(url, queue string) {
 		queue = m.Config.DefaultQueue
 	}
 
-<<<<<<< HEAD
-	// Validate URL
-	if !strings.HasPrefix(url, "http://") && !strings.HasPrefix(url, "https://") {
-		m.ErrorMessage = "Invalid URL: URL must start with http:// or https://"
-		return
-	}
-
-	// Check if URL exists
-	resp, err := http.Head(url)
-	if err != nil {
-		m.ErrorMessage = "Error checking URL: " + err.Error()
-		return
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		m.ErrorMessage = fmt.Sprintf("URL not accessible: Server returned status %d", resp.StatusCode)
-		return
-	}
-
 	download := &downloader.Download{
-=======
-	download := downloader.Download{
->>>>>>> parent of f0ae88c (Dubug and resolve some warnings)
 		URL:      url,
 		Queue:    queue,
 		Status:   "pending",
