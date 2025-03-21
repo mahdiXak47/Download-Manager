@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"path/filepath"1
+	"path/filepath"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/mahdiXak47/Download-Manager/internal/logger"

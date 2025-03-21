@@ -122,15 +122,78 @@ var (
 	// Header style for tables
 	headerStyle = lipgloss.NewStyle().
 			Bold(true).
-			Padding(0, 1).
+			Padding(0, 2).
 			BorderStyle(lipgloss.NormalBorder()).
 			BorderForeground(lipgloss.Color("240")).
-			BorderBottom(true)
+			BorderBottom(true).
+			Align(lipgloss.Center)
+
+	// Table cell styles
+	tableCellStyle = lipgloss.NewStyle().
+			Padding(0, 2).
+			MaxHeight(1)
+
+	tableHeaderStyle = lipgloss.NewStyle().
+				Bold(true).
+				Padding(0, 2).
+				BorderStyle(lipgloss.NormalBorder()).
+				BorderForeground(lipgloss.Color("87")).
+				BorderBottom(true).
+				Align(lipgloss.Center)
+
+	tableRowStyle = lipgloss.NewStyle().
+			Padding(0, 1)
+
+	tableSelectedRowStyle = lipgloss.NewStyle().
+				Padding(0, 1).
+				Bold(true).
+				Background(lipgloss.Color("237")).
+				Foreground(lipgloss.Color("87"))
+
+	// Table container style
+	tableStyle = lipgloss.NewStyle().
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("87")).
+			Padding(1).
+			MarginTop(1).
+			MarginBottom(1)
 
 	// Selected item style
 	selectedItemStyle = lipgloss.NewStyle().
 				Bold(true).
 				Padding(0, 1)
+
+	// Queue management specific styles
+	queueStatsStyle = lipgloss.NewStyle().
+			BorderStyle(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("87")).
+			Padding(1).
+			MarginTop(1).
+			MarginBottom(1)
+
+	queueStatItemStyle = lipgloss.NewStyle().
+				Padding(0, 2)
+
+	queueActiveItemStyle = lipgloss.NewStyle().
+				Bold(true).
+				Foreground(lipgloss.Color("87")).
+				Background(lipgloss.Color("237")).
+				Padding(0, 2)
+
+	queueFormStyle = lipgloss.NewStyle().
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("87")).
+			Padding(1).
+			MarginTop(1)
+
+	queueFormFieldStyle = lipgloss.NewStyle().
+				Padding(0, 2)
+
+	queueFormSelectedFieldStyle = lipgloss.NewStyle().
+					Bold(true).
+					Foreground(lipgloss.Color("87")).
+					Background(lipgloss.Color("237")).
+					Padding(0, 2)
 )
 
 // Spinner frames for animation

@@ -160,12 +160,10 @@ func renderDownloadListTab(m Model) string {
 	if m.DownloadListMessage != "" {
 		msgStyle := errorStyle
 		if m.DownloadListSuccess {
-			// Blue color for success messages
 			msgStyle = msgStyle.Copy().
 				Foreground(lipgloss.Color(CurrentTheme.Special.Dark)).
 				BorderForeground(lipgloss.Color(CurrentTheme.Special.Dark))
 		} else {
-			// Red color for error messages
 			msgStyle = msgStyle.Copy().
 				Foreground(lipgloss.Color(CurrentTheme.Error.Dark)).
 				BorderForeground(lipgloss.Color(CurrentTheme.Error.Dark))
@@ -176,34 +174,60 @@ func renderDownloadListTab(m Model) string {
 	if len(m.Downloads) == 0 {
 		s.WriteString(menuItemStyle.Render("No downloads yet. Press '1' to switch to Add Download tab."))
 	} else {
-		// Table header
-		header := lipgloss.JoinHorizontal(lipgloss.Top,
-			headerStyle.Width(5).Render("#"),
-			headerStyle.Width(35).Render("URL"),
-			headerStyle.Width(15).Render("Status"),
-			headerStyle.Width(15).Render("Progress"),
-			headerStyle.Width(15).Render("Speed"),
-		)
-		s.WriteString(header + "\n")
+		// Calculate table width
+		tableWidth := m.Width - 12 // Account for margins and padding
 
-		// Downloads list
+		// Define column widths
+		idWidth := 4
+		statusWidth := 12
+		progressWidth := 12
+		speedWidth := 15
+		urlWidth := tableWidth - (idWidth + statusWidth + progressWidth + speedWidth + 8) // Account for separators
+
+		// Table header
+		header := lipgloss.JoinHorizontal(lipgloss.Center,
+			tableHeaderStyle.Width(idWidth).Render("#"),
+			tableHeaderStyle.Width(urlWidth).Render("URL"),
+			tableHeaderStyle.Width(statusWidth).Render("Status"),
+			tableHeaderStyle.Width(progressWidth).Render("Progress"),
+			tableHeaderStyle.Width(speedWidth).Render("Speed"),
+		)
+
+		// Table rows
+		var rows []string
 		for i, d := range m.Downloads {
-			// Highlight selected download
-			itemStyle := menuItemStyle
+			// Choose style based on selection
+			rowStyle := tableRowStyle
 			if i == m.Selected {
-				itemStyle = selectedItemStyle
+				rowStyle = tableSelectedRowStyle
 			}
 
-			// Format the line
-			line := lipgloss.JoinHorizontal(lipgloss.Top,
-				itemStyle.Width(5).Render(fmt.Sprintf("%d", i+1)),
-				itemStyle.Width(35).Render(truncateString(d.URL, 32)),
-				itemStyle.Width(15).Render(d.Status),
-				itemStyle.Width(15).Render(fmt.Sprintf("%.1f%%", d.Progress)),
-				itemStyle.Width(15).Render(formatSpeed(d.Speed)),
+			// Format each cell
+			idCell := rowStyle.Copy().Width(idWidth).Render(fmt.Sprintf("%d", i+1))
+			urlCell := rowStyle.Copy().Width(urlWidth).Render(truncateString(d.URL, urlWidth-2))
+			statusCell := rowStyle.Copy().Width(statusWidth).Render(d.Status)
+			progressCell := rowStyle.Copy().Width(progressWidth).Render(fmt.Sprintf("%.1f%%", d.Progress))
+			speedCell := rowStyle.Copy().Width(speedWidth).Render(formatSpeed(d.Speed))
+
+			// Join cells into row
+			row := lipgloss.JoinHorizontal(lipgloss.Center,
+				idCell,
+				urlCell,
+				statusCell,
+				progressCell,
+				speedCell,
 			)
-			s.WriteString(line + "\n")
+			rows = append(rows, row)
 		}
+
+		// Wrap in table container
+		table := tableStyle.Render(
+			lipgloss.JoinVertical(lipgloss.Left,
+				header,
+				lipgloss.JoinVertical(lipgloss.Left, rows...),
+			),
+		)
+		s.WriteString(table)
 	}
 
 	// Help text
@@ -220,48 +244,90 @@ func renderQueueListTab(m Model) string {
 
 	if m.QueueFormMode {
 		// Queue form
-		s.WriteString(menuHeaderStyle.Render("Queue Configuration"))
-		s.WriteString("\n\n")
+		formContent := strings.Builder{}
+		formContent.WriteString(menuHeaderStyle.Render("Queue Configuration"))
+		formContent.WriteString("\n\n")
 
-		// Form fields
-		fieldStyles := make([]lipgloss.Style, 6)
-		for i := range fieldStyles {
-			fieldStyles[i] = menuItemStyle
-			if i == m.QueueFormField {
-				fieldStyles[i] = selectedItemStyle
+		// Form fields with labels aligned
+		labels := []string{
+			"Name",
+			"Path",
+			"Max Concurrent",
+			"Speed Limit",
+			"Start Time",
+			"End Time",
+		}
+		values := []string{
+			m.InputQueueName,
+			m.InputQueuePath,
+			m.InputQueueConcurrent,
+			m.InputQueueSpeedLimit + " KB/s (0 = unlimited)",
+			m.InputQueueStartTime + " (format: HH:MM)",
+			m.InputQueueEndTime + " (format: HH:MM)",
+		}
+
+		// Find the longest label for alignment
+		maxLabelLen := 0
+		for _, label := range labels {
+			if len(label) > maxLabelLen {
+				maxLabelLen = len(label)
 			}
 		}
 
-		s.WriteString(fieldStyles[0].Render("Name:           " + urlStyle.Render(m.InputQueueName)))
-		s.WriteString("\n" + fieldStyles[1].Render("Path:           "+urlStyle.Render(m.InputQueuePath)))
-		s.WriteString("\n" + fieldStyles[2].Render("Max Concurrent: "+urlStyle.Render(m.InputQueueConcurrent)))
-		s.WriteString("\n" + fieldStyles[3].Render("Speed Limit:    "+urlStyle.Render(m.InputQueueSpeedLimit+" KB/s (0 = unlimited)")))
-		s.WriteString("\n" + fieldStyles[4].Render("Start Time:     "+urlStyle.Render(m.InputQueueStartTime+" (format: HH:MM)")))
-		s.WriteString("\n" + fieldStyles[5].Render("End Time:       "+urlStyle.Render(m.InputQueueEndTime+" (format: HH:MM)")))
+		// Render form fields
+		for i := range labels {
+			style := queueFormFieldStyle
+			if i == m.QueueFormField {
+				style = queueFormSelectedFieldStyle
+			}
 
-		// Help text
-		s.WriteString("\n\n" + helpStyle.Render("[ ↑/↓ ] Navigate   [ Tab ] Next Field   [ Enter ] Save   [ Esc ] Cancel"))
+			// Pad label to align all values
+			paddedLabel := labels[i] + strings.Repeat(" ", maxLabelLen-len(labels[i]))
+			formContent.WriteString(style.Render(fmt.Sprintf("%s : %s", paddedLabel, values[i])))
+			formContent.WriteString("\n")
+		}
+
+		s.WriteString(queueFormStyle.Render(formContent.String()))
+		s.WriteString("\n" + helpStyle.Render("[ ↑/↓ ] Navigate   [ Tab ] Next Field   [ Enter ] Save   [ Esc ] Cancel"))
 	} else {
 		// Queue list
 		if len(m.Config.Queues) == 0 {
 			s.WriteString(menuItemStyle.Render("No queues configured. Press 'n' to add a queue."))
 		} else {
-			// Table header
-			header := lipgloss.JoinHorizontal(lipgloss.Top,
-				headerStyle.Width(20).Render("Name"),
-				headerStyle.Width(25).Render("Path"),
-				headerStyle.Width(15).Render("Max Concurrent"),
-				headerStyle.Width(15).Render("Speed Limit"),
-				headerStyle.Width(10).Render("Status"),
-			)
-			s.WriteString(header + "\n")
+			// Calculate table width
+			tableWidth := m.Width - 12 // Account for margins and padding
 
-			// Queue list
+			// Define column widths
+			nameWidth := 20
+			pathWidth := tableWidth - (20 + 15 + 15 + 15 + 8) // Remaining space for path
+			maxConcurrentWidth := 15
+			speedLimitWidth := 15
+			activeWidth := 15
+
+			// Table header
+			header := lipgloss.JoinHorizontal(lipgloss.Center,
+				tableHeaderStyle.Width(nameWidth).Render("Name"),
+				tableHeaderStyle.Width(pathWidth).Render("Path"),
+				tableHeaderStyle.Width(maxConcurrentWidth).Render("Max Concurrent"),
+				tableHeaderStyle.Width(speedLimitWidth).Render("Speed Limit"),
+				tableHeaderStyle.Width(activeWidth).Render("Active/Max"),
+			)
+
+			// Queue list rows
+			var rows []string
 			for i, q := range m.Config.Queues {
-				// Highlight selected queue
-				itemStyle := menuItemStyle
+				// Count active downloads for this queue
+				activeCount := 0
+				for _, d := range m.Downloads {
+					if d.Queue == q.Name && d.Status == "downloading" {
+						activeCount++
+					}
+				}
+
+				// Choose style based on selection
+				rowStyle := tableRowStyle
 				if i == m.QueueSelected {
-					itemStyle = selectedItemStyle
+					rowStyle = tableSelectedRowStyle
 				}
 
 				// Format speed limit
@@ -270,37 +336,38 @@ func renderQueueListTab(m Model) string {
 					speedLimit = fmt.Sprintf("%d KB/s", q.SpeedLimit)
 				}
 
-				// Format the line
-				status := "Enabled"
-				if !q.Enabled {
-					status = "Disabled"
-				}
-				line := lipgloss.JoinHorizontal(lipgloss.Top,
-					itemStyle.Width(20).Render(q.Name),
-					itemStyle.Width(25).Render(truncateString(q.Path, 22)),
-					itemStyle.Width(15).Render(fmt.Sprintf("%d", q.MaxConcurrent)),
-					itemStyle.Width(15).Render(speedLimit),
-					itemStyle.Width(10).Render(status),
+				// Format each cell
+				nameCell := rowStyle.Copy().Width(nameWidth).Render(q.Name)
+				pathCell := rowStyle.Copy().Width(pathWidth).Render(truncateString(q.Path, pathWidth-2))
+				maxConcurrentCell := rowStyle.Copy().Width(maxConcurrentWidth).Render(fmt.Sprintf("%d", q.MaxConcurrent))
+				speedLimitCell := rowStyle.Copy().Width(speedLimitWidth).Render(speedLimit)
+				activeCell := rowStyle.Copy().Width(activeWidth).Render(fmt.Sprintf("%d/%d", activeCount, q.MaxConcurrent))
+
+				// Join cells into row
+				row := lipgloss.JoinHorizontal(lipgloss.Center,
+					nameCell,
+					pathCell,
+					maxConcurrentCell,
+					speedLimitCell,
+					activeCell,
 				)
-				s.WriteString(line + "\n")
+				rows = append(rows, row)
 			}
+
+			// Wrap in table container
+			table := tableStyle.Render(
+				lipgloss.JoinVertical(lipgloss.Left,
+					header,
+					lipgloss.JoinVertical(lipgloss.Left, rows...),
+				),
+			)
+			s.WriteString(table)
 		}
 
-		// Active downloads per queue
-		s.WriteString("\n" + menuHeaderStyle.Render("Active Downloads Per Queue"))
-		s.WriteString("\n")
-		for _, q := range m.Config.Queues {
-			activeCount := 0
-			for _, d := range m.Downloads {
-				if d.Queue == q.Name && d.Status == "downloading" {
-					activeCount++
-				}
-			}
-			s.WriteString(fmt.Sprintf("%s: %d/%d\n", q.Name, activeCount, q.MaxConcurrent))
-		}
-
-		// Help text
-		s.WriteString("\n" + helpStyle.Render("[ ↑/↓ ] Navigate   [ n ] New Queue   [ e ] Edit Queue   [ d ] Delete Queue"))
+		// Help text - centered
+		helpText := "[ ↑/↓ ] Navigate   [ n ] New Queue   [ e ] Edit Queue   [ d ] Delete Queue"
+		helpStyle := helpStyle.Copy().Width(m.Width - 8).Align(lipgloss.Center)
+		s.WriteString("\n" + helpStyle.Render(helpText))
 	}
 
 	return s.String()
