@@ -264,7 +264,7 @@ func renderDownloadListTab(m Model) string {
 	}
 
 	// Help text
-	s.WriteString("\n" + helpStyle.Width(m.Width).Render("[ ↑/↓ ] Navigate   [ Space ] Pause/Resume   [ d ] Delete   [ r ] Retry"))
+	s.WriteString("\n" + helpStyle.Width(m.Width).Render("[ ↑/↓ ] Navigate   [ p ] Pause   [ r ] Resume   [ d ] Delete   [ y ] Retry"))
 
 	return s.String()
 }

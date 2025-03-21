@@ -345,7 +345,7 @@ func (d *Download) performDownload() error {
 	resp, err = d.client.Do(req)
 	if err != nil {
 		// Check for network-related errors
-		if os.IsTimeout(err) || err == io.ErrUnexpectedEOF {
+		if os.IsTimeout(err) || err == io.ErrUnexpectedEOF || err == io.EOF {
 			d.mutex.Lock()
 			d.Status = "paused"
 			d.isPaused = true

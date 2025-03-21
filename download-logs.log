@@ -2170,3 +2170,221 @@
 [2025-03-21 18:32:39] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
 [2025-03-21 18:32:39] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: night, Reason: Retry attempt 3 of 3 after error: server responded with status: 404 Not Found
 [2025-03-21 18:32:39] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 19:45:27] [SYSTEM] Logger initialized
+[2025-03-21 19:45:27] [SYSTEM] Queue Manager initialized with 6 downloads
+[2025-03-21 19:45:27] [SYSTEM] Queue Manager started
+[2025-03-21 19:45:40] [SYSTEM] Processing queues
+[2025-03-21 19:45:40] [QUEUE] Starting download https://github.com/mahdiXak47/Download-Manager in queue default
+[2025-03-21 19:45:40] [QUEUE] Queue default: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 19:45:40] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:45:40] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:45:40] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 19:45:40] [START] Download started - URL: https://github.com/mahdiXak47/Download-Manager, Queue: default, Bandwidth Limit: 5 KB/s
+[2025-03-21 19:45:40] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: downloading -> downloading
+[2025-03-21 19:45:42] [PENDING] Download pending - URL: https://github.com/mahdiXak47/Download-Manager, Queue: default, Reason: Applying bandwidth limit of 5 KB/s
+[2025-03-21 19:46:01] [QUEUE] Pausing download https://github.com/mahdiXak47/Download-Manager in queue default
+[2025-03-21 19:46:01] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: downloading -> paused
+[2025-03-21 19:46:03] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: downloading -> paused
+[2025-03-21 19:46:27] [SYSTEM] Processing queues
+[2025-03-21 19:46:27] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: paused -> downloading
+[2025-03-21 19:46:27] [QUEUE] Resumed download https://github.com/mahdiXak47/Download-Manager: Within allowed time window
+[2025-03-21 19:46:27] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 19:46:27] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:46:27] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:46:27] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 19:46:27] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: paused -> downloading
+[2025-03-21 19:46:33] [QUEUE] Pausing download https://github.com/mahdiXak47/Download-Manager in queue default
+[2025-03-21 19:46:33] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: downloading -> paused
+[2025-03-21 19:46:36] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: downloading -> paused
+[2025-03-21 19:47:08] [SYSTEM] Processing queues
+[2025-03-21 19:47:08] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: paused -> downloading
+[2025-03-21 19:47:08] [QUEUE] Resumed download https://github.com/mahdiXak47/Download-Manager: Within allowed time window
+[2025-03-21 19:47:08] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue default
+[2025-03-21 19:47:08] [QUEUE] Queue default: Started 1 of 1 pending downloads (2/3 active)
+[2025-03-21 19:47:08] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:47:08] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: paused -> downloading
+[2025-03-21 19:47:08] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Queue: default, Bandwidth Limit: 5 KB/s
+[2025-03-21 19:47:08] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading
+[2025-03-21 19:47:08] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:47:08] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 19:47:09] [PENDING] Download pending - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Queue: default, Reason: Applying bandwidth limit of 5 KB/s
+[2025-03-21 19:47:21] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: test, Reason: Retry attempt 1 of 0
+[2025-03-21 19:47:21] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 19:47:21] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test
+[2025-03-21 19:47:21] [QUEUE] Processing download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test
+[2025-03-21 19:47:21] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: test, Bandwidth Limit: 0 KB/s
+[2025-03-21 19:47:21] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 19:47:21] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:21] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:21] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 19:47:21] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: test, Reason: Retry attempt 2 of 3 after error: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:21] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 19:47:26] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:26] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:26] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 19:47:26] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: test, Reason: Retry attempt 3 of 3 after error: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:26] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 19:47:27] [SYSTEM] Processing queues
+[2025-03-21 19:47:27] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 19:47:27] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:47:27] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:47:27] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test
+[2025-03-21 19:47:27] [QUEUE] Queue test: Started 1 of 1 pending downloads (2/3 active)
+[2025-03-21 19:47:27] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: test, Bandwidth Limit: 0 KB/s
+[2025-03-21 19:47:27] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 19:47:27] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:27] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:27] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 19:47:27] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: download failed after 3 retries: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:27] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: Download failed: download failed after 3 retries: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:27] [QUEUE] Queue test: Active downloads decreased to 1/3
+[2025-03-21 19:47:32] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:32] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:32] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> error
+[2025-03-21 19:47:32] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: download failed after 3 retries: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:32] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue test: Download failed: download failed after 3 retries: failed to send GET request: Get "https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20%28320%29.mp3%20": tls: failed to verify certificate: x509: certificate has expired or is not yet valid: 
+[2025-03-21 19:47:32] [QUEUE] Queue test: Active downloads decreased to 0/3
+[2025-03-21 19:47:33] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: downloading -> completed (Progress: 100.00%, Downloaded: 294540/294540 bytes)
+[2025-03-21 19:47:33] [COMPLETE] Download complete - URL: https://github.com/mahdiXak47/Download-Manager, Path: downloads\Download-Manager, Duration: 1m52.7774613s, Size: 294540 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 19:47:33] [STATUS] Status changed for https://github.com/mahdiXak47/Download-Manager: downloading -> completed (Progress: 100.00%, Downloaded: 294540/294540 bytes)
+[2025-03-21 19:47:33] [QUEUE] Download https://github.com/mahdiXak47/Download-Manager completed in queue test
+[2025-03-21 19:47:33] [QUEUE] Queue test: Active downloads decreased to -1/3
+[2025-03-21 19:47:50] [QUEUE] Pausing download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue default
+[2025-03-21 19:47:50] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> paused
+[2025-03-21 19:47:54] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> paused (Progress: 5.90%, Downloaded: 237568/4027999 bytes)
+[2025-03-21 19:48:27] [SYSTEM] Processing queues
+[2025-03-21 19:48:27] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: paused -> downloading
+[2025-03-21 19:48:27] [QUEUE] Resumed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: Within allowed time window
+[2025-03-21 19:48:27] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 19:48:27] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:48:27] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:48:27] [QUEUE] Queue test: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 19:48:27] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: paused -> downloading (Progress: 5.90%, Downloaded: 237568/4027999 bytes)
+[2025-03-21 19:49:04] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading (Progress: 10.78%, Downloaded: 434176/4027999 bytes)
+[2025-03-21 19:49:27] [SYSTEM] Processing queues
+[2025-03-21 19:49:27] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 19:49:27] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:49:27] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:49:27] [QUEUE] Queue test: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 19:50:21] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading (Progress: 20.54%, Downloaded: 827392/4027999 bytes)
+[2025-03-21 19:50:24] [QUEUE] Pausing download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue default
+[2025-03-21 19:50:24] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> paused
+[2025-03-21 19:50:27] [SYSTEM] Processing queues
+[2025-03-21 19:50:27] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: paused -> downloading
+[2025-03-21 19:50:27] [QUEUE] Resumed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: Within allowed time window
+[2025-03-21 19:50:27] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 19:50:27] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:50:27] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:50:27] [QUEUE] Queue test: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 19:50:27] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> paused (Progress: 21.35%, Downloaded: 860160/4027999 bytes)
+[2025-03-21 19:50:27] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: paused -> downloading (Progress: 21.35%, Downloaded: 860160/4027999 bytes)
+[2025-03-21 19:51:27] [SYSTEM] Processing queues
+[2025-03-21 19:51:27] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 19:51:27] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:51:27] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:51:27] [QUEUE] Queue test: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 19:51:38] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading (Progress: 30.30%, Downloaded: 1220608/4027999 bytes)
+[2025-03-21 19:52:27] [SYSTEM] Processing queues
+[2025-03-21 19:52:27] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 19:52:27] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:52:27] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:52:27] [QUEUE] Queue test: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 19:52:55] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading (Progress: 40.07%, Downloaded: 1613824/4027999 bytes)
+[2025-03-21 19:53:27] [SYSTEM] Processing queues
+[2025-03-21 19:53:27] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 19:53:27] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:53:27] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:53:27] [QUEUE] Queue test: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 19:54:18] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading (Progress: 50.64%, Downloaded: 2039808/4027999 bytes)
+[2025-03-21 19:54:27] [SYSTEM] Processing queues
+[2025-03-21 19:54:27] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 19:54:27] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 19:54:27] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 19:54:27] [QUEUE] Queue test: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 23:25:26] [SYSTEM] Processing queues
+[2025-03-21 23:25:26] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 23:25:26] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 23:25:26] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 23:25:26] [QUEUE] Queue test: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 23:25:34] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading (Progress: 60.40%, Downloaded: 2433024/4027999 bytes)
+[2025-03-21 23:26:26] [SYSTEM] Processing queues
+[2025-03-21 23:26:26] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 23:26:26] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 23:26:26] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 23:26:26] [QUEUE] Queue test: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 23:26:47] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> cancelled
+[2025-03-21 23:26:47] [ERROR] Error for download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue default: failed to remove file: remove downloads\Die-With-A-Smile.mp3: The process cannot access the file because it is being used by another process.
+[2025-03-21 23:26:47] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue night
+[2025-03-21 23:26:51] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading (Progress: 70.16%, Downloaded: 2826240/4027999 bytes)
+[2025-03-21 23:26:51] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> cancelled (Progress: 70.16%, Downloaded: 2826240/4027999 bytes)
+[2025-03-21 23:26:51] [ERROR] Error for download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue default: download cancelled
+[2025-03-21 23:26:51] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> error
+[2025-03-21 23:26:51] [PENDING] Download pending - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Queue: default, Reason: Retry attempt 1 of 3 after error: download cancelled
+[2025-03-21 23:26:51] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: error -> pending
+[2025-03-21 23:26:57] [PENDING] Download pending - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Queue: default, Reason: Applying bandwidth limit of 5 KB/s
+[2025-03-21 23:27:07] [SYSTEM] Logger initialized
+[2025-03-21 23:27:07] [SYSTEM] Queue Manager initialized with 7 downloads
+[2025-03-21 23:27:07] [SYSTEM] Queue Manager started
+[2025-03-21 23:27:23] [QUEUE] Pausing download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue default
+[2025-03-21 23:27:23] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> paused
+[2025-03-21 23:27:31] [SYSTEM] Processing queues
+[2025-03-21 23:27:31] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: paused -> downloading
+[2025-03-21 23:27:31] [QUEUE] Resumed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: Within allowed time window
+[2025-03-21 23:27:31] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue default
+[2025-03-21 23:27:31] [QUEUE] Queue default: Started 1 of 1 pending downloads (2/3 active)
+[2025-03-21 23:27:31] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 23:27:31] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 23:27:31] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 23:27:31] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Queue: default, Bandwidth Limit: 5 KB/s
+[2025-03-21 23:27:31] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading
+[2025-03-21 23:27:31] [PENDING] Download pending - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Queue: default, Reason: Applying bandwidth limit of 5 KB/s
+[2025-03-21 23:27:39] [QUEUE] Pausing download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue default
+[2025-03-21 23:27:39] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> paused
+[2025-03-21 23:27:46] [SYSTEM] Logger initialized
+[2025-03-21 23:27:46] [SYSTEM] Queue Manager initialized with 8 downloads
+[2025-03-21 23:27:46] [SYSTEM] Queue Manager started
+[2025-03-21 23:28:00] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue night
+[2025-03-21 23:28:17] [SYSTEM] Logger initialized
+[2025-03-21 23:28:17] [SYSTEM] Queue Manager initialized with 8 downloads
+[2025-03-21 23:28:17] [SYSTEM] Queue Manager started
+[2025-03-21 23:29:17] [SYSTEM] Processing queues
+[2025-03-21 23:29:17] [QUEUE] Resumed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: Within allowed time window
+[2025-03-21 23:29:17] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 23:29:17] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 23:29:17] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 23:29:17] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 23:30:11] [SYSTEM] Logger initialized
+[2025-03-21 23:30:11] [SYSTEM] Queue Manager initialized with 8 downloads
+[2025-03-21 23:30:11] [SYSTEM] Queue Manager started
+[2025-03-21 23:31:11] [SYSTEM] Processing queues
+[2025-03-21 23:31:11] [QUEUE] Resumed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: Within allowed time window
+[2025-03-21 23:31:11] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 23:31:11] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 23:31:11] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 23:31:11] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 23:32:11] [SYSTEM] Processing queues
+[2025-03-21 23:32:11] [QUEUE] Resumed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: Within allowed time window
+[2025-03-21 23:32:11] [QUEUE] Queue default: Started 0 of 0 pending downloads (3/3 active)
+[2025-03-21 23:32:11] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 23:32:11] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 23:32:11] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 23:33:11] [SYSTEM] Processing queues
+[2025-03-21 23:33:11] [QUEUE] Queue default: At maximum capacity (3/3 downloads)
+[2025-03-21 23:33:11] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 23:33:11] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 23:33:11] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 23:34:11] [SYSTEM] Processing queues
+[2025-03-21 23:34:11] [QUEUE] Queue default: At maximum capacity (3/3 downloads)
+[2025-03-21 23:34:11] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 23:34:11] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 23:34:11] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 23:35:11] [SYSTEM] Processing queues
+[2025-03-21 23:35:11] [QUEUE] Queue default: At maximum capacity (3/3 downloads)
+[2025-03-21 23:35:11] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/2 active)
+[2025-03-21 23:35:11] [QUEUE] Queue morning: Outside allowed time window (6:00-12:00)
+[2025-03-21 23:35:11] [QUEUE] Queue test: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 23:35:42] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> cancelled
+[2025-03-21 23:35:42] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue night
+[2025-03-21 23:35:42] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> cancelled
+[2025-03-21 23:35:42] [QUEUE] Queue default: Active downloads decreased to 2
+[2025-03-21 23:35:42] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue default
