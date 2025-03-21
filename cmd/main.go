@@ -14,9 +14,8 @@ func main() {
 	logFile := "download-logs.log"
 	cwd, err := os.Getwd()
 	if err == nil {
-    	logFile = filepath.Join(cwd, "download-logs.log")
+		logFile = filepath.Join(cwd, "download-logs.log")
 	}
-
 
 	if err := logger.Initialize(logFile); err != nil {
 		fmt.Printf("Warning: Could not initialize logger: %v\n", err)

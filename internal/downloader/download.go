@@ -289,6 +289,15 @@ func (d *Download) Start() error {
 
 // performDownload handles the actual file download process
 func (d *Download) performDownload() error {
+	// Ensure queue name is valid
+	if d.Queue == "" {
+		d.Queue = "default"
+	} else if len(d.Queue) > 50 || d.Queue != filepath.Clean(d.Queue) {
+		// If queue name is too long or contains invalid characters, use default
+		logger.LogDownloadError(d.URL, d.Queue, "Invalid queue name, using default")
+		d.Queue = "default"
+	}
+
 	// Create directory if it doesn't exist
 	dir := filepath.Dir(d.TargetPath)
 	if err := os.MkdirAll(dir, 0755); err != nil {
