@@ -10,17 +10,26 @@ import (
 var (
 	// Base styles
 	baseStyle = lipgloss.NewStyle().
-			BorderStyle(lipgloss.RoundedBorder()).
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("87")).
+			Padding(0, 1).
+			Margin(0)
+
+	// Container style for the entire app
+	containerStyle = lipgloss.NewStyle().
+			BorderStyle(lipgloss.DoubleBorder()).
+			BorderForeground(lipgloss.Color("87")).
 			Padding(1).
-			MarginBottom(1)
+			Margin(1)
 
 	// Header styles
 	titleStyle = lipgloss.NewStyle().
 			Bold(true).
-			Padding(1, 3).
+			Padding(1, 1).
 			MarginBottom(1).
 			Align(lipgloss.Center).
-			BorderStyle(lipgloss.DoubleBorder())
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("87"))
 
 	// Content styles
 	urlStyle = lipgloss.NewStyle().
@@ -37,16 +46,18 @@ var (
 
 	selectedStyle = lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("87")).
 			Padding(0, 1)
 
 	// Help style
 	helpStyle = lipgloss.NewStyle().
 			Bold(true).
 			Padding(1).
-			MarginTop(1).
-			MarginBottom(1).
+			MarginTop(0).
+			MarginBottom(0).
 			Align(lipgloss.Center).
-			BorderStyle(lipgloss.RoundedBorder())
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("240"))
 
 	// Error style
 	errorStyle = lipgloss.NewStyle().
@@ -54,7 +65,8 @@ var (
 			MarginTop(1).
 			Padding(1).
 			Align(lipgloss.Center).
-			BorderStyle(lipgloss.RoundedBorder())
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("196"))
 
 	// Progress bar styles
 	progressBarStyle = lipgloss.NewStyle().
@@ -76,11 +88,13 @@ var (
 			MarginBottom(1).
 			Width(30).
 			Align(lipgloss.Center).
-			BorderStyle(lipgloss.RoundedBorder())
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("87"))
 
 	// Input box style
 	inputBoxStyle = lipgloss.NewStyle().
-			BorderStyle(lipgloss.RoundedBorder()).
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("63")).
 			Padding(1, 2).
 			MarginTop(1).
 			MarginBottom(1)
@@ -91,29 +105,32 @@ var (
 
 	// Tab styles
 	tabStyle = lipgloss.NewStyle().
-		Padding(0, 2).
-		Border(lipgloss.RoundedBorder(), false, true, false, false).
-		Align(lipgloss.Center)
+			Padding(0, 2).
+			Border(lipgloss.NormalBorder(), false, true, false, false).
+			BorderForeground(lipgloss.Color("240")).
+			Align(lipgloss.Center)
 
 	activeTabStyle = lipgloss.NewStyle().
-		Padding(0, 2).
-		Border(lipgloss.DoubleBorder(), false, true, false, false).
-		BorderBottom(true).
-		Bold(true).
-		Italic(true).
-		Align(lipgloss.Center)
-	
+			Padding(0, 2).
+			Border(lipgloss.DoubleBorder(), false, true, false, false).
+			BorderForeground(lipgloss.Color("87")).
+			BorderBottom(true).
+			Bold(true).
+			Italic(true).
+			Align(lipgloss.Center)
+
 	// Header style for tables
 	headerStyle = lipgloss.NewStyle().
-		Bold(true).
-		Padding(0, 1).
-		BorderStyle(lipgloss.NormalBorder()).
-		BorderBottom(true)
+			Bold(true).
+			Padding(0, 1).
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("240")).
+			BorderBottom(true)
 
 	// Selected item style
 	selectedItemStyle = lipgloss.NewStyle().
-		Bold(true).
-		Padding(0, 1)
+				Bold(true).
+				Padding(0, 1)
 )
 
 // Spinner frames for animation
@@ -238,7 +255,7 @@ func UpdateStyles() {
 	spinnerStyle = spinnerStyle.
 		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
 		Background(lipgloss.Color(CurrentTheme.Background))
-		
+
 	// Tab styles
 	tabStyle = tabStyle.
 		BorderForeground(lipgloss.Color(CurrentTheme.Subtle.Dark)).
@@ -249,13 +266,13 @@ func UpdateStyles() {
 		BorderForeground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
 		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
 		Background(lipgloss.Color(CurrentTheme.Subtle.Dark))
-		
+
 	// Header style
 	headerStyle = headerStyle.
 		BorderForeground(lipgloss.Color(CurrentTheme.Subtle.Dark)).
 		Foreground(lipgloss.Color(CurrentTheme.Primary.Dark)).
 		Background(lipgloss.Color(CurrentTheme.Background))
-		
+
 	// Selected item style
 	selectedItemStyle = selectedItemStyle.
 		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).

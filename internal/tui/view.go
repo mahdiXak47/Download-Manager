@@ -8,39 +8,41 @@ import (
 )
 
 func (m Model) View() string {
-	var s strings.Builder
-
 	// Create main container with dynamic width
-	container := baseStyle.Width(m.Width - 4).Margin(2)
+	mainContainer := containerStyle.Width(m.Width - 4)
 
 	// Header with app name and version
 	header := titleStyle.Width(m.Width - 8).Render("Download Manager v0.1")
-	s.WriteString(container.Render(header))
+
+	// Build the content
+	var content strings.Builder
+	content.WriteString(header)
 
 	// Error message if any
 	if m.ErrorMessage != "" {
-		s.WriteString("\n" + errorStyle.Render(m.ErrorMessage))
+		content.WriteString("\n" + errorStyle.Render(m.ErrorMessage))
 	}
 
 	// Content based on the active tab
-	var content string
+	var tabContent string
 	switch m.ActiveTab {
 	case AddDownloadTab:
-		content = renderAddDownloadTab(m)
+		tabContent = renderAddDownloadTab(m)
 	case DownloadListTab:
-		content = renderDownloadListTab(m)
+		tabContent = renderDownloadListTab(m)
 	case QueueListTab:
-		content = renderQueueListTab(m)
+		tabContent = renderQueueListTab(m)
 	case SettingsTab:
-		content = renderSettingsTab(m)
+		tabContent = renderSettingsTab(m)
 	}
-	s.WriteString("\n" + container.Render(content))
+	content.WriteString("\n" + tabContent)
 
 	// Tab bar at the bottom
 	tabBar := renderTabBar(m)
-	s.WriteString("\n" + container.Render(tabBar))
+	content.WriteString("\n" + tabBar)
 
-	return s.String()
+	// Wrap everything in the main container
+	return mainContainer.Render(content.String())
 }
 
 // renderTabBar creates the tab bar with number keys 1-4
@@ -99,45 +101,45 @@ func renderAddDownloadTab(m Model) string {
 	if m.QueueSelectionMode {
 		s.WriteString(menuHeaderStyle.Render("Select Download Queue"))
 		s.WriteString("\n\n")
-		
+
 		// Available queues
 		s.WriteString(menuItemStyle.Render("Available Queues:"))
 		s.WriteString("\n\n")
-		
+
 		// List all queues
 		for i, q := range m.Config.Queues {
 			itemStyle := menuItemStyle
 			if i == m.QueueSelected {
 				itemStyle = selectedItemStyle
 			}
-			
+
 			activeCount := 0
 			for _, d := range m.Downloads {
 				if d.Queue == q.Name && d.Status == "downloading" {
 					activeCount++
 				}
 			}
-			
+
 			queueInfo := fmt.Sprintf("%s (%d/%d active)", q.Name, activeCount, q.MaxConcurrent)
 			s.WriteString(itemStyle.Render(queueInfo) + "\n")
 		}
-		
+
 		// Help text
 		s.WriteString("\n" + helpStyle.Render("[ ↑/↓ ] Navigate   [ Enter ] Select   [ Esc ] Cancel"))
 	} else if m.URLInputMode {
 		// URL input field
 		s.WriteString(menuHeaderStyle.Render("Enter Download URL"))
 		s.WriteString("\n\n")
-		
+
 		// Selected queue display
 		s.WriteString(menuItemStyle.Render("Selected Queue: " + urlStyle.Render(m.InputQueue)))
 		s.WriteString("\n\n")
-		
+
 		// URL input field
 		s.WriteString(inputBoxStyle.Render(
 			menuItemStyle.Render("URL: " + urlStyle.Render(m.InputURL+"_")),
 		))
-		
+
 		// Help text for input mode
 		s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Start Download   [ Esc ] Back"))
 	} else {
@@ -231,11 +233,11 @@ func renderQueueListTab(m Model) string {
 		}
 
 		s.WriteString(fieldStyles[0].Render("Name:           " + urlStyle.Render(m.InputQueueName)))
-		s.WriteString("\n" + fieldStyles[1].Render("Path:           " + urlStyle.Render(m.InputQueuePath)))
-		s.WriteString("\n" + fieldStyles[2].Render("Max Concurrent: " + urlStyle.Render(m.InputQueueConcurrent)))
-		s.WriteString("\n" + fieldStyles[3].Render("Speed Limit:    " + urlStyle.Render(m.InputQueueSpeedLimit + " KB/s (0 = unlimited)")))
-		s.WriteString("\n" + fieldStyles[4].Render("Start Time:     " + urlStyle.Render(m.InputQueueStartTime + " (format: HH:MM)")))
-		s.WriteString("\n" + fieldStyles[5].Render("End Time:       " + urlStyle.Render(m.InputQueueEndTime + " (format: HH:MM)")))
+		s.WriteString("\n" + fieldStyles[1].Render("Path:           "+urlStyle.Render(m.InputQueuePath)))
+		s.WriteString("\n" + fieldStyles[2].Render("Max Concurrent: "+urlStyle.Render(m.InputQueueConcurrent)))
+		s.WriteString("\n" + fieldStyles[3].Render("Speed Limit:    "+urlStyle.Render(m.InputQueueSpeedLimit+" KB/s (0 = unlimited)")))
+		s.WriteString("\n" + fieldStyles[4].Render("Start Time:     "+urlStyle.Render(m.InputQueueStartTime+" (format: HH:MM)")))
+		s.WriteString("\n" + fieldStyles[5].Render("End Time:       "+urlStyle.Render(m.InputQueueEndTime+" (format: HH:MM)")))
 
 		// Help text
 		s.WriteString("\n\n" + helpStyle.Render("[ ↑/↓ ] Navigate   [ Tab ] Next Field   [ Enter ] Save   [ Esc ] Cancel"))
