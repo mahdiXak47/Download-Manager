@@ -485,6 +485,15 @@ func (d *Download) performDownload() error {
 
 	// Verify download completed successfully
 	if totalSize > 0 && downloaded < totalSize {
+		// If we got most of the file (>95%) and support ranges, try to resume
+		if downloaded > (totalSize*95/100) && supportsRanges {
+			d.mutex.Lock()
+			d.Downloaded = downloaded
+			d.mutex.Unlock()
+			// Return a specific error that indicates we should resume
+			return fmt.Errorf("partial download completed: got %d of %d bytes, will resume", downloaded, totalSize)
+		}
+
 		errorMsg := fmt.Sprintf("download incomplete: got %d of %d bytes", downloaded, totalSize)
 		logger.LogDownloadError(d.URL, d.Queue, errorMsg)
 		return fmt.Errorf("download incomplete: got %d of %d bytes", downloaded, totalSize)
