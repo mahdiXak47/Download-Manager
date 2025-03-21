@@ -41,6 +41,15 @@ type Download struct {
 	client      *http.Client  `json:"-"`
 }
 
+// DownloadResult represents the outcome of a download attempt
+type DownloadResult struct {
+	Completed   bool
+	Downloaded  int64
+	TotalSize   int64
+	Error       error
+	ShouldRetry bool
+}
+
 // Initialize sets up control channels for a download
 func (d *Download) Initialize() {
 	d.mutex.Lock()
@@ -363,6 +372,37 @@ func (d *Download) performDownload() error {
 	}
 	defer file.Close()
 
+	result := d.downloadChunks(resp.Body, file, startByte, totalSize)
+
+	if result.Error != nil && !result.ShouldRetry {
+		return result.Error
+	}
+
+	if result.Completed {
+		// Update final download size if we didn't know it before
+		if totalSize <= 0 {
+			d.mutex.Lock()
+			d.TotalSize = result.Downloaded
+			d.Progress = 100.0
+			d.mutex.Unlock()
+		}
+		logger.LogDownloadStatus(d.URL, "downloading", "completed", result.Downloaded, result.Downloaded)
+		return nil
+	}
+
+	// If we got most of the file and support ranges, continue downloading
+	if result.Downloaded > (result.TotalSize*95/100) && supportsRanges {
+		d.mutex.Lock()
+		d.Downloaded = result.Downloaded
+		d.mutex.Unlock()
+		return nil
+	}
+
+	return fmt.Errorf("download incomplete: got %d of %d bytes", result.Downloaded, result.TotalSize)
+}
+
+// downloadChunks handles the actual data transfer
+func (d *Download) downloadChunks(body io.Reader, file *os.File, startByte, totalSize int64) DownloadResult {
 	// Setup rate limiting if needed
 	var limiter *RateLimiter
 	if d.MaxBandwidth > 0 {
@@ -383,75 +423,62 @@ func (d *Download) performDownload() error {
 		select {
 		case <-d.pauseChan:
 			logger.LogDownloadStatus(d.URL, "downloading", "paused", downloaded, totalSize)
-
-			// Wait for resume signal
 			<-d.resumeChan
-
-			// Reset speed calculation
 			startTime = time.Now()
 			lastUpdateTime = startTime
 			lastBytes = downloaded
-
 			logger.LogDownloadStatus(d.URL, "paused", "downloading", downloaded, totalSize)
 			continue
 
 		case <-d.cancelChan:
 			logger.LogDownloadStatus(d.URL, "downloading", "cancelled", downloaded, totalSize)
-			return fmt.Errorf("download cancelled")
+			return DownloadResult{
+				Completed:   false,
+				Downloaded:  downloaded,
+				TotalSize:   totalSize,
+				Error:       fmt.Errorf("download cancelled"),
+				ShouldRetry: false,
+			}
 
 		default:
 			// Proceed with download
 		}
 
-		// Apply rate limiting if needed
+		// Read chunk
+		var n int
+		var err error
 		if limiter != nil {
-			n, err := limiter.Read(resp.Body, buffer)
-			if err != nil {
-				if err == io.EOF {
-					break
-				}
-				errorMsg := fmt.Sprintf("error reading from response: %v", err)
-				logger.LogDownloadError(d.URL, d.Queue, errorMsg)
-				return fmt.Errorf("error reading from response: %w", err)
-			}
-
-			if n == 0 {
-				break
-			}
-
-			// Write to file
-			if _, err := file.Write(buffer[:n]); err != nil {
-				errorMsg := fmt.Sprintf("error writing to file: %v", err)
-				logger.LogDownloadError(d.URL, d.Queue, errorMsg)
-				return fmt.Errorf("error writing to file: %w", err)
-			}
-
-			downloaded += int64(n)
+			n, err = limiter.Read(body, buffer)
 		} else {
-			// No rate limiting
-			n, err := resp.Body.Read(buffer)
-			if err != nil {
-				if err == io.EOF {
-					break
-				}
-				errorMsg := fmt.Sprintf("error reading from response: %v", err)
-				logger.LogDownloadError(d.URL, d.Queue, errorMsg)
-				return fmt.Errorf("error reading from response: %w", err)
-			}
-
-			if n == 0 {
-				break
-			}
-
-			// Write to file
-			if _, err := file.Write(buffer[:n]); err != nil {
-				errorMsg := fmt.Sprintf("error writing to file: %v", err)
-				logger.LogDownloadError(d.URL, d.Queue, errorMsg)
-				return fmt.Errorf("error writing to file: %w", err)
-			}
-
-			downloaded += int64(n)
+			n, err = body.Read(buffer)
 		}
+
+		if err != nil && err != io.EOF {
+			return DownloadResult{
+				Completed:   false,
+				Downloaded:  downloaded,
+				TotalSize:   totalSize,
+				Error:       fmt.Errorf("error reading from response: %w", err),
+				ShouldRetry: true,
+			}
+		}
+
+		if n == 0 {
+			break
+		}
+
+		// Write chunk
+		if _, err := file.Write(buffer[:n]); err != nil {
+			return DownloadResult{
+				Completed:   false,
+				Downloaded:  downloaded,
+				TotalSize:   totalSize,
+				Error:       fmt.Errorf("error writing to file: %w", err),
+				ShouldRetry: true,
+			}
+		}
+
+		downloaded += int64(n)
 
 		// Update progress
 		if totalSize > 0 {
@@ -461,17 +488,15 @@ func (d *Download) performDownload() error {
 			d.mutex.Unlock()
 		}
 
-		// Calculate speed and log progress (not too often)
+		// Calculate speed and log progress
 		now := time.Now()
 		elapsed := now.Sub(lastUpdateTime)
 		if elapsed >= time.Second {
 			bytesPerSecond := int64(float64(downloaded-lastBytes) / elapsed.Seconds())
-
 			d.mutex.Lock()
 			d.Speed = bytesPerSecond
 			d.mutex.Unlock()
 
-			// Log progress every 10% or at least every 30 seconds
 			progressPercent := float64(downloaded) / float64(totalSize) * 100
 			lastProgressPercent := float64(lastBytes) / float64(totalSize) * 100
 			if (int(progressPercent/10) > int(lastProgressPercent/10)) || elapsed >= 30*time.Second {
@@ -483,32 +508,13 @@ func (d *Download) performDownload() error {
 		}
 	}
 
-	// Verify download completed successfully
-	if totalSize > 0 && downloaded < totalSize {
-		// If we got most of the file (>95%) and support ranges, try to resume
-		if downloaded > (totalSize*95/100) && supportsRanges {
-			d.mutex.Lock()
-			d.Downloaded = downloaded
-			d.mutex.Unlock()
-			// Return a specific error that indicates we should resume
-			return fmt.Errorf("partial download completed: got %d of %d bytes, will resume", downloaded, totalSize)
-		}
-
-		errorMsg := fmt.Sprintf("download incomplete: got %d of %d bytes", downloaded, totalSize)
-		logger.LogDownloadError(d.URL, d.Queue, errorMsg)
-		return fmt.Errorf("download incomplete: got %d of %d bytes", downloaded, totalSize)
+	return DownloadResult{
+		Completed:   downloaded >= totalSize || totalSize <= 0,
+		Downloaded:  downloaded,
+		TotalSize:   totalSize,
+		Error:       nil,
+		ShouldRetry: false,
 	}
-
-	// Update final download size if we didn't know it before
-	if totalSize <= 0 {
-		d.mutex.Lock()
-		d.TotalSize = downloaded
-		d.Progress = 100.0
-		d.mutex.Unlock()
-	}
-
-	logger.LogDownloadStatus(d.URL, "downloading", "completed", downloaded, downloaded)
-	return nil
 }
 
 // New creates a new download instance
