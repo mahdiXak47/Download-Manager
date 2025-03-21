@@ -27,15 +27,15 @@ const (
 // Model represents the application state
 type Model struct {
 	// Core state
-	ActiveTab  TabID  // Current active tab
-	Menu       string // "main", "add", "list"
-	InputMode  bool   // Whether we're capturing input
-	Selected   int    // Currently selected download
-	QueueSelected int // Currently selected queue
+	ActiveTab     TabID  // Current active tab
+	Menu          string // "main", "add", "list"
+	InputMode     bool   // Whether we're capturing input
+	Selected      int    // Currently selected download
+	QueueSelected int    // Currently selected queue
 
 	// Add Download state
 	QueueSelectionMode bool   // Whether we're in queue selection mode
-	URLInputMode bool         // Whether we're in URL input mode
+	URLInputMode       bool   // Whether we're in URL input mode
 	AddDownloadMessage string // Message shown after an add download operation
 	AddDownloadSuccess bool   // Whether the last add was successful (for coloring)
 
@@ -48,14 +48,14 @@ type Model struct {
 	InputQueue string
 
 	// Input fields for queue form
-	InputQueueName    string
-	InputQueuePath    string
+	InputQueueName       string
+	InputQueuePath       string
 	InputQueueConcurrent string
 	InputQueueSpeedLimit string
 	InputQueueStartTime  string
 	InputQueueEndTime    string
-	QueueFormMode     bool  // Whether we're in queue form mode
-	QueueFormField    int   // Current field in queue form
+	QueueFormMode        bool // Whether we're in queue form mode
+	QueueFormField       int  // Current field in queue form
 
 	// Data
 	Downloads    []downloader.Download
@@ -217,7 +217,7 @@ func (m *Model) AddDownload(url, queue string) {
 	// Get a proper target path from the URL
 	filename := filepath.Base(url)
 	queuePath := m.Config.SavePath // Default to the global SavePath
-	
+
 	// Find the queue configuration
 	for _, q := range m.Config.Queues {
 		if q.Name == queue {
@@ -228,7 +228,7 @@ func (m *Model) AddDownload(url, queue string) {
 			break
 		}
 	}
-	
+
 	var targetPath string
 	if queuePath != "" {
 		targetPath = filepath.Join(queuePath, filename)
@@ -243,7 +243,7 @@ func (m *Model) AddDownload(url, queue string) {
 
 	// Add to queue manager's downloads map for tracking
 	m.QueueManager.ProcessDownload(url)
-	
+
 	// Process all queues immediately to start the download
 	m.QueueManager.ProcessAllQueues()
 
@@ -314,10 +314,28 @@ func (m *Model) CycleTheme() {
 		"ocean":     OceanTheme,
 		"solarized": SolarizedTheme,
 		"nord":      NordTheme,
+		"synthwave": SynthwaveTheme,
+		"dracula":   DraculaTheme,
+		"cyberpunk": CyberpunkTheme,
+		"retro":     RetroTheme,
+		"neon":      NeonTheme,
+		"aurora":    AuroraTheme,
 	}
 
 	// Get ordered theme names
-	themeNames := []string{"modern", "ocean", "solarized", "nord"}
+	themeNames := []string{
+		"modern",
+		"ocean",
+		"solarized",
+		"nord",
+		"synthwave",
+		"dracula",
+		"cyberpunk",
+		"retro",
+		"neon",
+		"aurora",
+	}
+
 	currentIndex := 0
 	for i, name := range themeNames {
 		if name == m.CurrentTheme {
@@ -400,7 +418,7 @@ func (m *Model) SaveQueueForm() error {
 func (m *Model) RetryDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
 		download := &m.Downloads[m.Selected]
-		
+
 		// Check if download is in error state
 		if download.Status == "error" {
 			// Check if retry count is less than max retries (3)
@@ -413,10 +431,10 @@ func (m *Model) RetryDownload() {
 				} else {
 					m.DownloadListMessage = fmt.Sprintf("Trying again to download file #%d", m.Selected+1)
 					m.DownloadListSuccess = true
-					
+
 					// Queue the download for processing
 					m.QueueManager.ProcessDownload(download.URL)
-					
+
 					// Update config
 					if m.Config != nil {
 						if err := config.SaveConfig(m.Config); err != nil {

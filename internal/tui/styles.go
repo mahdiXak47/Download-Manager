@@ -10,17 +10,30 @@ import (
 var (
 	// Base styles
 	baseStyle = lipgloss.NewStyle().
-			BorderStyle(lipgloss.RoundedBorder()).
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(CurrentTheme.Border)
+
+	// Container style for the entire app
+	containerStyle = lipgloss.NewStyle().
+			BorderStyle(lipgloss.DoubleBorder()).
+			BorderForeground(lipgloss.Color("87")).
 			Padding(1).
-			MarginBottom(1)
+			Margin(1)
+
+	// Container style for centering content
+	centerStyle = lipgloss.NewStyle().
+			Align(lipgloss.Center).
+			Width(100).
+			MarginLeft(2)
 
 	// Header styles
 	titleStyle = lipgloss.NewStyle().
 			Bold(true).
-			Padding(1, 3).
+			Padding(1, 1).
 			MarginBottom(1).
 			Align(lipgloss.Center).
-			BorderStyle(lipgloss.DoubleBorder())
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("87"))
 
 	// Content styles
 	urlStyle = lipgloss.NewStyle().
@@ -37,24 +50,20 @@ var (
 
 	selectedStyle = lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("87")).
 			Padding(0, 1)
 
 	// Help style
 	helpStyle = lipgloss.NewStyle().
-			Bold(true).
-			Padding(1).
-			MarginTop(1).
-			MarginBottom(1).
+			Foreground(CurrentTheme.Subtle).
 			Align(lipgloss.Center).
-			BorderStyle(lipgloss.RoundedBorder())
+			PaddingTop(1)
 
 	// Error style
 	errorStyle = lipgloss.NewStyle().
+			Foreground(CurrentTheme.Error).
 			Bold(true).
-			MarginTop(1).
-			Padding(1).
-			Align(lipgloss.Center).
-			BorderStyle(lipgloss.RoundedBorder())
+			Align(lipgloss.Center)
 
 	// Progress bar styles
 	progressBarStyle = lipgloss.NewStyle().
@@ -76,11 +85,13 @@ var (
 			MarginBottom(1).
 			Width(30).
 			Align(lipgloss.Center).
-			BorderStyle(lipgloss.RoundedBorder())
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("87"))
 
 	// Input box style
 	inputBoxStyle = lipgloss.NewStyle().
-			BorderStyle(lipgloss.RoundedBorder()).
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("63")).
 			Padding(1, 2).
 			MarginTop(1).
 			MarginBottom(1)
@@ -91,29 +102,114 @@ var (
 
 	// Tab styles
 	tabStyle = lipgloss.NewStyle().
-		Padding(0, 2).
-		Border(lipgloss.RoundedBorder(), false, true, false, false).
-		Align(lipgloss.Center)
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderBottom(true).
+			BorderForeground(CurrentTheme.Border).
+			Padding(0, 1).
+			Align(lipgloss.Center)
 
 	activeTabStyle = lipgloss.NewStyle().
-		Padding(0, 2).
-		Border(lipgloss.DoubleBorder(), false, true, false, false).
-		BorderBottom(true).
-		Bold(true).
-		Italic(true).
-		Align(lipgloss.Center)
-	
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderBottom(true).
+			BorderForeground(CurrentTheme.Special).
+			Foreground(CurrentTheme.Special).
+			Padding(0, 1).
+			Bold(true).
+			Align(lipgloss.Center)
+
 	// Header style for tables
 	headerStyle = lipgloss.NewStyle().
-		Bold(true).
-		Padding(0, 1).
-		BorderStyle(lipgloss.NormalBorder()).
-		BorderBottom(true)
+			Bold(true).
+			Padding(0, 2).
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("240")).
+			BorderBottom(true).
+			Align(lipgloss.Center)
+
+	// Table cell styles
+	tableCellStyle = lipgloss.NewStyle().
+			Padding(0, 2).
+			MaxHeight(1)
+
+	tableHeaderStyle = lipgloss.NewStyle().
+				BorderStyle(lipgloss.DoubleBorder()).
+				BorderForeground(CurrentTheme.Highlight).
+				Foreground(CurrentTheme.Special).
+				Bold(true).
+				Padding(0, 1).
+				Align(lipgloss.Center)
+
+	tableRowStyle = lipgloss.NewStyle().
+			Padding(0, 1)
+
+	tableSelectedRowStyle = lipgloss.NewStyle().
+				Padding(0, 1).
+				Bold(true).
+				Background(lipgloss.Color("237")).
+				Foreground(lipgloss.Color("87"))
+
+	// Table container style
+	tableStyle = lipgloss.NewStyle().
+			BorderStyle(lipgloss.RoundedBorder()).
+			BorderForeground(CurrentTheme.Border).
+			Padding(0, 1).
+			Align(lipgloss.Center).
+			Bold(true).
+			Italic(true)
 
 	// Selected item style
 	selectedItemStyle = lipgloss.NewStyle().
-		Bold(true).
-		Padding(0, 1)
+				Bold(true).
+				Padding(0, 1)
+
+	// Queue management specific styles
+	queueStatsStyle = lipgloss.NewStyle().
+			BorderStyle(lipgloss.RoundedBorder()).
+			BorderForeground(CurrentTheme.Special).
+			Padding(1).
+			Align(lipgloss.Center).
+			Width(60).
+			MarginLeft(2)
+
+	queueStatItemStyle = lipgloss.NewStyle().
+				Foreground(CurrentTheme.Text).
+				Bold(true).
+				Italic(true)
+
+	queueActiveItemStyle = lipgloss.NewStyle().
+				Background(CurrentTheme.Primary).
+				Foreground(CurrentTheme.Text).
+				Bold(true)
+
+	queueFormStyle = lipgloss.NewStyle().
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("87")).
+			Padding(1).
+			MarginTop(1)
+
+	queueFormFieldStyle = lipgloss.NewStyle().
+				Padding(0, 2)
+
+	queueFormSelectedFieldStyle = lipgloss.NewStyle().
+					Bold(true).
+					Foreground(lipgloss.Color("87")).
+					Background(lipgloss.Color("237")).
+					Padding(0, 2)
+
+	// Status message styles
+	successStyle = lipgloss.NewStyle().
+			Foreground(CurrentTheme.Special).
+			Bold(true).
+			Align(lipgloss.Center)
+
+	// Table styles
+	selectedRowStyle = lipgloss.NewStyle().
+				Background(CurrentTheme.Highlight).
+				Foreground(CurrentTheme.Text).
+				Bold(true)
+
+	normalRowStyle = lipgloss.NewStyle().
+			Foreground(CurrentTheme.Text)
 )
 
 // Spinner frames for animation
@@ -181,9 +277,7 @@ func RenderStatus(status string) string {
 // UpdateStyles updates all styles based on the current theme
 func UpdateStyles() {
 	// Base styles
-	baseStyle = baseStyle.
-		BorderForeground(lipgloss.Color(CurrentTheme.Border.Dark)).
-		Background(lipgloss.Color(CurrentTheme.Background))
+	baseStyle = baseStyle.BorderForeground(CurrentTheme.Border)
 
 	// Header styles
 	titleStyle = titleStyle.
@@ -218,15 +312,10 @@ func UpdateStyles() {
 		Background(lipgloss.Color(CurrentTheme.Background))
 
 	// Help style
-	helpStyle = helpStyle.
-		Foreground(lipgloss.Color(CurrentTheme.Text.Dark)).
-		BorderForeground(lipgloss.Color(CurrentTheme.Subtle.Dark)).
-		Background(lipgloss.Color(CurrentTheme.Background))
+	helpStyle = helpStyle.Foreground(CurrentTheme.Subtle)
 
 	// Error style
-	errorStyle = errorStyle.
-		Foreground(lipgloss.Color(CurrentTheme.Error.Dark)).
-		Background(lipgloss.Color(CurrentTheme.Background))
+	errorStyle = errorStyle.Foreground(CurrentTheme.Error)
 
 	// Input style
 	inputBoxStyle = inputBoxStyle.
@@ -238,26 +327,42 @@ func UpdateStyles() {
 	spinnerStyle = spinnerStyle.
 		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
 		Background(lipgloss.Color(CurrentTheme.Background))
-		
+
 	// Tab styles
-	tabStyle = tabStyle.
-		BorderForeground(lipgloss.Color(CurrentTheme.Subtle.Dark)).
-		Foreground(lipgloss.Color(CurrentTheme.Text.Dark)).
-		Background(lipgloss.Color(CurrentTheme.Background))
+	tabStyle = tabStyle.BorderForeground(CurrentTheme.Border)
 
 	activeTabStyle = activeTabStyle.
-		BorderForeground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
-		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
-		Background(lipgloss.Color(CurrentTheme.Subtle.Dark))
-		
+		BorderForeground(CurrentTheme.Special).
+		Foreground(CurrentTheme.Special)
+
 	// Header style
 	headerStyle = headerStyle.
 		BorderForeground(lipgloss.Color(CurrentTheme.Subtle.Dark)).
 		Foreground(lipgloss.Color(CurrentTheme.Primary.Dark)).
 		Background(lipgloss.Color(CurrentTheme.Background))
-		
+
 	// Selected item style
 	selectedItemStyle = selectedItemStyle.
 		Foreground(lipgloss.Color(CurrentTheme.Highlight.Dark)).
 		Background(lipgloss.Color(CurrentTheme.Background))
+
+	// Table styles
+	tableStyle = tableStyle.BorderForeground(CurrentTheme.Border)
+	tableHeaderStyle = tableHeaderStyle.
+		BorderForeground(CurrentTheme.Highlight).
+		Foreground(CurrentTheme.Special)
+	selectedRowStyle = selectedRowStyle.
+		Background(CurrentTheme.Highlight).
+		Foreground(CurrentTheme.Text)
+	normalRowStyle = normalRowStyle.Foreground(CurrentTheme.Text)
+
+	// Queue styles
+	queueStatsStyle = queueStatsStyle.BorderForeground(CurrentTheme.Special)
+	queueStatItemStyle = queueStatItemStyle.Foreground(CurrentTheme.Text)
+	queueActiveItemStyle = queueActiveItemStyle.
+		Background(CurrentTheme.Primary).
+		Foreground(CurrentTheme.Text)
+
+	// Status message styles
+	successStyle = successStyle.Foreground(CurrentTheme.Special)
 }
