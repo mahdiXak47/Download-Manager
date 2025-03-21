@@ -2,7 +2,6 @@ package tui
 
 import (
 	"fmt"
-	"path/filepath"
 	"strings"
 
 	"github.com/charmbracelet/lipgloss"
@@ -181,54 +180,83 @@ func renderDownloadListTab(m Model) string {
 	if len(m.Downloads) == 0 {
 		s.WriteString(centerContainer.Render(menuItemStyle.Render("No downloads yet. Press '1' to switch to Add Download tab.")))
 	} else {
-		// Calculate table width
-		tableWidth := m.Width - 20 // Account for margins and padding
+		// Create table headers
+		headers := []struct {
+			content string
+			width   int
+		}{
+			{"Path", 30},
+			{"#", 5},
+			{"Status", 15},
+			{"Queue", 15},
+			{"Progress", 10},
+			{"Speed", 10},
+			{"Start Time", 20},
+			{"Completion Time", 20},
+		}
 
-		// Define column widths
-		idWidth := 4
-		nameWidth := tableWidth * 3 / 8 // 37.5% of space
-		progressWidth := tableWidth / 8 // 12.5% of space
-		speedWidth := tableWidth / 8    // 12.5% of space
-		statusWidth := tableWidth / 4   // 25% of space
+		// Build header row
+		var headerCells []string
+		for _, header := range headers {
+			headerCells = append(headerCells, headerStyle.Width(header.width).Render(header.content))
+		}
+		headerRow := lipgloss.JoinHorizontal(lipgloss.Center, headerCells...)
 
-		// Table header
-		header := lipgloss.JoinHorizontal(lipgloss.Center,
-			tableHeaderStyle.Width(idWidth).Render("#"),
-			tableHeaderStyle.Width(nameWidth).Render("Name"),
-			tableHeaderStyle.Width(progressWidth).Render("Progress"),
-			tableHeaderStyle.Width(speedWidth).Render("Speed"),
-			tableHeaderStyle.Width(statusWidth).Render("Status"),
-		)
-
-		// Table rows
+		// Create table rows for each download
 		var rows []string
 		for i, d := range m.Downloads {
-			rowStyle := normalRowStyle
+			// Choose row style based on selection
+			rowStyle := normalRowStyle.Copy()
 			if i == m.Selected {
-				rowStyle = selectedRowStyle
+				rowStyle = selectedRowStyle.Copy()
 			}
 
-			// Format cells
-			idCell := rowStyle.Copy().Width(idWidth).Render(fmt.Sprintf("%d", i+1))
-			nameCell := rowStyle.Copy().Width(nameWidth).Render(truncateString(filepath.Base(d.URL), nameWidth-2))
-			progressCell := rowStyle.Copy().Width(progressWidth).Render(fmt.Sprintf("%.1f%%", d.Progress))
-			speedCell := rowStyle.Copy().Width(speedWidth).Render(formatSpeed(d.Speed))
-			statusCell := rowStyle.Copy().Width(statusWidth).Render(d.Status)
+			// Format progress
+			progress := fmt.Sprintf("%.1f%%", d.Progress)
 
-			row := lipgloss.JoinHorizontal(lipgloss.Center,
-				idCell,
-				nameCell,
-				progressCell,
-				speedCell,
-				statusCell,
-			)
-			rows = append(rows, row)
+			// Format speed
+			speed := "0 B/s"
+			if d.Speed > 0 {
+				speed = formatSpeed(d.Speed)
+			}
+
+			// Create row cells
+			cells := []struct {
+				content string
+				width   int
+			}{
+				{d.TargetPath, 30},
+				{fmt.Sprintf("%d", i+1), 5},
+				{d.Status, 15},
+				{d.Queue, 15},
+				{progress, 10},
+				{speed, 10},
+				{func() string {
+					if !d.ScheduledStartTime.IsZero() {
+						return d.ScheduledStartTime.Format("2006-01-02 15:04:05")
+					}
+					return d.StartTime.Format("2006-01-02 15:04:05")
+				}(), 20},
+				{func() string {
+					if d.CompletionTime.IsZero() {
+						return "-"
+					}
+					return d.CompletionTime.Format("2006-01-02 15:04:05")
+				}(), 20},
+			}
+
+			// Build row with cells
+			var rowCells []string
+			for _, cell := range cells {
+				rowCells = append(rowCells, rowStyle.Width(cell.width).Render(cell.content))
+			}
+			rows = append(rows, lipgloss.JoinHorizontal(lipgloss.Center, rowCells...))
 		}
 
 		// Render table
 		table := tableStyle.Render(
 			lipgloss.JoinVertical(lipgloss.Left,
-				header,
+				headerRow,
 				lipgloss.JoinVertical(lipgloss.Left, rows...),
 			),
 		)

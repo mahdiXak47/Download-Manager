@@ -139,15 +139,6 @@ var (
 				Padding(0, 1).
 				Align(lipgloss.Center)
 
-	tableRowStyle = lipgloss.NewStyle().
-			Padding(0, 1)
-
-	tableSelectedRowStyle = lipgloss.NewStyle().
-				Padding(0, 1).
-				Bold(true).
-				Background(lipgloss.Color("237")).
-				Foreground(lipgloss.Color("87"))
-
 	// Table container style
 	tableStyle = lipgloss.NewStyle().
 			BorderStyle(lipgloss.RoundedBorder()).

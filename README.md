@@ -68,57 +68,36 @@ A sophisticated download manager application written in Go with Terminal User In
 
 ## Project Architecture
 
-````
+```
 .
 ├── cmd/
-│   └── download-manager/
-│       └── main.go
+│   └── main.go
 ├── internal/
 │   ├── tui/
 │   │   ├── model.go
 │   │   ├── update.go
 │   │   ├── view.go
-│   │   ├── components/
-│   │   │   ├── progress.go
-│   │   │   ├── queue.go
-│   │   │   ├── status.go
-│   │   │   └── tabs.go
-│   │   ├── constants.go
+│   │   ├── styles.go
+│   │   ├── themes.go
 │   │   └── messages.go
 │   ├── downloader/
-│   │   └── download.go     # Consolidated download implementation
+│   │   ├── download.go
+│   │   └── ratelimiter.go
 │   ├── queue/
-│   │   └── manager.go      # Queue management system
-│   └── config/
-│       └── config.go       # Configuration management
-├── pkg/
-│   ├── protocol/
-│   └── utils/
-├── configs/
-├── docs/
-│   ├── architecture.md
-│   ├── api.md
-│   ├── user-guide.md
-│   └── dev-guide.md
-├── logs/
-│   └── download.log
-├── scripts/
-│   ├── install.sh
-│   ├── setup.sh
-│   └── test.sh
-├── tests/
-│   ├── downloader/
-│   ├── queue/
-│   ├── scheduler/
-│   └── tui/
-├── Makefile
-├── Dockerfile
+│   │   └── manager.go
+│   ├── config/
+│   │   └── config.go
+│   └── logger/
+│       └── logger.go
+├── .git/
+├── .idea/
+├── Download-Manager.code-workspace
+├── download-logs.log
 ├── go.mod
 ├── go.sum
-├── .gitignore
-├── CHANGELOG.md
-├── CONTRIBUTING.md
+├── main.exe
 └── README.md
+```
 
 ## Technical Stack
 
@@ -169,7 +148,7 @@ cd download-manager
 
 # Build the application
 go build
-````
+```
 
 ## Usage
 
@@ -221,3 +200,34 @@ The interface supports keyboard navigation with tabs displayed at the bottom of 
 - **Error Handling & Retry Logic**: Implements robust retry mechanism with configurable attempts and delays.
 - **Networking & File I/O**: Handles HTTP requests and file writes efficiently.
 - **TUI Library**: Uses `bubbletea` for terminal UI.
+
+## Project Details
+
+This project is a terminal-based download manager with queue support, allowing users to manage multiple downloads efficiently. It features a clean, intuitive terminal user interface with tabbed navigation and supports concurrent downloads, queue management, and more.
+
+## Execution Instructions
+
+To run the application, follow these steps:
+
+```bash
+# Clone the repository
+git clone https://github.com/mahdiXak47/Download-Manager
+
+# Change to project directory
+cd download-manager
+
+# Build the application
+go build
+
+# Run the application
+./download-manager
+```
+
+## Team Members
+
+- Member 1: [Mahdi Akbari]
+- Member 2: [Aida Jalali]
+
+## Repository Address
+
+The repository for this project can be found at: [https://github.com/mahdiXak47/Download-Manager]

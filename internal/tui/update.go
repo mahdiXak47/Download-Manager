@@ -275,7 +275,7 @@ func handleNavigationMode(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		if m.Menu == "list" {
 			m.PauseDownload()
 		}
-	case "r":
+	case "s":
 		if m.Menu == "list" {
 			m.ResumeDownload()
 			return m, tickCmd()
@@ -399,17 +399,27 @@ func handleDownloadListTab(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		}
 	case "p":
 		m.PauseDownload()
-	case "r":
+	case "s":
 		m.ResumeDownload()
 	case "c":
 		m.CancelDownload()
-	case "y":
+	case "r":
 		// Retry the selected download if it's in error state
 		m.RetryDownload()
 	case "a":
 		// Switch to Add Download tab
 		m.ActiveTab = AddDownloadTab
 		m.Menu = "add"
+	case "d":
+		// Delete the selected download
+		if m.Selected >= 0 && m.Selected < len(m.Downloads) {
+			selectedDownload := m.Downloads[m.Selected]
+			m.QueueManager.RemoveDownload(selectedDownload.URL)
+			m.Downloads = append(m.Downloads[:m.Selected], m.Downloads[m.Selected+1:]...)
+			if m.Selected >= len(m.Downloads) {
+				m.Selected = len(m.Downloads) - 1
+			}
+		}
 	case "esc":
 		// Clear any messages
 		if m.DownloadListMessage != "" {
@@ -593,16 +603,30 @@ func handleQueueFormInput(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 
 // validateURL checks if the provided string is a valid URL
 func validateURL(urlStr string) bool {
-	// Check if the URL starts with http:// or https://
-	if !strings.HasPrefix(urlStr, "http://") && !strings.HasPrefix(urlStr, "https://") {
-		return false
-	}
-
-	// Parse the URL
-	_, err := url.Parse(urlStr)
+	parsedURL, err := url.Parse(urlStr)
 	if err != nil {
+		fmt.Println("Error parsing URL:", err)
 		return false
 	}
 
+	// Check scheme
+	if parsedURL.Scheme != "http" && parsedURL.Scheme != "https" {
+		fmt.Println("Invalid URL: Scheme must be http or https")
+		return false
+	}
+
+	// Check host
+	if parsedURL.Host == "" {
+		fmt.Println("Invalid URL: Missing host")
+		return false
+	}
+
+	// Optionally, check if host contains at least one dot
+	if !strings.Contains(parsedURL.Host, ".") {
+		fmt.Println("Invalid URL: Host does not look valid")
+		return false
+	}
+
+	fmt.Println("URL is valid")
 	return true
 }

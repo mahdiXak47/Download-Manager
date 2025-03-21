@@ -1255,3 +1255,918 @@
 [2025-03-21 12:56:18] [SYSTEM] Processing queues
 [2025-03-21 12:56:18] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
 [2025-03-21 12:56:18] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:58:59] [SYSTEM] Logger initialized
+[2025-03-21 12:58:59] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 12:58:59] [SYSTEM] Queue Manager started
+[2025-03-21 12:59:09] [SYSTEM] Processing queues
+[2025-03-21 12:59:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:59:09] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:59:19] [SYSTEM] Processing queues
+[2025-03-21 12:59:19] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:59:19] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:59:29] [SYSTEM] Processing queues
+[2025-03-21 12:59:29] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:59:29] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:59:39] [SYSTEM] Processing queues
+[2025-03-21 12:59:39] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:59:39] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:59:49] [SYSTEM] Processing queues
+[2025-03-21 12:59:49] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:59:49] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:59:59] [SYSTEM] Processing queues
+[2025-03-21 12:59:59] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:59:59] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:00:09] [SYSTEM] Processing queues
+[2025-03-21 13:00:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:00:09] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:00:19] [SYSTEM] Processing queues
+[2025-03-21 13:00:19] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:00:19] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:00:29] [SYSTEM] Processing queues
+[2025-03-21 13:00:29] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:00:29] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:00:39] [SYSTEM] Processing queues
+[2025-03-21 13:00:39] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:00:39] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:00:49] [SYSTEM] Processing queues
+[2025-03-21 13:00:49] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:00:49] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:00:59] [SYSTEM] Processing queues
+[2025-03-21 13:00:59] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:00:59] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:01:09] [SYSTEM] Processing queues
+[2025-03-21 13:01:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:01:09] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:01:19] [SYSTEM] Processing queues
+[2025-03-21 13:01:19] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:01:19] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:01:29] [SYSTEM] Processing queues
+[2025-03-21 13:01:29] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:01:29] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:01:39] [SYSTEM] Processing queues
+[2025-03-21 13:01:39] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:01:39] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:01:49] [SYSTEM] Processing queues
+[2025-03-21 13:01:49] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:01:49] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:11:06] [SYSTEM] Logger initialized
+[2025-03-21 13:11:06] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 13:11:06] [SYSTEM] Queue Manager started
+[2025-03-21 13:11:16] [SYSTEM] Processing queues
+[2025-03-21 13:11:16] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:11:16] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:11:26] [SYSTEM] Processing queues
+[2025-03-21 13:11:26] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:11:26] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:11:36] [SYSTEM] Processing queues
+[2025-03-21 13:11:36] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:11:36] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:11:46] [SYSTEM] Processing queues
+[2025-03-21 13:11:46] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:11:46] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:11:56] [SYSTEM] Processing queues
+[2025-03-21 13:11:56] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:11:56] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:12:06] [SYSTEM] Processing queues
+[2025-03-21 13:12:06] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:12:06] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:12:16] [SYSTEM] Processing queues
+[2025-03-21 13:12:16] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:12:16] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:12:26] [SYSTEM] Processing queues
+[2025-03-21 13:12:26] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:12:26] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:12:36] [SYSTEM] Processing queues
+[2025-03-21 13:12:36] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:12:36] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:25:40] [SYSTEM] Logger initialized
+[2025-03-21 13:25:40] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 13:25:40] [SYSTEM] Queue Manager started
+[2025-03-21 13:25:50] [SYSTEM] Processing queues
+[2025-03-21 13:25:50] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:25:50] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 13:26:00] [SYSTEM] Processing queues
+[2025-03-21 13:26:00] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 13:26:00] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:43:11] [SYSTEM] Logger initialized
+[2025-03-21 15:43:11] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 15:43:11] [SYSTEM] Queue Manager started
+[2025-03-21 15:44:11] [SYSTEM] Processing queues
+[2025-03-21 15:44:11] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:44:11] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:45:11] [SYSTEM] Processing queues
+[2025-03-21 15:45:11] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:45:11] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:48:27] [SYSTEM] Logger initialized
+[2025-03-21 15:48:27] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 15:48:27] [SYSTEM] Queue Manager started
+[2025-03-21 15:51:23] [SYSTEM] Logger initialized
+[2025-03-21 15:51:23] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 15:51:23] [SYSTEM] Queue Manager started
+[2025-03-21 15:52:23] [SYSTEM] Processing queues
+[2025-03-21 15:52:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:52:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:53:23] [SYSTEM] Processing queues
+[2025-03-21 15:53:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:53:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:54:23] [SYSTEM] Processing queues
+[2025-03-21 15:54:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:54:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:55:23] [SYSTEM] Processing queues
+[2025-03-21 15:55:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:55:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:56:23] [SYSTEM] Processing queues
+[2025-03-21 15:56:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:56:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:57:23] [SYSTEM] Processing queues
+[2025-03-21 15:57:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:57:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:58:23] [SYSTEM] Processing queues
+[2025-03-21 15:58:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:58:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 15:59:23] [SYSTEM] Processing queues
+[2025-03-21 15:59:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 15:59:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:00:23] [SYSTEM] Processing queues
+[2025-03-21 16:00:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:00:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:01:23] [SYSTEM] Processing queues
+[2025-03-21 16:01:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:01:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:02:23] [SYSTEM] Processing queues
+[2025-03-21 16:02:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:02:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:03:23] [SYSTEM] Processing queues
+[2025-03-21 16:03:23] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:03:23] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:04:20] [SYSTEM] Logger initialized
+[2025-03-21 16:04:20] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 16:04:20] [SYSTEM] Queue Manager started
+[2025-03-21 16:05:20] [SYSTEM] Processing queues
+[2025-03-21 16:05:20] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:05:20] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:06:20] [SYSTEM] Processing queues
+[2025-03-21 16:06:20] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:06:20] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:07:20] [SYSTEM] Processing queues
+[2025-03-21 16:07:20] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:07:20] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:08:20] [SYSTEM] Processing queues
+[2025-03-21 16:08:20] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:08:20] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:09:06] [SYSTEM] Logger initialized
+[2025-03-21 16:09:06] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 16:09:06] [SYSTEM] Queue Manager started
+[2025-03-21 16:10:44] [SYSTEM] Logger initialized
+[2025-03-21 16:10:44] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 16:10:44] [SYSTEM] Queue Manager started
+[2025-03-21 16:12:14] [SYSTEM] Logger initialized
+[2025-03-21 16:12:14] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 16:12:14] [SYSTEM] Queue Manager started
+[2025-03-21 16:13:14] [SYSTEM] Processing queues
+[2025-03-21 16:13:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:13:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:14:14] [SYSTEM] Processing queues
+[2025-03-21 16:14:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:14:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:15:14] [SYSTEM] Processing queues
+[2025-03-21 16:15:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:15:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:16:14] [SYSTEM] Processing queues
+[2025-03-21 16:16:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:16:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:17:14] [SYSTEM] Processing queues
+[2025-03-21 16:17:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:17:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:18:14] [SYSTEM] Processing queues
+[2025-03-21 16:18:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:18:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:19:14] [SYSTEM] Processing queues
+[2025-03-21 16:19:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:19:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:20:14] [SYSTEM] Processing queues
+[2025-03-21 16:20:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:20:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:21:14] [SYSTEM] Processing queues
+[2025-03-21 16:21:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:21:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:22:14] [SYSTEM] Processing queues
+[2025-03-21 16:22:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:22:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:23:14] [SYSTEM] Processing queues
+[2025-03-21 16:23:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:23:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:24:14] [SYSTEM] Processing queues
+[2025-03-21 16:24:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:24:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:25:14] [SYSTEM] Processing queues
+[2025-03-21 16:25:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:25:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:26:14] [SYSTEM] Processing queues
+[2025-03-21 16:26:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:26:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:27:14] [SYSTEM] Processing queues
+[2025-03-21 16:27:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:27:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:28:14] [SYSTEM] Processing queues
+[2025-03-21 16:28:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:28:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:29:14] [SYSTEM] Processing queues
+[2025-03-21 16:29:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:29:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:30:14] [SYSTEM] Processing queues
+[2025-03-21 16:30:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:30:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:31:14] [SYSTEM] Processing queues
+[2025-03-21 16:31:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:31:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:32:14] [SYSTEM] Processing queues
+[2025-03-21 16:32:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:32:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:33:14] [SYSTEM] Processing queues
+[2025-03-21 16:33:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:33:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:34:14] [SYSTEM] Processing queues
+[2025-03-21 16:34:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:34:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:35:14] [SYSTEM] Processing queues
+[2025-03-21 16:35:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:35:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:36:14] [SYSTEM] Processing queues
+[2025-03-21 16:36:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:36:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:37:14] [SYSTEM] Processing queues
+[2025-03-21 16:37:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:37:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:38:14] [SYSTEM] Processing queues
+[2025-03-21 16:38:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:38:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:39:14] [SYSTEM] Processing queues
+[2025-03-21 16:39:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:39:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:40:14] [SYSTEM] Processing queues
+[2025-03-21 16:40:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:40:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:41:14] [SYSTEM] Processing queues
+[2025-03-21 16:41:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:41:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:42:14] [SYSTEM] Logger initialized
+[2025-03-21 16:42:14] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 16:42:14] [SYSTEM] Queue Manager started
+[2025-03-21 16:43:14] [SYSTEM] Processing queues
+[2025-03-21 16:43:14] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:43:14] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:45:12] [SYSTEM] Logger initialized
+[2025-03-21 16:45:12] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 16:45:12] [SYSTEM] Queue Manager started
+[2025-03-21 16:46:12] [SYSTEM] Processing queues
+[2025-03-21 16:46:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:46:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:47:12] [SYSTEM] Processing queues
+[2025-03-21 16:47:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:47:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:48:12] [SYSTEM] Processing queues
+[2025-03-21 16:48:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:48:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:49:12] [SYSTEM] Processing queues
+[2025-03-21 16:49:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:49:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:50:06] [SYSTEM] Logger initialized
+[2025-03-21 16:50:06] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 16:50:06] [SYSTEM] Queue Manager started
+[2025-03-21 16:50:12] [SYSTEM] Processing queues
+[2025-03-21 16:50:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:50:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:50:18] [SYSTEM] Processing queues
+[2025-03-21 16:50:18] [QUEUE] Starting download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default
+[2025-03-21 16:50:18] [QUEUE] Queue default: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 16:50:18] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:50:18] [START] Download started - URL: https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE, Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 16:50:18] [STATUS] Status changed for https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: downloading -> downloading
+[2025-03-21 16:50:19] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:19] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:19] [STATUS] Status changed for https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: downloading -> error
+[2025-03-21 16:50:19] [PENDING] Download pending - URL: https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE, Queue: default, Reason: Retry attempt 1 of 3 after error: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:19] [STATUS] Status changed for https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: error -> pending
+[2025-03-21 16:50:24] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:24] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:24] [STATUS] Status changed for https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: pending -> error
+[2025-03-21 16:50:24] [PENDING] Download pending - URL: https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE, Queue: default, Reason: Retry attempt 2 of 3 after error: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:24] [STATUS] Status changed for https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: error -> pending
+[2025-03-21 16:50:30] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:30] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:30] [STATUS] Status changed for https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: pending -> error
+[2025-03-21 16:50:30] [PENDING] Download pending - URL: https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE, Queue: default, Reason: Retry attempt 3 of 3 after error: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:30] [STATUS] Status changed for https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: error -> pending
+[2025-03-21 16:50:35] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:35] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:35] [STATUS] Status changed for https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: pending -> error
+[2025-03-21 16:50:35] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue default: download failed after 3 retries: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:35] [ERROR] Error for download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE in queue queue2: Download failed: download failed after 3 retries: failed to open file: open downloads\url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 16:50:35] [QUEUE] Queue queue2: Active downloads decreased to -1/4
+[2025-03-21 16:50:44] [SYSTEM] Logger initialized
+[2025-03-21 16:50:44] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 16:50:44] [SYSTEM] Queue Manager started
+[2025-03-21 16:51:06] [SYSTEM] Processing queues
+[2025-03-21 16:51:06] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 16:51:06] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:51:44] [SYSTEM] Processing queues
+[2025-03-21 16:51:44] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:51:44] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:52:06] [SYSTEM] Processing queues
+[2025-03-21 16:52:06] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 16:52:06] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:52:44] [SYSTEM] Processing queues
+[2025-03-21 16:52:44] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:52:44] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:53:06] [SYSTEM] Processing queues
+[2025-03-21 16:53:06] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 16:53:06] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:55:48] [SYSTEM] Logger initialized
+[2025-03-21 16:55:48] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 16:55:48] [SYSTEM] Queue Manager started
+[2025-03-21 16:56:12] [SYSTEM] Logger initialized
+[2025-03-21 16:56:12] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 16:56:12] [SYSTEM] Queue Manager started
+[2025-03-21 16:57:02] [SYSTEM] Logger initialized
+[2025-03-21 16:57:02] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 16:57:02] [SYSTEM] Queue Manager started
+[2025-03-21 16:57:12] [SYSTEM] Processing queues
+[2025-03-21 16:57:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:57:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:58:02] [SYSTEM] Processing queues
+[2025-03-21 16:58:02] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:58:02] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:58:12] [SYSTEM] Processing queues
+[2025-03-21 16:58:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:58:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 16:59:12] [SYSTEM] Processing queues
+[2025-03-21 16:59:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 16:59:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:00:12] [SYSTEM] Processing queues
+[2025-03-21 17:00:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:00:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:01:12] [SYSTEM] Processing queues
+[2025-03-21 17:01:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:01:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:02:12] [SYSTEM] Processing queues
+[2025-03-21 17:02:12] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:02:12] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:02:45] [SYSTEM] Logger initialized
+[2025-03-21 17:02:45] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 17:02:45] [SYSTEM] Queue Manager started
+[2025-03-21 17:03:20] [SYSTEM] Logger initialized
+[2025-03-21 17:03:20] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 17:03:20] [SYSTEM] Queue Manager started
+[2025-03-21 17:03:27] [SYSTEM] Processing queues
+[2025-03-21 17:03:27] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue default
+[2025-03-21 17:03:27] [QUEUE] Queue default: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 17:03:27] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:03:27] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:03:27] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading
+[2025-03-21 17:03:29] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading (Progress: 36.28%, Downloaded: 3571439/9844878 bytes)
+[2025-03-21 17:03:30] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> completed (Progress: 100.00%, Downloaded: 9844878/9844878 bytes)
+[2025-03-21 17:03:30] [COMPLETE] Download complete - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Path: downloads\Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Duration: 2.3018831s, Size: 0 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 17:03:30] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> completed
+[2025-03-21 17:03:30] [QUEUE] Download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 completed in queue queue2
+[2025-03-21 17:03:30] [QUEUE] Queue queue2: Active downloads decreased to -1/4
+[2025-03-21 17:04:09] [SYSTEM] Processing queues
+[2025-03-21 17:04:09] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:04:09] [QUEUE] Queue default: Started 1 of 1 pending downloads (2/3 active)
+[2025-03-21 17:04:09] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:04:09] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:04:09] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 17:04:09] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:09] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:09] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 17:04:09] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 1 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:04:09] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:04:14] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:14] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:14] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:04:14] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 2 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:04:14] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:04:20] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:20] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:20] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:04:20] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 3 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:04:20] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:04:20] [SYSTEM] Processing queues
+[2025-03-21 17:04:20] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:04:20] [QUEUE] Queue default: Started 1 of 1 pending downloads (3/3 active)
+[2025-03-21 17:04:20] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:04:20] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:04:20] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 17:04:20] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:20] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:20] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 17:04:20] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:04:20] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue queue2: Download failed: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:04:20] [QUEUE] Queue queue2: Active downloads decreased to -2/4
+[2025-03-21 17:04:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:04:25] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> error
+[2025-03-21 17:04:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:04:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue queue2: Download failed: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:04:25] [QUEUE] Queue queue2: Active downloads decreased to -3/4
+[2025-03-21 17:04:52] [SYSTEM] Logger initialized
+[2025-03-21 17:04:52] [SYSTEM] Queue Manager initialized with 5 downloads
+[2025-03-21 17:04:52] [SYSTEM] Queue Manager started
+[2025-03-21 17:04:59] [QUEUE] Removed download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 from queue default
+[2025-03-21 17:05:52] [SYSTEM] Processing queues
+[2025-03-21 17:05:52] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:05:52] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:06:19] [SYSTEM] Logger initialized
+[2025-03-21 17:06:19] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:06:19] [SYSTEM] Queue Manager started
+[2025-03-21 17:08:26] [SYSTEM] Logger initialized
+[2025-03-21 17:08:26] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:08:26] [SYSTEM] Queue Manager started
+[2025-03-21 17:08:38] [SYSTEM] Logger initialized
+[2025-03-21 17:08:38] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:08:38] [SYSTEM] Queue Manager started
+[2025-03-21 17:09:26] [SYSTEM] Processing queues
+[2025-03-21 17:09:26] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:09:26] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:10:04] [SYSTEM] Logger initialized
+[2025-03-21 17:10:04] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:10:04] [SYSTEM] Queue Manager started
+[2025-03-21 17:11:04] [SYSTEM] Processing queues
+[2025-03-21 17:11:04] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:11:04] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:11:28] [SYSTEM] Logger initialized
+[2025-03-21 17:11:28] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:11:28] [SYSTEM] Queue Manager started
+[2025-03-21 17:13:13] [SYSTEM] Logger initialized
+[2025-03-21 17:13:13] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:13:13] [SYSTEM] Queue Manager started
+[2025-03-21 17:15:18] [SYSTEM] Logger initialized
+[2025-03-21 17:15:18] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:15:18] [SYSTEM] Queue Manager started
+[2025-03-21 17:17:16] [SYSTEM] Logger initialized
+[2025-03-21 17:17:16] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:17:16] [SYSTEM] Queue Manager started
+[2025-03-21 17:17:46] [SYSTEM] Logger initialized
+[2025-03-21 17:17:46] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:17:46] [SYSTEM] Queue Manager started
+[2025-03-21 17:18:46] [SYSTEM] Processing queues
+[2025-03-21 17:18:46] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:18:46] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:18:52] [SYSTEM] Logger initialized
+[2025-03-21 17:18:52] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:18:52] [SYSTEM] Queue Manager started
+[2025-03-21 17:19:52] [SYSTEM] Processing queues
+[2025-03-21 17:19:52] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:19:52] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:20:06] [SYSTEM] Logger initialized
+[2025-03-21 17:20:06] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:20:06] [SYSTEM] Queue Manager started
+[2025-03-21 17:21:06] [SYSTEM] Processing queues
+[2025-03-21 17:21:06] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:21:06] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:21:20] [SYSTEM] Logger initialized
+[2025-03-21 17:21:20] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 17:21:20] [SYSTEM] Queue Manager started
+[2025-03-21 17:21:26] [SYSTEM] Processing queues
+[2025-03-21 17:21:26] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 in queue default
+[2025-03-21 17:21:26] [QUEUE] Queue default: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 17:21:26] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:21:26] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:21:26] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> downloading
+[2025-03-21 17:21:27] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> completed (Progress: 100.00%, Downloaded: 5715927/5715927 bytes)
+[2025-03-21 17:21:27] [COMPLETE] Download complete - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Path: downloads\maroon-5-sugar.mp3, Duration: 1.0574783s, Size: 0 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 17:21:27] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> completed
+[2025-03-21 17:21:27] [QUEUE] Download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 completed in queue queue2
+[2025-03-21 17:21:27] [QUEUE] Queue queue2: Active downloads decreased to -1/4
+[2025-03-21 17:22:19] [QUEUE] Removed download https://www.google.com/url?sa=i&url=https%3A%2F%2Fgosongs.ir%2F%25D8%25B1%25DB%258C%25D9%2585%25D8%25A7-%25D8%25A2%25D8%25B1%25D8%25A7%25D9%2585-%25D8%25A8%25D8%25A7%25D8%25B4-rema-calm-down.html&psig=AOvVaw2VtPOLDLtmS1H02J834DXK&ust=1742661776982000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDGhZ2gm4wDFQAAAAAdAAAAABAE from queue default
+[2025-03-21 17:22:19] [QUEUE] Removed download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  from queue default
+[2025-03-21 17:22:20] [SYSTEM] Processing queues
+[2025-03-21 17:22:20] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 17:22:20] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:24:29] [SYSTEM] Logger initialized
+[2025-03-21 17:24:29] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 17:24:29] [SYSTEM] Queue Manager started
+[2025-03-21 17:25:57] [SYSTEM] Logger initialized
+[2025-03-21 17:25:57] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 17:25:57] [SYSTEM] Queue Manager started
+[2025-03-21 17:26:57] [SYSTEM] Processing queues
+[2025-03-21 17:26:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:26:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:27:57] [SYSTEM] Processing queues
+[2025-03-21 17:27:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:27:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:28:20] [SYSTEM] Logger initialized
+[2025-03-21 17:28:20] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 17:28:20] [SYSTEM] Queue Manager started
+[2025-03-21 17:28:36] [SYSTEM] Processing queues
+[2025-03-21 17:28:36] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 in queue default
+[2025-03-21 17:28:36] [QUEUE] Queue default: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 17:28:36] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:28:36] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:28:36] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> downloading
+[2025-03-21 17:28:37] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> downloading (Progress: 63.78%, Downloaded: 3645440/5715927 bytes)
+[2025-03-21 17:28:37] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> completed (Progress: 100.00%, Downloaded: 5715927/5715927 bytes)
+[2025-03-21 17:28:37] [COMPLETE] Download complete - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Path: downloads\maroon-5-sugar.mp3, Duration: 1.5577177s, Size: 0 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 17:28:37] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> completed
+[2025-03-21 17:28:37] [QUEUE] Download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 completed in queue queue2
+[2025-03-21 17:28:37] [QUEUE] Queue queue2: Active downloads decreased to -1/4
+[2025-03-21 17:28:45] [SYSTEM] Processing queues
+[2025-03-21 17:28:45] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 in queue default
+[2025-03-21 17:28:45] [QUEUE] Queue default: Started 1 of 1 pending downloads (2/3 active)
+[2025-03-21 17:28:45] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:28:45] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:28:45] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> downloading
+[2025-03-21 17:28:46] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> completed (Progress: 100.00%, Downloaded: 5715927/5715927 bytes)
+[2025-03-21 17:28:46] [COMPLETE] Download complete - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Path: downloads\maroon-5-sugar.mp3, Duration: 772.6021ms, Size: 0 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 17:28:46] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> completed
+[2025-03-21 17:28:46] [QUEUE] Download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 completed in queue queue2
+[2025-03-21 17:28:46] [QUEUE] Queue queue2: Active downloads decreased to -2/4
+[2025-03-21 17:28:57] [SYSTEM] Processing queues
+[2025-03-21 17:28:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:28:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:29:20] [SYSTEM] Processing queues
+[2025-03-21 17:29:20] [QUEUE] Queue default: Started 0 of 0 pending downloads (2/3 active)
+[2025-03-21 17:29:20] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:29:57] [SYSTEM] Processing queues
+[2025-03-21 17:29:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:29:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:30:18] [SYSTEM] Logger initialized
+[2025-03-21 17:30:18] [SYSTEM] Queue Manager initialized with 5 downloads
+[2025-03-21 17:30:18] [SYSTEM] Queue Manager started
+[2025-03-21 17:30:57] [SYSTEM] Processing queues
+[2025-03-21 17:30:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:30:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:31:09] [SYSTEM] Processing queues
+[2025-03-21 17:31:09] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 in queue default
+[2025-03-21 17:31:09] [QUEUE] Queue default: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 17:31:09] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:31:09] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Queue: default, Bandwidth Limit: 5 KB/s
+[2025-03-21 17:31:09] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> downloading
+[2025-03-21 17:31:10] [PENDING] Download pending - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Queue: default, Reason: Applying bandwidth limit of 5 KB/s
+[2025-03-21 17:31:18] [SYSTEM] Processing queues
+[2025-03-21 17:31:18] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 17:31:18] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:31:57] [SYSTEM] Processing queues
+[2025-03-21 17:31:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:31:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:32:18] [SYSTEM] Processing queues
+[2025-03-21 17:32:18] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 17:32:18] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:32:57] [SYSTEM] Processing queues
+[2025-03-21 17:32:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:32:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:33:06] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> downloading (Progress: 10.46%, Downloaded: 598016/5715927 bytes)
+[2025-03-21 17:33:18] [SYSTEM] Processing queues
+[2025-03-21 17:33:18] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 17:33:18] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:33:57] [SYSTEM] Processing queues
+[2025-03-21 17:33:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:33:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:34:18] [SYSTEM] Processing queues
+[2025-03-21 17:34:18] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 17:34:18] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:34:55] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> downloading (Progress: 20.21%, Downloaded: 1155072/5715927 bytes)
+[2025-03-21 17:34:57] [SYSTEM] Processing queues
+[2025-03-21 17:34:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:34:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:35:18] [SYSTEM] Processing queues
+[2025-03-21 17:35:18] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 17:35:18] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:35:57] [SYSTEM] Processing queues
+[2025-03-21 17:35:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:35:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:36:18] [SYSTEM] Processing queues
+[2025-03-21 17:36:18] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 17:36:18] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:36:51] [SYSTEM] Logger initialized
+[2025-03-21 17:36:51] [SYSTEM] Queue Manager initialized with 6 downloads
+[2025-03-21 17:36:51] [SYSTEM] Queue Manager started
+[2025-03-21 17:36:57] [SYSTEM] Processing queues
+[2025-03-21 17:36:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:36:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:37:02] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 1 of 0
+[2025-03-21 17:37:02] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:37:02] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:37:02] [QUEUE] Processing download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:37:02] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:37:02] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 17:37:04] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:37:04] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:37:04] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 17:37:04] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 2 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:37:04] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:37:09] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:37:09] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:37:09] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:37:09] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 3 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:37:09] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:37:14] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:37:14] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:37:14] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:37:14] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:37:14] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: Download failed: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:37:14] [QUEUE] Queue default: Active downloads decreased to 0/3
+[2025-03-21 17:37:57] [SYSTEM] Processing queues
+[2025-03-21 17:37:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:37:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:38:57] [SYSTEM] Processing queues
+[2025-03-21 17:38:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:38:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:39:08] [SYSTEM] Logger initialized
+[2025-03-21 17:39:08] [SYSTEM] Queue Manager initialized with 6 downloads
+[2025-03-21 17:39:08] [SYSTEM] Queue Manager started
+[2025-03-21 17:39:14] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 1 of 0
+[2025-03-21 17:39:14] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:39:14] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:39:14] [QUEUE] Processing download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:39:14] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:39:14] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 17:39:15] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:39:15] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:39:15] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 17:39:15] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 2 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:39:15] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:39:20] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:39:20] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:39:20] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:39:20] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 3 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:39:20] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:39:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:39:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:39:25] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:39:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:39:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: Download failed: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:39:25] [QUEUE] Queue default: Active downloads decreased to 0/3
+[2025-03-21 17:39:57] [SYSTEM] Processing queues
+[2025-03-21 17:39:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:39:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:40:57] [SYSTEM] Processing queues
+[2025-03-21 17:40:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:40:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:41:57] [SYSTEM] Processing queues
+[2025-03-21 17:41:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:41:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:42:57] [SYSTEM] Processing queues
+[2025-03-21 17:42:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:42:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:43:57] [SYSTEM] Processing queues
+[2025-03-21 17:43:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:43:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:44:52] [SYSTEM] Logger initialized
+[2025-03-21 17:44:52] [SYSTEM] Queue Manager initialized with 6 downloads
+[2025-03-21 17:44:52] [SYSTEM] Queue Manager started
+[2025-03-21 17:44:57] [SYSTEM] Processing queues
+[2025-03-21 17:44:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:44:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:45:19] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 1 of 0
+[2025-03-21 17:45:19] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:45:19] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:45:19] [QUEUE] Processing download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:45:19] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:45:19] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 17:45:19] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:45:19] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:45:19] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 17:45:19] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 2 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:45:19] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:45:24] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:45:24] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:45:24] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:45:24] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 3 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:45:24] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:45:30] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:45:30] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:45:30] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:45:30] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:45:30] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: Download failed: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:45:30] [QUEUE] Queue default: Active downloads decreased to 0/3
+[2025-03-21 17:45:52] [SYSTEM] Processing queues
+[2025-03-21 17:45:52] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 in queue default
+[2025-03-21 17:45:52] [QUEUE] Queue default: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 17:45:52] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:45:52] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Queue: default, Bandwidth Limit: 5 KB/s
+[2025-03-21 17:45:52] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> downloading
+[2025-03-21 17:45:53] [PENDING] Download pending - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Queue: default, Reason: Applying bandwidth limit of 5 KB/s
+[2025-03-21 17:45:57] [SYSTEM] Processing queues
+[2025-03-21 17:45:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:45:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:46:57] [SYSTEM] Processing queues
+[2025-03-21 17:46:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:46:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:47:57] [SYSTEM] Processing queues
+[2025-03-21 17:47:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:47:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:48:57] [SYSTEM] Processing queues
+[2025-03-21 17:48:57] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 17:48:57] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:49:21] [SYSTEM] Logger initialized
+[2025-03-21 17:49:21] [SYSTEM] Queue Manager initialized with 6 downloads
+[2025-03-21 17:49:21] [SYSTEM] Queue Manager started
+[2025-03-21 17:49:25] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 1 of 0
+[2025-03-21 17:49:25] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:49:25] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:49:25] [QUEUE] Processing download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 17:49:25] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 17:49:25] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 17:49:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:49:25] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:49:25] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 17:49:25] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 2 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:49:25] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:49:30] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:49:30] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:49:30] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:49:30] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 3 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 17:49:30] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 17:49:35] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:49:35] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 17:49:35] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 17:49:35] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:49:35] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: Download failed: download failed after 3 retries: server responded with status: 404 Not Found
+[2025-03-21 17:49:35] [QUEUE] Queue default: Active downloads decreased to 0/3
+[2025-03-21 17:49:59] [SYSTEM] Logger initialized
+[2025-03-21 17:49:59] [SYSTEM] Queue Manager initialized with 6 downloads
+[2025-03-21 17:49:59] [SYSTEM] Queue Manager started
+[2025-03-21 17:50:17] [SYSTEM] Logger initialized
+[2025-03-21 17:50:17] [SYSTEM] Queue Manager initialized with 6 downloads
+[2025-03-21 17:50:17] [SYSTEM] Queue Manager started
+[2025-03-21 17:51:17] [SYSTEM] Processing queues
+[2025-03-21 17:51:17] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 in queue default
+[2025-03-21 17:51:17] [QUEUE] Queue default: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 17:51:17] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 17:51:17] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Queue: default, Bandwidth Limit: 5 KB/s
+[2025-03-21 17:51:17] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3: downloading -> downloading
+[2025-03-21 17:51:18] [PENDING] Download pending - URL: https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3, Queue: default, Reason: Applying bandwidth limit of 5 KB/s
+[2025-03-21 17:51:43] [SYSTEM] Processing queues
+[2025-03-21 17:51:43] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 17:51:43] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 18:00:51] [SYSTEM] Logger initialized
+[2025-03-21 18:00:51] [SYSTEM] Queue Manager initialized with 7 downloads
+[2025-03-21 18:00:51] [SYSTEM] Queue Manager started
+[2025-03-21 18:01:39] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 1 of 0
+[2025-03-21 18:01:39] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 18:01:39] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 18:01:39] [QUEUE] Processing download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default
+[2025-03-21 18:01:39] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 18:01:39] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 18:01:39] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 18:01:39] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 18:01:39] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 18:01:39] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 2 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 18:01:39] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 18:01:44] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 18:01:44] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue default: server responded with status: 404 Not Found
+[2025-03-21 18:01:44] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 18:01:44] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: default, Reason: Retry attempt 3 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 18:01:44] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 18:02:35] [SYSTEM] Logger initialized
+[2025-03-21 18:02:35] [SYSTEM] Queue Manager initialized with 7 downloads
+[2025-03-21 18:02:35] [SYSTEM] Queue Manager started
+[2025-03-21 18:02:50] [SYSTEM] Logger initialized
+[2025-03-21 18:02:50] [SYSTEM] Queue Manager initialized with 7 downloads
+[2025-03-21 18:02:50] [SYSTEM] Queue Manager started
+[2025-03-21 18:03:05] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> cancelled
+[2025-03-21 18:03:05] [QUEUE] Queue default: Active downloads decreased to 1
+[2025-03-21 18:03:05] [QUEUE] Removed download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  from queue default
+[2025-03-21 18:05:47] [SYSTEM] Logger initialized
+[2025-03-21 18:05:47] [SYSTEM] Queue Manager initialized with 6 downloads
+[2025-03-21 18:05:47] [SYSTEM] Queue Manager started
+[2025-03-21 18:05:53] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 from queue default
+[2025-03-21 18:05:56] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/maroon-5-sugar.mp3 from queue default
+[2025-03-21 18:06:47] [SYSTEM] Processing queues
+[2025-03-21 18:06:47] [QUEUE] Queue default: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 18:06:47] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 18:16:08] [SYSTEM] Logger initialized
+[2025-03-21 18:16:08] [SYSTEM] Queue Manager initialized with 4 downloads
+[2025-03-21 18:16:08] [SYSTEM] Queue Manager started
+[2025-03-21 18:16:18] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue queue2
+[2025-03-21 18:16:19] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue queue2
+[2025-03-21 18:16:19] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue queue2
+[2025-03-21 18:16:19] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue queue2
+[2025-03-21 18:17:08] [SYSTEM] Processing queues
+[2025-03-21 18:17:08] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:17:08] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:18:08] [SYSTEM] Processing queues
+[2025-03-21 18:18:08] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:18:08] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:18:11] [SYSTEM] Processing queues
+[2025-03-21 18:18:11] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:18:11] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue night
+[2025-03-21 18:18:11] [QUEUE] Queue night: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 18:18:11] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Queue: night, Bandwidth Limit: 0 KB/s
+[2025-03-21 18:18:11] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading
+[2025-03-21 18:18:12] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> completed (Progress: 100.00%, Downloaded: 4027999/4027999 bytes)
+[2025-03-21 18:18:12] [COMPLETE] Download complete - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Path: downloads\Die-With-A-Smile.mp3, Duration: 852.4931ms, Size: 0 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 18:18:12] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> completed
+[2025-03-21 18:18:12] [QUEUE] Download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 completed in queue night
+[2025-03-21 18:18:12] [QUEUE] Queue night: Active downloads decreased to 0/3
+[2025-03-21 18:18:32] [SYSTEM] Processing queues
+[2025-03-21 18:18:32] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:18:32] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 in queue night
+[2025-03-21 18:18:32] [QUEUE] Queue night: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 18:18:32] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3, Queue: night, Bandwidth Limit: 0 KB/s
+[2025-03-21 18:18:32] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3: downloading -> downloading
+[2025-03-21 18:18:33] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3: downloading -> completed (Progress: 100.00%, Downloaded: 7013084/7013084 bytes)
+[2025-03-21 18:18:33] [COMPLETE] Download complete - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3, Path: downloads\Collection%20-%20Music%20For%20Zumba%202%20(320).mp3, Duration: 1.1422215s, Size: 0 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 18:18:33] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3: downloading -> completed
+[2025-03-21 18:18:33] [QUEUE] Download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 completed in queue night
+[2025-03-21 18:18:33] [QUEUE] Queue night: Active downloads decreased to 0/3
+[2025-03-21 18:18:45] [SYSTEM] Processing queues
+[2025-03-21 18:18:45] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:18:45] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue night
+[2025-03-21 18:18:45] [QUEUE] Queue night: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 18:18:45] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Queue: night, Bandwidth Limit: 0 KB/s
+[2025-03-21 18:18:45] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading
+[2025-03-21 18:18:46] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading (Progress: 83.87%, Downloaded: 8257263/9844878 bytes)
+[2025-03-21 18:18:46] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> completed (Progress: 100.00%, Downloaded: 9844878/9844878 bytes)
+[2025-03-21 18:18:46] [COMPLETE] Download complete - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Path: downloads\Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Duration: 1.4486469s, Size: 0 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 18:18:46] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> completed
+[2025-03-21 18:18:46] [QUEUE] Download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 completed in queue night
+[2025-03-21 18:18:46] [QUEUE] Queue night: Active downloads decreased to 0/3
+[2025-03-21 18:19:08] [SYSTEM] Processing queues
+[2025-03-21 18:19:08] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:19:08] [QUEUE] Queue night: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:22:48] [SYSTEM] Logger initialized
+[2025-03-21 18:22:48] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 18:22:48] [SYSTEM] Queue Manager started
+[2025-03-21 18:23:15] [SYSTEM] Logger initialized
+[2025-03-21 18:23:15] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 18:23:15] [SYSTEM] Queue Manager started
+[2025-03-21 18:26:15] [SYSTEM] Logger initialized
+[2025-03-21 18:26:15] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 18:26:15] [SYSTEM] Queue Manager started
+[2025-03-21 18:27:15] [SYSTEM] Processing queues
+[2025-03-21 18:27:15] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:27:15] [QUEUE] Queue night: Outside allowed time window (18:30-23:59)
+[2025-03-21 18:27:15] [SYSTEM] Processing queues
+[2025-03-21 18:27:15] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:27:15] [QUEUE] Queue night: Outside allowed time window (18:30-23:59)
+[2025-03-21 18:27:34] [SYSTEM] Processing queues
+[2025-03-21 18:27:34] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:27:34] [QUEUE] Queue night: Outside allowed time window (18:30-23:59)
+[2025-03-21 18:27:47] [SYSTEM] Processing queues
+[2025-03-21 18:27:47] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:27:47] [QUEUE] Queue night: Outside allowed time window (18:30-23:59)
+[2025-03-21 18:28:15] [SYSTEM] Processing queues
+[2025-03-21 18:28:15] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:28:15] [QUEUE] Queue night: Outside allowed time window (18:30-23:59)
+[2025-03-21 18:29:15] [SYSTEM] Processing queues
+[2025-03-21 18:29:15] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:29:15] [QUEUE] Queue night: Outside allowed time window (18:30-23:59)
+[2025-03-21 18:30:15] [SYSTEM] Processing queues
+[2025-03-21 18:30:15] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:30:15] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue night
+[2025-03-21 18:30:15] [QUEUE] Starting download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 in queue night
+[2025-03-21 18:30:15] [QUEUE] Queue night: Started 2 of 3 pending downloads (2/2 active)
+[2025-03-21 18:30:15] [START] Download started - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Queue: night, Bandwidth Limit: 0 KB/s
+[2025-03-21 18:30:15] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> downloading
+[2025-03-21 18:30:15] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Queue: night, Bandwidth Limit: 0 KB/s
+[2025-03-21 18:30:15] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading
+[2025-03-21 18:30:16] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> completed (Progress: 100.00%, Downloaded: 4027999/4027999 bytes)
+[2025-03-21 18:30:16] [COMPLETE] Download complete - URL: https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3, Path: downloads\Die-With-A-Smile.mp3, Duration: 1.0628227s, Size: 0 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 18:30:16] [STATUS] Status changed for https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3: downloading -> completed
+[2025-03-21 18:30:16] [QUEUE] Download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 completed in queue night
+[2025-03-21 18:30:16] [QUEUE] Queue night: Active downloads decreased to 1/2
+[2025-03-21 18:30:17] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading (Progress: 90.86%, Downloaded: 8945376/9844878 bytes)
+[2025-03-21 18:30:17] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> completed (Progress: 100.00%, Downloaded: 9844878/9844878 bytes)
+[2025-03-21 18:30:17] [COMPLETE] Download complete - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Path: downloads\Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Duration: 2.0449324s, Size: 0 bytes, Avg Speed: 0.00 MB/s
+[2025-03-21 18:30:17] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> completed
+[2025-03-21 18:30:17] [QUEUE] Download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 completed in queue night
+[2025-03-21 18:30:17] [QUEUE] Queue night: Active downloads decreased to 0/2
+[2025-03-21 18:31:15] [SYSTEM] Processing queues
+[2025-03-21 18:31:15] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:31:15] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night
+[2025-03-21 18:31:15] [QUEUE] Queue night: Started 1 of 1 pending downloads (1/2 active)
+[2025-03-21 18:31:15] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: night, Bandwidth Limit: 0 KB/s
+[2025-03-21 18:31:15] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 18:31:15] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night: server responded with status: 404 Not Found
+[2025-03-21 18:31:15] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night: server responded with status: 404 Not Found
+[2025-03-21 18:31:15] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 18:31:15] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: night, Reason: Retry attempt 1 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 18:31:15] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 18:31:29] [SYSTEM] Logger initialized
+[2025-03-21 18:31:29] [SYSTEM] Queue Manager initialized with 6 downloads
+[2025-03-21 18:31:29] [SYSTEM] Queue Manager started
+[2025-03-21 18:32:09] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue night
+[2025-03-21 18:32:17] [QUEUE] Removed download https://dl.goodmusics.ir/foreign-song/Die-With-A-Smile.mp3 from queue night
+[2025-03-21 18:32:29] [SYSTEM] Processing queues
+[2025-03-21 18:32:29] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 18:32:29] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night
+[2025-03-21 18:32:29] [QUEUE] Queue night: Started 1 of 1 pending downloads (1/2 active)
+[2025-03-21 18:32:29] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: night, Bandwidth Limit: 0 KB/s
+[2025-03-21 18:32:29] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> downloading
+[2025-03-21 18:32:29] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night: server responded with status: 404 Not Found
+[2025-03-21 18:32:29] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night: server responded with status: 404 Not Found
+[2025-03-21 18:32:29] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : downloading -> error
+[2025-03-21 18:32:29] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: night, Reason: Retry attempt 1 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 18:32:29] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 18:32:34] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night: server responded with status: 404 Not Found
+[2025-03-21 18:32:34] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night: server responded with status: 404 Not Found
+[2025-03-21 18:32:34] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 18:32:34] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: night, Reason: Retry attempt 2 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 18:32:34] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending
+[2025-03-21 18:32:39] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night: server responded with status: 404 Not Found
+[2025-03-21 18:32:39] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3  in queue night: server responded with status: 404 Not Found
+[2025-03-21 18:32:39] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : pending -> error
+[2025-03-21 18:32:39] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 , Queue: night, Reason: Retry attempt 3 of 3 after error: server responded with status: 404 Not Found
+[2025-03-21 18:32:39] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Collection%20-%20Music%20For%20Zumba%202%20(320).mp3 : error -> pending

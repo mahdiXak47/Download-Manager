@@ -2,8 +2,12 @@ package queue
 
 import (
 	"fmt"
+	"net/url"
+	"strings"
 	"sync"
 	"time"
+
+	"errors"
 
 	"github.com/mahdiXak47/Download-Manager/internal/config"
 	"github.com/mahdiXak47/Download-Manager/internal/downloader"
@@ -53,7 +57,11 @@ func (m *Manager) Stop() {
 
 // run is the main loop that processes downloads
 func (m *Manager) run() {
-	for range m.ticker.C {
+	// Process queues more frequently to better handle time windows
+	ticker := time.NewTicker(time.Minute)
+	defer ticker.Stop()
+
+	for range ticker.C {
 		m.processQueues()
 	}
 }
@@ -120,9 +128,23 @@ func (m *Manager) processQueues() {
 	logger.LogDownloadEvent("SYSTEM", "Processing queues")
 
 	for _, queueCfg := range m.config.Queues {
+		if !queueCfg.Enabled {
+			logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Disabled", queueCfg.Name))
+			continue
+		}
+
 		if !queueCfg.IsTimeAllowed() {
 			logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Outside allowed time window (%s-%s)",
 				queueCfg.Name, queueCfg.StartTime, queueCfg.EndTime))
+
+			// Pause any active downloads in this queue that are outside the time window
+			for _, download := range m.downloads {
+				if download.Queue == queueCfg.Name && download.Status == "downloading" {
+					download.Pause()
+					m.activeJobs[queueCfg.Name]--
+					logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Paused download %s: Outside allowed time window", download.URL))
+				}
+			}
 			continue
 		}
 
@@ -133,6 +155,18 @@ func (m *Manager) processQueues() {
 			continue
 		}
 
+		// Resume any paused downloads that were paused due to time restrictions
+		for _, download := range m.downloads {
+			if download.Queue == queueCfg.Name && download.Status == "paused" {
+				if activeCount < queueCfg.MaxConcurrent {
+					download.Resume()
+					m.activeJobs[queueCfg.Name]++
+					activeCount++
+					logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Resumed download %s: Within allowed time window", download.URL))
+				}
+			}
+		}
+
 		// Find pending downloads for this queue
 		pendingCount := 0
 		startedCount := 0
@@ -140,13 +174,11 @@ func (m *Manager) processQueues() {
 			download := &m.config.Downloads[i]
 			if download.Queue == queueCfg.Name && download.Status == "pending" {
 				pendingCount++
-				m.startDownload(download, &queueCfg)
-				m.downloads[download.URL] = download
-
-				activeCount++
-				startedCount++
-				if activeCount >= queueCfg.MaxConcurrent {
-					break
+				if activeCount < queueCfg.MaxConcurrent {
+					m.startDownload(download, &queueCfg)
+					m.downloads[download.URL] = download
+					activeCount++
+					startedCount++
 				}
 			}
 		}
@@ -197,11 +229,17 @@ func (m *Manager) RemoveDownload(url string) {
 	m.mutex.Lock()
 	defer m.mutex.Unlock()
 
-	// Find the download first to log its details
+	// Find the download first to log its details and update active jobs
 	var queueName string
 	for _, d := range m.config.Downloads {
 		if d.URL == url {
 			queueName = d.Queue
+			// Update active jobs count if needed
+			if d.Status == "downloading" {
+				m.activeJobs[d.Queue]--
+				logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Active downloads decreased to %d",
+					d.Queue, m.activeJobs[d.Queue]))
+			}
 			break
 		}
 	}
@@ -216,13 +254,6 @@ func (m *Manager) RemoveDownload(url string) {
 			logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Removed download %s from queue %s", url, queueName))
 			break
 		}
-	}
-
-	// Update active jobs count if needed
-	if d, exists := m.downloads[url]; exists && d.Status == "downloading" {
-		m.activeJobs[d.Queue]--
-		logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Active downloads decreased to %d",
-			d.Queue, m.activeJobs[d.Queue]))
 	}
 }
 
@@ -274,4 +305,30 @@ func (m *Manager) ProcessAllQueues() {
 		//time.Sleep(100 * time.Millisecond)
 		m.processQueues()
 	}()
+}
+
+// AddURL adds a URL to the queue with error handling
+func (m *Manager) AddURL(rawURL string) error {
+	m.mutex.Lock()
+	defer m.mutex.Unlock()
+
+	// Validate URL format
+	parsedURL, err := url.ParseRequestURI(rawURL)
+	if err != nil {
+		return errors.New("invalid URL format")
+	}
+
+	// Check for supported protocol
+	if !strings.HasPrefix(parsedURL.Scheme, "http") {
+		return errors.New("unsupported URL protocol")
+	}
+
+	// Check for duplicates
+	if _, exists := m.downloads[rawURL]; exists {
+		return errors.New("URL already in queue")
+	}
+
+	// Add URL to the downloads map
+	m.downloads[rawURL] = &downloader.Download{URL: rawURL}
+	return nil
 }

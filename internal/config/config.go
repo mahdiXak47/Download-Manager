@@ -16,7 +16,7 @@ type QueueConfig struct {
 	EndTime       string `json:"end_time"`    // Format: "HH:MM"
 	SpeedLimit    int64  `json:"speed_limit"` // Bytes per second, 0 for unlimited
 	Enabled       bool   `json:"enabled"`
-	Path          string `json:"path"`        // Download directory path for this queue
+	Path          string `json:"path"` // Download directory path for this queue
 }
 
 type Config struct {
@@ -112,24 +112,16 @@ func (q *QueueConfig) IsTimeAllowed() bool {
 	}
 
 	now := time.Now()
-	current, _ := time.Parse("15:04", now.Format("15:04"))
-
-	// Parse time window
-	start, err := time.Parse("15:04", q.StartTime)
-	if err != nil {
-		return false
-	}
-	end, err := time.Parse("15:04", q.EndTime)
-	if err != nil {
-		return false
-	}
+	currentTime := now.Format("15:04")
 
 	// Handle overnight windows (e.g., 23:00-06:00)
-	if start.After(end) {
-		return current.After(start) || current.Before(end)
+	if q.StartTime > q.EndTime {
+		// If current time is after start OR before end, it's allowed
+		return currentTime >= q.StartTime || currentTime <= q.EndTime
 	}
 
-	return current.After(start) && current.Before(end)
+	// Normal time window (e.g., 09:00-17:00)
+	return currentTime >= q.StartTime && currentTime <= q.EndTime
 }
 
 // GetQueue returns a queue configuration by name
