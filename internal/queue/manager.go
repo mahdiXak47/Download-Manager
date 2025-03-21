@@ -89,13 +89,13 @@ func (m *Manager) ResumeDownload(url string) {
 		}
 
 		if !queueCfg.IsTimeAllowed() {
-			logger.LogDownloadPending(url, d.Queue, fmt.Sprintf("Cannot resume: outside allowed time window (%s-%s)", 
+			logger.LogDownloadPending(url, d.Queue, fmt.Sprintf("Cannot resume: outside allowed time window (%s-%s)",
 				queueCfg.StartTime, queueCfg.EndTime))
 			return
 		}
 
 		if m.activeJobs[d.Queue] >= queueCfg.MaxConcurrent {
-			logger.LogDownloadPending(url, d.Queue, fmt.Sprintf("Cannot resume: queue at maximum capacity (%d downloads)", 
+			logger.LogDownloadPending(url, d.Queue, fmt.Sprintf("Cannot resume: queue at maximum capacity (%d downloads)",
 				queueCfg.MaxConcurrent))
 			return
 		}
@@ -118,17 +118,17 @@ func (m *Manager) processQueues() {
 	defer m.mutex.Unlock()
 
 	logger.LogDownloadEvent("SYSTEM", "Processing queues")
-	
+
 	for _, queueCfg := range m.config.Queues {
 		if !queueCfg.IsTimeAllowed() {
-			logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Outside allowed time window (%s-%s)", 
+			logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Outside allowed time window (%s-%s)",
 				queueCfg.Name, queueCfg.StartTime, queueCfg.EndTime))
 			continue
 		}
 
 		activeCount := m.activeJobs[queueCfg.Name]
 		if activeCount >= queueCfg.MaxConcurrent {
-			logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: At maximum capacity (%d/%d downloads)", 
+			logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: At maximum capacity (%d/%d downloads)",
 				queueCfg.Name, activeCount, queueCfg.MaxConcurrent))
 			continue
 		}
@@ -150,8 +150,8 @@ func (m *Manager) processQueues() {
 				}
 			}
 		}
-		
-		logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Started %d of %d pending downloads (%d/%d active)", 
+
+		logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Started %d of %d pending downloads (%d/%d active)",
 			queueCfg.Name, startedCount, pendingCount, activeCount, queueCfg.MaxConcurrent))
 	}
 }
@@ -160,7 +160,7 @@ func (m *Manager) processQueues() {
 func (m *Manager) startDownload(d *downloader.Download, q *config.QueueConfig) {
 	d.Status = "downloading"
 	m.activeJobs[q.Name]++
-	
+
 	logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Starting download %s in queue %s", d.URL, q.Name))
 
 	go func() {
@@ -182,7 +182,7 @@ func (m *Manager) startDownload(d *downloader.Download, q *config.QueueConfig) {
 
 		// Decrease active job count
 		m.activeJobs[q.Name]--
-		logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Active downloads decreased to %d/%d", 
+		logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Active downloads decreased to %d/%d",
 			q.Name, m.activeJobs[q.Name], q.MaxConcurrent))
 
 		// Save the updated state
@@ -196,7 +196,7 @@ func (m *Manager) startDownload(d *downloader.Download, q *config.QueueConfig) {
 func (m *Manager) RemoveDownload(url string) {
 	m.mutex.Lock()
 	defer m.mutex.Unlock()
-	
+
 	// Find the download first to log its details
 	var queueName string
 	for _, d := range m.config.Downloads {
@@ -221,7 +221,7 @@ func (m *Manager) RemoveDownload(url string) {
 	// Update active jobs count if needed
 	if d, exists := m.downloads[url]; exists && d.Status == "downloading" {
 		m.activeJobs[d.Queue]--
-		logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Active downloads decreased to %d", 
+		logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Queue %s: Active downloads decreased to %d",
 			d.Queue, m.activeJobs[d.Queue]))
 	}
 }
@@ -240,14 +240,14 @@ func (m *Manager) ProcessDownload(url string) {
 				break
 			}
 		}
-		
+
 		if queueCfg == nil {
 			logger.LogDownloadError(url, d.Queue, "Cannot process: queue configuration not found")
 			return
 		}
 
 		if !queueCfg.IsTimeAllowed() {
-			logger.LogDownloadPending(url, d.Queue, fmt.Sprintf("Cannot process: outside allowed time window (%s-%s)", 
+			logger.LogDownloadPending(url, d.Queue, fmt.Sprintf("Cannot process: outside allowed time window (%s-%s)",
 				queueCfg.StartTime, queueCfg.EndTime))
 			return
 		}
@@ -255,14 +255,14 @@ func (m *Manager) ProcessDownload(url string) {
 		// Check if we can start the download based on queue limits
 		if m.activeJobs[d.Queue] >= queueCfg.MaxConcurrent {
 			// Queue is at capacity, leave as pending
-			logger.LogDownloadPending(url, d.Queue, fmt.Sprintf("Cannot process: queue at maximum capacity (%d downloads)", 
+			logger.LogDownloadPending(url, d.Queue, fmt.Sprintf("Cannot process: queue at maximum capacity (%d downloads)",
 				queueCfg.MaxConcurrent))
 			return
 		}
 
 		// Process the download
 		m.startDownload(d, queueCfg)
-		
+
 		logger.LogDownloadEvent("QUEUE", fmt.Sprintf("Processing download %s in queue %s", url, d.Queue))
 	}
 }
@@ -271,7 +271,7 @@ func (m *Manager) ProcessDownload(url string) {
 func (m *Manager) ProcessAllQueues() {
 	go func() {
 		// Small delay to allow the UI to update
-		time.Sleep(100 * time.Millisecond)
+		//time.Sleep(100 * time.Millisecond)
 		m.processQueues()
 	}()
 }

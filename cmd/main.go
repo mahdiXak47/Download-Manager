@@ -12,16 +12,15 @@ import (
 
 func main() {
 	logFile := "download-logs.log"
-	execPath, err := os.Executable()
+	cwd, err := os.Getwd()
 	if err == nil {
-		execDir := filepath.Dir(execPath)
-		logFile = filepath.Join(execDir, "download-logs.log")
+		logFile = filepath.Join(cwd, "download-logs.log")
 	}
-	
+
 	if err := logger.Initialize(logFile); err != nil {
 		fmt.Printf("Warning: Could not initialize logger: %v\n", err)
 	}
-	
+
 	p := tea.NewProgram(tui.NewModel(),
 		tea.WithAltScreen(),
 		tea.WithMouseCellMotion(),
@@ -30,6 +29,6 @@ func main() {
 		fmt.Printf("Error running program: %v", err)
 		os.Exit(1)
 	}
-	
+
 	logger.Close()
 }
