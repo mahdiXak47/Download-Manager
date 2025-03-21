@@ -2,6 +2,7 @@ package tui
 
 import (
 	"fmt"
+	"path/filepath"
 	"strings"
 
 	"github.com/charmbracelet/lipgloss"
@@ -79,7 +80,11 @@ func renderTabBar(m Model) string {
 
 func renderAddDownloadTab(m Model) string {
 	var s strings.Builder
-	s.WriteString(menuHeaderStyle.Render("Add New Download"))
+
+	// Center all content
+	centerContainer := centerStyle.Copy().Width(m.Width - 8)
+
+	s.WriteString(centerContainer.Render(menuHeaderStyle.Render("Add New Download")))
 	s.WriteString("\n\n")
 
 	// Success or error message (if any)
@@ -94,16 +99,16 @@ func renderAddDownloadTab(m Model) string {
 				Foreground(lipgloss.Color(CurrentTheme.Error.Dark)).
 				BorderForeground(lipgloss.Color(CurrentTheme.Error.Dark))
 		}
-		s.WriteString(msgStyle.Render(m.AddDownloadMessage) + "\n\n")
+		s.WriteString(centerContainer.Render(msgStyle.Render(m.AddDownloadMessage)) + "\n\n")
 	}
 
 	// Queue selection first
 	if m.QueueSelectionMode {
-		s.WriteString(menuHeaderStyle.Render("Select Download Queue"))
+		s.WriteString(centerContainer.Render(menuHeaderStyle.Render("Select Download Queue")))
 		s.WriteString("\n\n")
 
 		// Available queues
-		s.WriteString(menuItemStyle.Render("Available Queues:"))
+		s.WriteString(centerContainer.Render(menuItemStyle.Render("Available Queues:")))
 		s.WriteString("\n\n")
 
 		// List all queues
@@ -121,31 +126,30 @@ func renderAddDownloadTab(m Model) string {
 			}
 
 			queueInfo := fmt.Sprintf("%s (%d/%d active)", q.Name, activeCount, q.MaxConcurrent)
-			s.WriteString(itemStyle.Render(queueInfo) + "\n")
+			s.WriteString(centerContainer.Render(itemStyle.Render(queueInfo)) + "\n")
 		}
 
 		// Help text
-		s.WriteString("\n" + helpStyle.Render("[ ↑/↓ ] Navigate   [ Enter ] Select   [ Esc ] Cancel"))
+		s.WriteString("\n" + helpStyle.Width(m.Width).Render("[ ↑/↓ ] Navigate   [ Enter ] Select   [ Esc ] Cancel"))
 	} else if m.URLInputMode {
-		// URL input field
-		s.WriteString(menuHeaderStyle.Render("Enter Download URL"))
+		s.WriteString(centerContainer.Render(menuHeaderStyle.Render("Enter Download URL")))
 		s.WriteString("\n\n")
 
 		// Selected queue display
-		s.WriteString(menuItemStyle.Render("Selected Queue: " + urlStyle.Render(m.InputQueue)))
+		s.WriteString(centerContainer.Render(menuItemStyle.Render("Selected Queue: " + urlStyle.Render(m.InputQueue))))
 		s.WriteString("\n\n")
 
 		// URL input field
-		s.WriteString(inputBoxStyle.Render(
+		s.WriteString(centerContainer.Render(inputBoxStyle.Render(
 			menuItemStyle.Render("URL: " + urlStyle.Render(m.InputURL+"_")),
-		))
+		)))
 
 		// Help text for input mode
-		s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Start Download   [ Esc ] Back"))
+		s.WriteString("\n\n" + helpStyle.Width(m.Width).Render("[ Enter ] Start Download   [ Esc ] Back"))
 	} else {
 		// Initial instructions
-		s.WriteString(menuItemStyle.Render("Press Enter to add a new download"))
-		s.WriteString("\n\n" + helpStyle.Render("[ Enter ] Start   [ Esc ] Back"))
+		s.WriteString(centerContainer.Render(menuItemStyle.Render("Press Enter to add a new download")))
+		s.WriteString("\n\n" + helpStyle.Width(m.Width).Render("[ Enter ] Start   [ Esc ] Back"))
 	}
 
 	return s.String()
@@ -153,10 +157,13 @@ func renderAddDownloadTab(m Model) string {
 
 func renderDownloadListTab(m Model) string {
 	var s strings.Builder
-	s.WriteString(menuHeaderStyle.Render("Download List"))
+
+	// Center all content
+	centerContainer := centerStyle.Copy().Width(m.Width - 8)
+
+	s.WriteString(centerContainer.Render(menuHeaderStyle.Render("Download List")))
 	s.WriteString("\n\n")
 
-	// Show retry message if any
 	if m.DownloadListMessage != "" {
 		msgStyle := errorStyle
 		if m.DownloadListSuccess {
@@ -168,84 +175,85 @@ func renderDownloadListTab(m Model) string {
 				Foreground(lipgloss.Color(CurrentTheme.Error.Dark)).
 				BorderForeground(lipgloss.Color(CurrentTheme.Error.Dark))
 		}
-		s.WriteString(msgStyle.Render(m.DownloadListMessage) + "\n\n")
+		s.WriteString(centerContainer.Render(msgStyle.Render(m.DownloadListMessage)) + "\n\n")
 	}
 
 	if len(m.Downloads) == 0 {
-		s.WriteString(menuItemStyle.Render("No downloads yet. Press '1' to switch to Add Download tab."))
+		s.WriteString(centerContainer.Render(menuItemStyle.Render("No downloads yet. Press '1' to switch to Add Download tab.")))
 	} else {
 		// Calculate table width
-		tableWidth := m.Width - 12 // Account for margins and padding
+		tableWidth := m.Width - 20 // Account for margins and padding
 
 		// Define column widths
 		idWidth := 4
-		statusWidth := 12
-		progressWidth := 12
-		speedWidth := 15
-		urlWidth := tableWidth - (idWidth + statusWidth + progressWidth + speedWidth + 8) // Account for separators
+		nameWidth := tableWidth * 3 / 8 // 37.5% of space
+		progressWidth := tableWidth / 8 // 12.5% of space
+		speedWidth := tableWidth / 8    // 12.5% of space
+		statusWidth := tableWidth / 4   // 25% of space
 
 		// Table header
 		header := lipgloss.JoinHorizontal(lipgloss.Center,
 			tableHeaderStyle.Width(idWidth).Render("#"),
-			tableHeaderStyle.Width(urlWidth).Render("URL"),
-			tableHeaderStyle.Width(statusWidth).Render("Status"),
+			tableHeaderStyle.Width(nameWidth).Render("Name"),
 			tableHeaderStyle.Width(progressWidth).Render("Progress"),
 			tableHeaderStyle.Width(speedWidth).Render("Speed"),
+			tableHeaderStyle.Width(statusWidth).Render("Status"),
 		)
 
 		// Table rows
 		var rows []string
 		for i, d := range m.Downloads {
-			// Choose style based on selection
-			rowStyle := tableRowStyle
+			rowStyle := normalRowStyle
 			if i == m.Selected {
-				rowStyle = tableSelectedRowStyle
+				rowStyle = selectedRowStyle
 			}
 
-			// Format each cell
+			// Format cells
 			idCell := rowStyle.Copy().Width(idWidth).Render(fmt.Sprintf("%d", i+1))
-			urlCell := rowStyle.Copy().Width(urlWidth).Render(truncateString(d.URL, urlWidth-2))
-			statusCell := rowStyle.Copy().Width(statusWidth).Render(d.Status)
+			nameCell := rowStyle.Copy().Width(nameWidth).Render(truncateString(filepath.Base(d.URL), nameWidth-2))
 			progressCell := rowStyle.Copy().Width(progressWidth).Render(fmt.Sprintf("%.1f%%", d.Progress))
 			speedCell := rowStyle.Copy().Width(speedWidth).Render(formatSpeed(d.Speed))
+			statusCell := rowStyle.Copy().Width(statusWidth).Render(d.Status)
 
-			// Join cells into row
 			row := lipgloss.JoinHorizontal(lipgloss.Center,
 				idCell,
-				urlCell,
-				statusCell,
+				nameCell,
 				progressCell,
 				speedCell,
+				statusCell,
 			)
 			rows = append(rows, row)
 		}
 
-		// Wrap in table container
+		// Render table
 		table := tableStyle.Render(
 			lipgloss.JoinVertical(lipgloss.Left,
 				header,
 				lipgloss.JoinVertical(lipgloss.Left, rows...),
 			),
 		)
-		s.WriteString(table)
+		s.WriteString(centerContainer.Render(table))
 	}
 
 	// Help text
-	helpText := "[ ↑/↓ ] Navigate   [ p ] Pause   [ r ] Resume   [ c ] Cancel   [ y ] Try Again   [ a ] Add New"
-	s.WriteString("\n" + helpStyle.Render(helpText))
+	s.WriteString("\n" + helpStyle.Width(m.Width).Render("[ ↑/↓ ] Navigate   [ Space ] Pause/Resume   [ d ] Delete   [ r ] Retry"))
 
 	return s.String()
 }
 
 func renderQueueListTab(m Model) string {
 	var s strings.Builder
-	s.WriteString(menuHeaderStyle.Render("Queue Management"))
+
+	// Center all content
+	centerContainer := centerStyle.Copy().Width(m.Width - 8)
+
+	s.WriteString(centerContainer.Render(menuHeaderStyle.Render("Queue Management")))
 	s.WriteString("\n\n")
 
 	if m.QueueFormMode {
 		// Queue form
 		formContent := strings.Builder{}
-		formContent.WriteString(menuHeaderStyle.Render("Queue Configuration"))
+		formContent.WriteString(centerContainer.Render(menuHeaderStyle.Render("Queue Configuration")))
 		formContent.WriteString("\n\n")
 
 		// Form fields with labels aligned
@@ -274,7 +282,16 @@ func renderQueueListTab(m Model) string {
 			}
 		}
 
+		// Create a form container with proper width and centering
+		formContainer := lipgloss.NewStyle().
+			Width(60).
+			Align(lipgloss.Center).
+			Border(lipgloss.RoundedBorder()).
+			BorderForeground(CurrentTheme.Border).
+			Padding(1)
+
 		// Render form fields
+		var formFields []string
 		for i := range labels {
 			style := queueFormFieldStyle
 			if i == m.QueueFormField {
@@ -283,40 +300,67 @@ func renderQueueListTab(m Model) string {
 
 			// Pad label to align all values
 			paddedLabel := labels[i] + strings.Repeat(" ", maxLabelLen-len(labels[i]))
-			formContent.WriteString(style.Render(fmt.Sprintf("%s : %s", paddedLabel, values[i])))
-			formContent.WriteString("\n")
+			formFields = append(formFields, style.Render(fmt.Sprintf("%s : %s", paddedLabel, values[i])))
 		}
 
-		s.WriteString(queueFormStyle.Render(formContent.String()))
-		s.WriteString("\n" + helpStyle.Render("[ ↑/↓ ] Navigate   [ Tab ] Next Field   [ Enter ] Save   [ Esc ] Cancel"))
+		// Join form fields and wrap in container
+		formContent.WriteString(centerContainer.Render(
+			formContainer.Render(
+				lipgloss.JoinVertical(lipgloss.Center, formFields...),
+			),
+		))
+
+		s.WriteString(formContent.String())
+		s.WriteString("\n\n" + helpStyle.Width(m.Width).Render("[ ↑/↓ ] Navigate   [ Tab ] Next Field   [ Enter ] Save   [ Esc ] Cancel"))
 	} else {
-		// Queue list
 		if len(m.Config.Queues) == 0 {
-			s.WriteString(menuItemStyle.Render("No queues configured. Press 'n' to add a queue."))
+			s.WriteString(centerContainer.Render(menuItemStyle.Render("No queues configured. Press 'n' to add a queue.")))
 		} else {
-			// Calculate table width
-			tableWidth := m.Width - 12 // Account for margins and padding
+			// Calculate table width and column widths
+			tableWidth := m.Width - 24 // Account for margins, padding, and borders
 
-			// Define column widths
-			nameWidth := 20
-			pathWidth := tableWidth - (20 + 15 + 15 + 15 + 8) // Remaining space for path
-			maxConcurrentWidth := 15
-			speedLimitWidth := 15
-			activeWidth := 15
+			// Define proportional column widths
+			nameWidth := tableWidth / 4     // 25%
+			pathWidth := tableWidth * 2 / 5 // 40%
+			concWidth := tableWidth / 8     // 12.5%
+			speedWidth := tableWidth / 8    // 12.5%
+			activeWidth := tableWidth / 10  // 10%
 
-			// Table header
-			header := lipgloss.JoinHorizontal(lipgloss.Center,
-				tableHeaderStyle.Width(nameWidth).Render("Name"),
-				tableHeaderStyle.Width(pathWidth).Render("Path"),
-				tableHeaderStyle.Width(maxConcurrentWidth).Render("Max Concurrent"),
-				tableHeaderStyle.Width(speedLimitWidth).Render("Speed Limit"),
-				tableHeaderStyle.Width(activeWidth).Render("Active/Max"),
-			)
+			// Create table container style
+			tableContainer := tableStyle.Copy().
+				BorderStyle(lipgloss.RoundedBorder()).
+				BorderForeground(CurrentTheme.Border).
+				Padding(0, 1).
+				Width(tableWidth + 4) // Add extra width for borders
 
-			// Queue list rows
+			// Create header cells with borders
+			headerStyle := tableHeaderStyle.Copy().
+				BorderStyle(lipgloss.ThickBorder()).
+				BorderBottom(true).
+				BorderForeground(CurrentTheme.Highlight)
+
+			headers := []struct {
+				title string
+				width int
+			}{
+				{"Name", nameWidth},
+				{"Path", pathWidth},
+				{"Max", concWidth},
+				{"Speed", speedWidth},
+				{"Active", activeWidth},
+			}
+
+			// Build header row
+			var headerCells []string
+			for _, h := range headers {
+				headerCells = append(headerCells, headerStyle.Width(h.width).Render(h.title))
+			}
+			headerRow := lipgloss.JoinHorizontal(lipgloss.Center, headerCells...)
+
+			// Build data rows
 			var rows []string
 			for i, q := range m.Config.Queues {
-				// Count active downloads for this queue
+				// Count active downloads
 				activeCount := 0
 				for _, d := range m.Downloads {
 					if d.Queue == q.Name && d.Status == "downloading" {
@@ -324,87 +368,113 @@ func renderQueueListTab(m Model) string {
 					}
 				}
 
-				// Choose style based on selection
-				rowStyle := tableRowStyle
+				// Choose row style
+				rowStyle := normalRowStyle.Copy()
 				if i == m.QueueSelected {
-					rowStyle = tableSelectedRowStyle
+					rowStyle = selectedRowStyle.Copy()
 				}
 
 				// Format speed limit
-				speedLimit := "Unlimited"
+				speedLimit := "∞"
 				if q.SpeedLimit > 0 {
-					speedLimit = fmt.Sprintf("%d KB/s", q.SpeedLimit)
+					speedLimit = fmt.Sprintf("%dK", q.SpeedLimit)
 				}
 
-				// Format each cell
-				nameCell := rowStyle.Copy().Width(nameWidth).Render(q.Name)
-				pathCell := rowStyle.Copy().Width(pathWidth).Render(truncateString(q.Path, pathWidth-2))
-				maxConcurrentCell := rowStyle.Copy().Width(maxConcurrentWidth).Render(fmt.Sprintf("%d", q.MaxConcurrent))
-				speedLimitCell := rowStyle.Copy().Width(speedLimitWidth).Render(speedLimit)
-				activeCell := rowStyle.Copy().Width(activeWidth).Render(fmt.Sprintf("%d/%d", activeCount, q.MaxConcurrent))
+				// Create row cells
+				cells := []struct {
+					content string
+					width   int
+				}{
+					{q.Name, nameWidth},
+					{truncateString(q.Path, pathWidth-2), pathWidth},
+					{fmt.Sprintf("%d", q.MaxConcurrent), concWidth},
+					{speedLimit, speedWidth},
+					{fmt.Sprintf("%d/%d", activeCount, q.MaxConcurrent), activeWidth},
+				}
 
-				// Join cells into row
-				row := lipgloss.JoinHorizontal(lipgloss.Center,
-					nameCell,
-					pathCell,
-					maxConcurrentCell,
-					speedLimitCell,
-					activeCell,
-				)
-				rows = append(rows, row)
+				// Build row with cells
+				var rowCells []string
+				for _, cell := range cells {
+					rowCells = append(rowCells, rowStyle.Width(cell.width).Render(cell.content))
+				}
+				rows = append(rows, lipgloss.JoinHorizontal(lipgloss.Center, rowCells...))
 			}
 
-			// Wrap in table container
-			table := tableStyle.Render(
-				lipgloss.JoinVertical(lipgloss.Left,
-					header,
-					lipgloss.JoinVertical(lipgloss.Left, rows...),
+			// Combine everything into the table
+			table := tableContainer.Render(
+				lipgloss.JoinVertical(lipgloss.Center,
+					headerRow,
+					lipgloss.JoinVertical(lipgloss.Center, rows...),
 				),
 			)
-			s.WriteString(table)
-		}
 
-		// Help text - centered
-		helpText := "[ ↑/↓ ] Navigate   [ n ] New Queue   [ e ] Edit Queue   [ d ] Delete Queue"
-		helpStyle := helpStyle.Copy().Width(m.Width - 8).Align(lipgloss.Center)
-		s.WriteString("\n" + helpStyle.Render(helpText))
+			// Center the table in the available space
+			s.WriteString(centerContainer.Render(table))
+		}
 	}
+
+	// Help text
+	s.WriteString("\n\n" + helpStyle.Width(m.Width).Render("[ ↑/↓ ] Navigate   [ n ] New   [ e ] Edit   [ d ] Delete"))
 
 	return s.String()
 }
 
 func renderSettingsTab(m Model) string {
 	var s strings.Builder
-	s.WriteString(menuHeaderStyle.Render("Settings & Help"))
+
+	// Create a centered container style
+	centerStyle := lipgloss.NewStyle().
+		Width(m.Width - 8).
+		Align(lipgloss.Center)
+
+	s.WriteString(menuHeaderStyle.Copy().Width(m.Width - 8).Align(lipgloss.Center).Render("Settings & Help"))
 	s.WriteString("\n\n")
 
 	// Theme settings
-	s.WriteString(menuHeaderStyle.Render("Appearance"))
+	s.WriteString(menuHeaderStyle.Copy().Width(m.Width - 8).Align(lipgloss.Center).Render("Appearance"))
 	s.WriteString("\n")
-	s.WriteString(menuItemStyle.Render("Current Theme: " + m.CurrentTheme))
-	s.WriteString("\n" + menuItemStyle.Render("Press 't' to cycle through available themes"))
+	s.WriteString(centerStyle.Render("Current Theme: " + m.CurrentTheme))
+	s.WriteString("\n" + centerStyle.Render("Press 't' to cycle through available themes"))
 
 	// Keyboard shortcuts
-	s.WriteString("\n\n" + menuHeaderStyle.Render("Keyboard Shortcuts"))
+	s.WriteString("\n\n" + menuHeaderStyle.Copy().Width(m.Width-8).Align(lipgloss.Center).Render("Keyboard Shortcuts"))
 	s.WriteString("\n")
-	s.WriteString(menuItemStyle.Render("1-4:             Switch tabs"))
-	s.WriteString("\n" + menuItemStyle.Render("↑/↓ or j/k:      Navigate lists"))
-	s.WriteString("\n" + menuItemStyle.Render("Enter:           Confirm/Submit"))
-	s.WriteString("\n" + menuItemStyle.Render("Esc:             Cancel/Back"))
-	s.WriteString("\n" + menuItemStyle.Render("p:               Pause download"))
-	s.WriteString("\n" + menuItemStyle.Render("r:               Resume download"))
-	s.WriteString("\n" + menuItemStyle.Render("c:               Cancel download"))
-	s.WriteString("\n" + menuItemStyle.Render("n:               New queue"))
-	s.WriteString("\n" + menuItemStyle.Render("e:               Edit queue"))
-	s.WriteString("\n" + menuItemStyle.Render("d:               Delete queue"))
-	s.WriteString("\n" + menuItemStyle.Render("t:               Change theme"))
-	s.WriteString("\n" + menuItemStyle.Render("q:               Quit application"))
+
+	// Create a style for keyboard shortcuts that's centered but aligns the text internally
+	shortcutStyle := lipgloss.NewStyle().
+		Width(40).           // Fixed width for consistent alignment
+		PaddingLeft(4).      // Add some padding to offset from center
+		Align(lipgloss.Left) // Left align the text within the fixed width
+
+	// Wrap the shortcut style in the center style
+	shortcutContainer := centerStyle.Copy().
+		Width(m.Width - 8).
+		Align(lipgloss.Center)
+
+	shortcuts := []string{
+		"1-4:             Switch tabs",
+		"↑/↓ or j/k:      Navigate lists",
+		"Enter:           Confirm/Submit",
+		"Esc:             Cancel/Back",
+		"p:               Pause download",
+		"r:               Resume download",
+		"c:               Cancel download",
+		"n:               New queue",
+		"e:               Edit queue",
+		"d:               Delete queue",
+		"t:               Change theme",
+		"q:               Quit application",
+	}
+
+	for _, shortcut := range shortcuts {
+		s.WriteString(shortcutContainer.Render(shortcutStyle.Render(shortcut)) + "\n")
+	}
 
 	// About
-	s.WriteString("\n\n" + menuHeaderStyle.Render("About"))
+	s.WriteString("\n" + menuHeaderStyle.Copy().Width(m.Width-8).Align(lipgloss.Center).Render("About"))
 	s.WriteString("\n")
-	s.WriteString(menuItemStyle.Render("Download Manager v0.1"))
-	s.WriteString("\n" + menuItemStyle.Render("A terminal-based download manager with queue support"))
+	s.WriteString(centerStyle.Render("Download Manager v0.1"))
+	s.WriteString("\n" + centerStyle.Render("A terminal-based download manager with queue support"))
 
 	return s.String()
 }
@@ -425,4 +495,13 @@ func formatSpeed(speed int64) string {
 	} else {
 		return fmt.Sprintf("%.1f MB/s", float64(speed)/(1024*1024))
 	}
+}
+
+// Helper function to center text in a given width
+func centerText(text string, width int) string {
+	if width <= len(text) {
+		return text
+	}
+	leftPadding := (width - len(text)) / 2
+	return strings.Repeat(" ", leftPadding) + text
 }

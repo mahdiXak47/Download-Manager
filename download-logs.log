@@ -1130,3 +1130,128 @@
 [2025-03-21 12:31:30] [SYSTEM] Processing queues
 [2025-03-21 12:31:30] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
 [2025-03-21 12:31:30] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:31:39] [SYSTEM] Processing queues
+[2025-03-21 12:31:39] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:31:49] [SYSTEM] Processing queues
+[2025-03-21 12:31:49] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:31:59] [SYSTEM] Processing queues
+[2025-03-21 12:31:59] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:32:09] [SYSTEM] Processing queues
+[2025-03-21 12:32:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:32:19] [SYSTEM] Processing queues
+[2025-03-21 12:32:19] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:32:29] [SYSTEM] Processing queues
+[2025-03-21 12:32:29] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:32:39] [SYSTEM] Processing queues
+[2025-03-21 12:32:39] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:32:49] [SYSTEM] Processing queues
+[2025-03-21 12:32:49] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:32:49] [SYSTEM] Logger initialized
+[2025-03-21 12:32:49] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 12:32:49] [SYSTEM] Queue Manager started
+[2025-03-21 12:32:59] [SYSTEM] Processing queues
+[2025-03-21 12:32:59] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:32:59] [SYSTEM] Processing queues
+[2025-03-21 12:32:59] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:32:59] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:33:09] [SYSTEM] Processing queues
+[2025-03-21 12:33:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:09] [SYSTEM] Processing queues
+[2025-03-21 12:33:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:09] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:33:19] [SYSTEM] Processing queues
+[2025-03-21 12:33:19] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:19] [SYSTEM] Processing queues
+[2025-03-21 12:33:19] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:19] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:33:29] [SYSTEM] Processing queues
+[2025-03-21 12:33:29] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:29] [SYSTEM] Processing queues
+[2025-03-21 12:33:29] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:29] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:33:39] [SYSTEM] Processing queues
+[2025-03-21 12:33:39] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:39] [SYSTEM] Processing queues
+[2025-03-21 12:33:39] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:39] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:33:49] [SYSTEM] Processing queues
+[2025-03-21 12:33:49] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:49] [SYSTEM] Processing queues
+[2025-03-21 12:33:49] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:49] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:33:59] [SYSTEM] Processing queues
+[2025-03-21 12:33:59] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:59] [SYSTEM] Processing queues
+[2025-03-21 12:33:59] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:33:59] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:34:09] [SYSTEM] Processing queues
+[2025-03-21 12:34:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:34:09] [SYSTEM] Processing queues
+[2025-03-21 12:34:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:34:09] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:34:19] [SYSTEM] Processing queues
+[2025-03-21 12:34:19] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:38:40] [SYSTEM] Logger initialized
+[2025-03-21 12:38:40] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 12:38:40] [SYSTEM] Queue Manager started
+[2025-03-21 12:38:50] [SYSTEM] Processing queues
+[2025-03-21 12:38:50] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:38:50] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:39:00] [SYSTEM] Processing queues
+[2025-03-21 12:39:00] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:39:00] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:39:10] [SYSTEM] Processing queues
+[2025-03-21 12:39:10] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:39:10] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:39:20] [SYSTEM] Processing queues
+[2025-03-21 12:39:20] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:39:20] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:50:11] [SYSTEM] Logger initialized
+[2025-03-21 12:50:11] [SYSTEM] Queue Manager initialized with 3 downloads
+[2025-03-21 12:50:11] [SYSTEM] Queue Manager started
+[2025-03-21 12:50:21] [SYSTEM] Processing queues
+[2025-03-21 12:50:21] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:50:21] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:50:31] [SYSTEM] Processing queues
+[2025-03-21 12:50:31] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:50:31] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:50:41] [SYSTEM] Processing queues
+[2025-03-21 12:50:41] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:50:41] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:50:51] [SYSTEM] Processing queues
+[2025-03-21 12:50:51] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:50:51] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:50:58] [QUEUE] Removed download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 from queue queuer initialized
+[2025-03-21 12:51:01] [SYSTEM] Processing queues
+[2025-03-21 12:51:01] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:51:01] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:51:11] [SYSTEM] Processing queues
+[2025-03-21 12:51:11] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:51:11] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:51:21] [SYSTEM] Processing queues
+[2025-03-21 12:51:21] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:51:21] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:51:31] [SYSTEM] Processing queues
+[2025-03-21 12:51:31] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:51:31] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:53:12] [SYSTEM] Logger initialized
+[2025-03-21 12:53:12] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 12:53:12] [SYSTEM] Queue Manager started
+[2025-03-21 12:53:22] [SYSTEM] Processing queues
+[2025-03-21 12:53:22] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:53:22] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:53:32] [SYSTEM] Processing queues
+[2025-03-21 12:53:32] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:53:32] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:53:42] [SYSTEM] Processing queues
+[2025-03-21 12:53:42] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:53:42] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:55:58] [SYSTEM] Logger initialized
+[2025-03-21 12:55:58] [SYSTEM] Queue Manager initialized with 2 downloads
+[2025-03-21 12:55:58] [SYSTEM] Queue Manager started
+[2025-03-21 12:56:08] [SYSTEM] Processing queues
+[2025-03-21 12:56:08] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:56:08] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
+[2025-03-21 12:56:18] [SYSTEM] Processing queues
+[2025-03-21 12:56:18] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 12:56:18] [QUEUE] Queue queue2: Outside allowed time window (00:02-00:05)
