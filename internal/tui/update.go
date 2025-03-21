@@ -56,7 +56,7 @@ func handleKeyPress(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 					m.URLInputMode = false
 					return m, nil
 				}
-				
+
 				// Check if the queue has capacity
 				queueName := m.InputQueue
 				var queue *config.QueueConfig
@@ -66,7 +66,7 @@ func handleKeyPress(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 						break
 					}
 				}
-				
+
 				if queue != nil {
 					// Count active downloads in this queue
 					activeCount := 0
@@ -75,27 +75,30 @@ func handleKeyPress(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 							activeCount++
 						}
 					}
-					
+
 					if activeCount >= queue.MaxConcurrent {
 						m.AddDownloadMessage = fmt.Sprintf("Error: Queue '%s' is at maximum capacity (%d downloads)", queueName, queue.MaxConcurrent)
 						m.AddDownloadSuccess = false
 						m.URLInputMode = false
 						return m, nil
 					}
-					
+
+					// Store URL before clearing it
+					url := m.InputURL
+
 					// All checks passed, start the download
 					cmd := func() tea.Msg {
 						return StartDownloadMsg{
-							URL:   m.InputURL,
+							URL:   url,
 							Queue: m.InputQueue,
 						}
 					}
-					
+
 					m.AddDownloadMessage = fmt.Sprintf("Success: Download started in queue '%s'", queueName)
 					m.AddDownloadSuccess = true
 					m.URLInputMode = false
 					m.InputURL = ""
-					
+
 					return m, cmd
 				} else {
 					m.AddDownloadMessage = "Error: Selected queue not found"
@@ -169,7 +172,7 @@ func handleKeyPress(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		}
 		return m, nil
 	}
-	
+
 	// Handle number keys for tab switching (when not in input mode)
 	switch msg.String() {
 	case "1":
@@ -301,14 +304,14 @@ func handleNavigationMode(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 // handleStartDownload processes a new download request
 func handleStartDownload(m Model, msg StartDownloadMsg) (tea.Model, tea.Cmd) {
 	m.AddDownload(msg.URL, msg.Queue)
-	
+
 	// Custom command to help with UI refresh after adding a download
 	var cmd tea.Cmd = func() tea.Msg {
 		// Wait briefly for download to start
 		time.Sleep(300 * time.Millisecond)
 		return TickMsg{}
 	}
-	
+
 	return m, cmd
 }
 
@@ -365,7 +368,7 @@ func handleAddDownloadTab(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 			if len(m.Config.Queues) > 0 {
 				m.QueueSelectionMode = true
 				m.QueueSelected = 0 // Select first queue by default
-				
+
 				// Clear any previous messages
 				m.AddDownloadMessage = ""
 				m.AddDownloadSuccess = false
@@ -379,7 +382,7 @@ func handleAddDownloadTab(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 			m.AddDownloadSuccess = false
 		}
 	}
-	
+
 	return m, nil
 }
 
@@ -584,7 +587,7 @@ func handleQueueFormInput(m Model, msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 			}
 		}
 	}
-	
+
 	return m, nil
 }
 
@@ -594,12 +597,12 @@ func validateURL(urlStr string) bool {
 	if !strings.HasPrefix(urlStr, "http://") && !strings.HasPrefix(urlStr, "https://") {
 		return false
 	}
-	
+
 	// Parse the URL
 	_, err := url.Parse(urlStr)
 	if err != nil {
 		return false
 	}
-	
+
 	return true
 }
