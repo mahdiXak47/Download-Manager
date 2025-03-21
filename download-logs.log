@@ -187,3 +187,73 @@
 [2025-03-21 11:35:14] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: pending -> error
 [2025-03-21 11:35:14] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Queue: queuer initialized, Reason: Retry attempt 2 of 3 after error: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
 [2025-03-21 11:35:14] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: error -> pending
+[2025-03-21 11:35:19] [SYSTEM] Processing queues
+[2025-03-21 11:35:19] [QUEUE] Queue queueue Manager initialized with 2 downloads: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 11:35:19] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized
+[2025-03-21 11:35:19] [QUEUE] Queue queuer initialized: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 11:35:19] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Queue: queuer initialized, Bandwidth Limit: 0 KB/s
+[2025-03-21 11:35:19] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading
+[2025-03-21 11:35:19] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:19] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:19] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> error
+[2025-03-21 11:35:19] [PENDING] Download pending - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Queue: queuer initialized, Reason: Retry attempt 3 of 3 after error: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:19] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: error -> pending
+[2025-03-21 11:35:19] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:19] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:19] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: pending -> error
+[2025-03-21 11:35:19] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: download failed after 3 retries: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:19] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: Download failed: download failed after 3 retries: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:19] [QUEUE] Queue queuer initialized: Active downloads decreased to 0/3
+[2025-03-21 11:35:24] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:24] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:24] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: error -> error
+[2025-03-21 11:35:24] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: download failed after 3 retries: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:24] [ERROR] Error for download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue queuer initialized: Download failed: download failed after 3 retries: failed to create directory: mkdir [2025-03-21 08:09:53] [SYSTEM] Queue Manager initialized with 2 downloads: The filename, directory name, or volume label syntax is incorrect.
+[2025-03-21 11:35:24] [QUEUE] Queue queuer initialized: Active downloads decreased to -1/3
+[2025-03-21 11:35:29] [SYSTEM] Processing queues
+[2025-03-21 11:35:29] [QUEUE] Queue queueue Manager initialized with 2 downloads: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 11:35:29] [QUEUE] Queue queuer initialized: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 11:35:39] [SYSTEM] Processing queues
+[2025-03-21 11:35:39] [QUEUE] Queue queueue Manager initialized with 2 downloads: Started 0 of 0 pending downloads (1/3 active)
+[2025-03-21 11:35:39] [QUEUE] Queue queuer initialized: Started 0 of 0 pending downloads (-1/3 active)
+[2025-03-21 11:35:49] [SYSTEM] Processing queues
+[2025-03-21 11:35:59] [SYSTEM] Processing queues
+[2025-03-21 11:35:59] [QUEUE] Queue : Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:36:09] [SYSTEM] Processing queues
+[2025-03-21 11:36:09] [QUEUE] Queue : Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:36:19] [SYSTEM] Processing queues
+[2025-03-21 11:36:19] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:36:29] [SYSTEM] Processing queues
+[2025-03-21 11:36:29] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:36:31] [SYSTEM] Processing queues
+[2025-03-21 11:36:31] [QUEUE] Starting download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 in queue default
+[2025-03-21 11:36:31] [QUEUE] Queue default: Started 1 of 1 pending downloads (1/3 active)
+[2025-03-21 11:36:31] [START] Download started - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Queue: default, Bandwidth Limit: 0 KB/s
+[2025-03-21 11:36:31] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading
+[2025-03-21 11:36:31] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading (Progress: 0.00%, Downloaded: 0/9844878 bytes)
+[2025-03-21 11:36:32] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> downloading (Progress: 88.87%, Downloaded: 8748783/9844878 bytes)
+[2025-03-21 11:36:32] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> completed (Progress: 100.00%, Downloaded: 9844878/9844878 bytes)
+[2025-03-21 11:36:32] [COMPLETE] Download complete - URL: https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Path: downloads\Mohammad%20Moharami%20-%20Nefrin%20(320).mp3, Duration: 1.6045897s, Size: 9844878 bytes, Avg Speed: 5.85 MB/s
+[2025-03-21 11:36:32] [STATUS] Status changed for https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3: downloading -> completed (Progress: 100.00%, Downloaded: 9844878/9844878 bytes)
+[2025-03-21 11:36:32] [QUEUE] Download https://dls.musics-fa.com/song/alibz/dlswm/Mohammad%20Moharami%20-%20Nefrin%20(320).mp3 completed in queue default
+[2025-03-21 11:36:32] [QUEUE] Queue default: Active downloads decreased to 0/3
+[2025-03-21 11:36:39] [SYSTEM] Processing queues
+[2025-03-21 11:36:39] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:36:49] [SYSTEM] Processing queues
+[2025-03-21 11:36:49] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:36:59] [SYSTEM] Processing queues
+[2025-03-21 11:36:59] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:37:09] [SYSTEM] Processing queues
+[2025-03-21 11:37:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:37:19] [SYSTEM] Processing queues
+[2025-03-21 11:37:19] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:37:29] [SYSTEM] Processing queues
+[2025-03-21 11:37:29] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:37:39] [SYSTEM] Processing queues
+[2025-03-21 11:37:39] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:37:49] [SYSTEM] Processing queues
+[2025-03-21 11:37:49] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:37:59] [SYSTEM] Processing queues
+[2025-03-21 11:37:59] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
+[2025-03-21 11:38:09] [SYSTEM] Processing queues
+[2025-03-21 11:38:09] [QUEUE] Queue default: Started 0 of 0 pending downloads (0/3 active)
