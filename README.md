@@ -51,6 +51,15 @@ A sophisticated download manager application written in Go with Terminal User In
   - Bandwidth limiting capabilities
   - Progress tracking and speed calculation
   - File directory management
+  - Multi-part downloading for large files (when servers support Range headers)
+
+- **Multi-part Download Support**: Added parallel downloading capability:
+
+  - Automatically splits large files (default >10MB) into multiple parts
+  - Downloads parts in parallel for faster speeds
+  - Intelligently falls back to single-part when servers don't support ranges
+  - Configurable number of parts (default 5) and size threshold
+  - Ensures parts are correctly assembled into a complete file
 
 - **Comprehensive Logging System**: Added detailed logging functionality:
 
@@ -61,64 +70,54 @@ A sophisticated download manager application written in Go with Terminal User In
   - Allows troubleshooting of download issues
 
 - **Enhanced Error Recovery**: Added manual retry functionality:
+
   - New "Try Again" option (key: 'y') for failed downloads
   - Clear visual feedback with color-coded messages
   - Limited to 3 retry attempts per download
   - Automatically processes retried downloads when queue capacity allows
 
+- **Test Suite Implementation**: Added comprehensive testing capabilities:
+  - Unit tests for logger functionality
+  - Unit tests for downloader core components
+  - Rate limiter testing with timing verification
+  - Mock HTTP servers for controlled download testing
+  - Pause/resume/cancel functionality tests
+  - Multi-part download testing
+
 ## Project Architecture
 
-````
+```
 .
 ├── cmd/
-│   └── download-manager/
-│       └── main.go
+│   ├── main.go                # Application entry point
+│   ├── main_test.go           # Main package tests
+│   └── test_download/         # Standalone test download utility
+│       └── main.go            # Test download implementation
 ├── internal/
 │   ├── tui/
-│   │   ├── model.go
-│   │   ├── update.go
-│   │   ├── view.go
-│   │   ├── components/
-│   │   │   ├── progress.go
-│   │   │   ├── queue.go
-│   │   │   ├── status.go
-│   │   │   └── tabs.go
-│   │   ├── constants.go
-│   │   └── messages.go
+│   │   ├── model.go           # Core TUI model
+│   │   ├── update.go          # Update logic for TUI
+│   │   ├── view.go            # View rendering for TUI
+│   │   ├── styles.go          # Style definitions
+│   │   ├── themes.go          # Theme definitions
+│   │   └── messages.go        # Message definitions
 │   ├── downloader/
-│   │   └── download.go     # Consolidated download implementation
+│   │   ├── download.go        # Download implementation
+│   │   ├── ratelimiter.go     # Rate limiting functionality
+│   │   ├── downloader_test.go # Downloader tests
+│   │   └── ratelimiter_test.go # Rate limiter tests
 │   ├── queue/
-│   │   └── manager.go      # Queue management system
+│   │   └── manager.go         # Queue management system
+│   ├── logger/
+│   │   ├── logger.go          # Logging system
+│   │   └── logger_test.go     # Logger tests
 │   └── config/
-│       └── config.go       # Configuration management
-├── pkg/
-│   ├── protocol/
-│   └── utils/
-├── configs/
-├── docs/
-│   ├── architecture.md
-│   ├── api.md
-│   ├── user-guide.md
-│   └── dev-guide.md
-├── logs/
-│   └── download.log
-├── scripts/
-│   ├── install.sh
-│   ├── setup.sh
-│   └── test.sh
-├── tests/
-│   ├── downloader/
-│   ├── queue/
-│   ├── scheduler/
-│   └── tui/
-├── Makefile
-├── Dockerfile
-├── go.mod
-├── go.sum
-├── .gitignore
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-└── README.md
+│       └── config.go          # Configuration management
+├── downloads/                 # Download destination folder
+├── go.mod                     # Go module definition
+├── go.sum                     # Go module checksums
+└── README.md                  # Project documentation
+```
 
 ## Technical Stack
 
@@ -157,6 +156,7 @@ A sophisticated download manager application written in Go with Terminal User In
    - Error handling
    - Logging system
    - Performance optimization
+   - Testing and quality assurance
 
 ## Installation
 
@@ -169,13 +169,19 @@ cd download-manager
 
 # Build the application
 go build
-````
+```
 
 ## Usage
 
 ```bash
 # Run the application
 ./download-manager
+
+# Run tests
+go test ./...
+
+# Run the test download utility (for testing download functionality independently)
+go run cmd/test_download/main.go
 ```
 
 ## Features
@@ -214,6 +220,28 @@ The interface supports keyboard navigation with tabs displayed at the bottom of 
 - **d**: Delete selected queue (in Queue tab)
 - **t**: Change theme (press when not typing in an input field)
 - **q**: Quit application
+
+## Testing
+
+The download manager includes a comprehensive test suite:
+
+- **Unit Tests**: Test individual components for correctness
+- **Integration Tests**: Test component interaction
+- **Mock Testing**: Using httptest package to simulate HTTP servers
+- **Performance Testing**: Rate limiter timing verification
+
+To run all tests:
+
+```bash
+go test ./...
+```
+
+To run tests for a specific package:
+
+```bash
+go test ./internal/logger
+go test ./internal/downloader
+```
 
 ## Technical Highlights
 

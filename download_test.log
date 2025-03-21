@@ -1,0 +1,30 @@
+[2025-03-21 04:23:53] [START] Starting download of https://dl.musichi.ir/1403/11/26/Amin%20Tijay%20-%20Chikar%20Kardi%20Baam.mp3 to downloads\Amin%20Tijay%20-%20Chikar%20Kardi%20Baam.mp3
+[2025-03-21 04:23:53] [INFO] Sending HEAD request
+[2025-03-21 04:23:56] [INFO] Server supports ranges: true
+[2025-03-21 04:23:56] [INFO] File size: 6843087 bytes
+[2025-03-21 04:23:56] [INFO] Sending GET request
+[2025-03-21 04:23:56] [INFO] Response status: 200 OK
+[2025-03-21 04:23:56] [INFO] Creating output file: downloads\Amin%20Tijay%20-%20Chikar%20Kardi%20Baam.mp3
+[2025-03-21 04:23:56] [INFO] Starting file download
+[2025-03-21 04:23:57] [PROGRESS] Progress: 3.46% (236736/6843087 bytes), Speed: 188.04 KB/s
+[2025-03-21 04:23:59] [PROGRESS] Progress: 9.08% (621102/6843087 bytes), Speed: 223.47 KB/s
+[2025-03-21 04:24:00] [PROGRESS] Progress: 18.65% (1276462/6843087 bytes), Speed: 308.72 KB/s
+[2025-03-21 04:24:01] [PROGRESS] Progress: 31.10% (2128430/6843087 bytes), Speed: 411.30 KB/s
+[2025-03-21 04:24:03] [PROGRESS] Progress: 33.98% (2325038/6843087 bytes), Speed: 362.08 KB/s
+[2025-03-21 04:24:04] [PROGRESS] Progress: 47.86% (3275310/6843087 bytes), Speed: 424.83 KB/s
+[2025-03-21 04:24:05] [PROGRESS] Progress: 55.52% (3799598/6843087 bytes), Speed: 430.21 KB/s
+[2025-03-21 04:24:06] [PROGRESS] Progress: 66.54% (4553262/6843087 bytes), Speed: 461.72 KB/s
+[2025-03-21 04:24:07] [PROGRESS] Progress: 74.68% (5110318/6843087 bytes), Speed: 467.90 KB/s
+[2025-03-21 04:24:08] [PROGRESS] Progress: 78.63% (5380654/6843087 bytes), Speed: 442.48 KB/s
+[2025-03-21 04:24:09] [PROGRESS] Progress: 86.65% (5929518/6843087 bytes), Speed: 448.83 KB/s
+[2025-03-21 04:24:10] [PROGRESS] Progress: 96.71% (6617646/6843087 bytes), Speed: 459.82 KB/s
+[2025-03-21 04:24:10] [COMPLETE] Download completed in 14.2031036s, Total: 6843087 bytes, Avg Speed: 470.51 KB/s
+[2025-03-21 04:49:21] [START] Starting download of https://dl.musichi.ir/1403/11/26/Amin%20Tijay%20-%20Chikar%20Kardi%20Baam.mp3 to downloads\Amin%20Tijay%20-%20Chikar%20Kardi%20Baam.mp3
+[2025-03-21 04:49:21] [INFO] Sending HEAD request
+[2025-03-21 04:49:22] [INFO] Server supports ranges: true
+[2025-03-21 04:49:22] [INFO] File size: 6843087 bytes
+[2025-03-21 04:49:22] [INFO] Sending GET request
+[2025-03-21 04:49:22] [INFO] Response status: 200 OK
+[2025-03-21 04:49:22] [INFO] Creating output file: downloads\Amin%20Tijay%20-%20Chikar%20Kardi%20Baam.mp3
+[2025-03-21 04:49:22] [INFO] Starting file download
+[2025-03-21 04:49:23] [COMPLETE] Download completed in 937.5599ms, Total: 6843087 bytes, Avg Speed: 7127.76 KB/s
