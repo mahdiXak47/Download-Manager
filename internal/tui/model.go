@@ -57,6 +57,10 @@ type Model struct {
 	QueueFormMode        bool // Whether we're in queue form mode
 	QueueFormField       int  // Current field in queue form
 
+	// Add input fields for scheduled start date and time
+	InputScheduledStartDate string // New field for scheduled start date
+	InputScheduledStartTime string // New field for scheduled start time
+
 	// Data
 	Downloads    []downloader.Download
 	Config       *config.Config
@@ -68,6 +72,10 @@ type Model struct {
 	Height int
 
 	CurrentTheme string
+
+	// Add fields to track download start and completion times
+	StartTime      time.Time
+	CompletionTime time.Time
 }
 
 // NewModel creates and initializes a new model
@@ -141,9 +149,8 @@ func (m *Model) HandleInput(msg tea.KeyMsg) (Model, tea.Cmd) {
 					m.InputQueueName = m.InputQueueName[:len(m.InputQueueName)-1]
 				}
 			case 1:
-				if len(m.InputQueuePath) > 0 {
-					m.InputQueuePath = m.InputQueuePath[:len(m.InputQueuePath)-1]
-				}
+				// Restrict editing of the file path in queue form mode
+				// m.InputQueuePath += string(msg.Runes)
 			case 2:
 				if len(m.InputQueueConcurrent) > 0 {
 					m.InputQueueConcurrent = m.InputQueueConcurrent[:len(m.InputQueueConcurrent)-1]
@@ -174,7 +181,8 @@ func (m *Model) HandleInput(msg tea.KeyMsg) (Model, tea.Cmd) {
 			case 0:
 				m.InputQueueName += string(msg.Runes)
 			case 1:
-				m.InputQueuePath += string(msg.Runes)
+				// Restrict editing of the file path in queue form mode
+				// m.InputQueuePath += string(msg.Runes)
 			case 2:
 				m.InputQueueConcurrent += string(msg.Runes)
 			case 3:
@@ -238,7 +246,11 @@ func (m *Model) AddDownload(url, queue string) {
 	}
 
 	// Create and initialize download object
-	download := downloader.New(url, targetPath, queue, maxBandwidth)
+	scheduledStartTime := time.Now() // Default to now
+	if m.InputScheduledStartDate != "" && m.InputScheduledStartTime != "" {
+		scheduledStartTime, _ = time.Parse("2006-01-02 15:04", m.InputScheduledStartDate+" "+m.InputScheduledStartTime)
+	}
+	download := downloader.New(url, targetPath, queue, maxBandwidth, scheduledStartTime)
 	m.Downloads = append(m.Downloads, *download)
 
 	// Add to queue manager's downloads map for tracking
@@ -246,6 +258,9 @@ func (m *Model) AddDownload(url, queue string) {
 
 	// Process all queues immediately to start the download
 	m.QueueManager.ProcessAllQueues()
+
+	// Set the start time
+	download.StartTime = time.Now()
 
 	// Update config with new download
 	if m.Config != nil {
@@ -261,6 +276,8 @@ func (m *Model) PauseDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
 		download := &m.Downloads[m.Selected]
 		if download.Status == "downloading" {
+			// Set completion time to zero if paused
+			download.CompletionTime = time.Time{}
 			m.QueueManager.PauseDownload(download.URL)
 		}
 	}
@@ -271,6 +288,8 @@ func (m *Model) ResumeDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
 		download := &m.Downloads[m.Selected]
 		if download.Status == "paused" {
+			// Reset start time when resuming
+			download.StartTime = time.Now()
 			m.QueueManager.ResumeDownload(download.URL)
 		}
 	}
@@ -281,27 +300,31 @@ func (m *Model) CancelDownload() {
 	if m.Selected >= 0 && m.Selected < len(m.Downloads) {
 		download := m.Downloads[m.Selected]
 
-		// Cancel the download if it's active
+		// Set completion time if download is active
 		if download.Status == "downloading" || download.Status == "paused" {
-			download.Cancel()
-		}
+			download.CompletionTime = time.Now()
+			// Cancel the download if it's active
+			if download.Status == "downloading" || download.Status == "paused" {
+				download.Cancel()
+			}
 
-		// Remove from queue manager
-		m.QueueManager.RemoveDownload(download.URL)
+			// Remove from queue manager
+			m.QueueManager.RemoveDownload(download.URL)
 
-		// Remove from downloads list
-		m.Downloads = append(m.Downloads[:m.Selected], m.Downloads[m.Selected+1:]...)
+			// Remove from downloads list
+			m.Downloads = append(m.Downloads[:m.Selected], m.Downloads[m.Selected+1:]...)
 
-		// Adjust selection if needed
-		if m.Selected >= len(m.Downloads) {
-			m.Selected = len(m.Downloads) - 1
-		}
+			// Adjust selection if needed
+			if m.Selected >= len(m.Downloads) {
+				m.Selected = len(m.Downloads) - 1
+			}
 
-		// Update config
-		if m.Config != nil {
-			m.Config.Downloads = m.Downloads
-			if err := config.SaveConfig(m.Config); err != nil {
-				m.ErrorMessage = "Failed to save config: " + err.Error()
+			// Update config
+			if m.Config != nil {
+				m.Config.Downloads = m.Downloads
+				if err := config.SaveConfig(m.Config); err != nil {
+					m.ErrorMessage = "Failed to save config: " + err.Error()
+				}
 			}
 		}
 	}

@@ -15,18 +15,20 @@ import (
 
 // Download represents a download task with its state and control channels
 type Download struct {
-	URL          string    `json:"url"`
-	TargetPath   string    `json:"target_path"`
-	Filename     string    `json:"filename"`
-	Queue        string    `json:"queue"`
-	Status       string    `json:"status"` // pending, downloading, paused, completed, error, cancelled
-	Progress     float64   `json:"progress"`
-	Speed        int64     `json:"speed"` // bytes per second
-	TotalSize    int64     `json:"total_size"`
-	Downloaded   int64     `json:"downloaded"`
-	Error        string    `json:"error,omitempty"`
-	MaxBandwidth int64     `json:"max_bandwidth"` // in KB/s, 0 means unlimited
-	StartTime    time.Time `json:"start_time,omitempty"`
+	URL                string    `json:"url"`
+	TargetPath         string    `json:"target_path"`
+	Filename           string    `json:"filename"`
+	Queue              string    `json:"queue"`
+	Status             string    `json:"status"` // pending, downloading, paused, completed, error, cancelled
+	Progress           float64   `json:"progress"`
+	Speed              int64     `json:"speed"` // bytes per second
+	TotalSize          int64     `json:"total_size"`
+	Downloaded         int64     `json:"downloaded"`
+	Error              string    `json:"error,omitempty"`
+	MaxBandwidth       int64     `json:"max_bandwidth"` // in KB/s, 0 means unlimited
+	StartTime          time.Time `json:"start_time,omitempty"`
+	CompletionTime     time.Time `json:"completion_time,omitempty"`
+	ScheduledStartTime time.Time `json:"scheduled_start_time,omitempty"`
 
 	// Control fields (not persisted to JSON)
 	pauseChan   chan struct{} `json:"-"`
@@ -66,7 +68,6 @@ func (d *Download) Initialize() {
 	}
 	if d.Status == "" {
 		d.Status = "pending"
-		// Log the initial pending status
 		logger.LogDownloadPending(d.URL, d.Queue, "Initialized download")
 	}
 	if d.maxRetries == 0 {
@@ -76,13 +77,13 @@ func (d *Download) Initialize() {
 		d.retryDelay = 5 * time.Second
 	}
 	if d.client == nil {
-		// Configure HTTP client with reasonable timeouts and settings
+		// Configure HTTP client with more lenient timeouts
 		d.client = &http.Client{
-			Timeout: 30 * time.Second,
+			Timeout: 60 * time.Second,
 			Transport: &http.Transport{
-				TLSHandshakeTimeout:   10 * time.Second,
-				ResponseHeaderTimeout: 10 * time.Second,
-				ExpectContinueTimeout: 1 * time.Second,
+				TLSHandshakeTimeout:   30 * time.Second,
+				ResponseHeaderTimeout: 30 * time.Second,
+				ExpectContinueTimeout: 5 * time.Second,
 				MaxIdleConns:          10,
 				IdleConnTimeout:       30 * time.Second,
 				DisableCompression:    false,
@@ -226,6 +227,12 @@ func (d *Download) Start() error {
 	// Log status change
 	logger.LogDownloadStatus(d.URL, oldStatus, "downloading", 0, d.TotalSize)
 
+	if !d.ScheduledStartTime.IsZero() && time.Now().Before(d.ScheduledStartTime) {
+		waitDuration := d.ScheduledStartTime.Sub(time.Now())
+		logger.LogDownloadPending(d.URL, d.Queue, fmt.Sprintf("Waiting for scheduled start time: %v", d.ScheduledStartTime))
+		time.Sleep(waitDuration)
+	}
+
 	// Main download loop with retry logic
 	for d.retryCount <= d.maxRetries {
 		err := d.performDownload()
@@ -235,6 +242,7 @@ func (d *Download) Start() error {
 			oldStatus := d.Status
 			d.Status = "completed"
 			d.Progress = 100.0
+			d.CompletionTime = time.Now()
 			d.mutex.Unlock()
 
 			// Calculate download duration
@@ -293,7 +301,6 @@ func (d *Download) performDownload() error {
 	if d.Queue == "" {
 		d.Queue = "default"
 	} else if len(d.Queue) > 50 || d.Queue != filepath.Clean(d.Queue) {
-		// If queue name is too long or contains invalid characters, use default
 		logger.LogDownloadError(d.URL, d.Queue, "Invalid queue name, using default")
 		d.Queue = "default"
 	}
@@ -306,25 +313,16 @@ func (d *Download) performDownload() error {
 		return fmt.Errorf("failed to create directory: %w", err)
 	}
 
-	// Send HEAD request to get file size
+	// Try HEAD request first, but don't fail if it doesn't work
+	var totalSize int64
+	var supportsRanges bool
+
 	resp, err := d.client.Head(d.URL)
-	if err != nil {
-		errorMsg := fmt.Sprintf("failed to send HEAD request: %v", err)
-		logger.LogDownloadError(d.URL, d.Queue, errorMsg)
-		return fmt.Errorf("failed to send HEAD request: %w", err)
+	if err == nil {
+		defer resp.Body.Close()
+		totalSize, _ = strconv.ParseInt(resp.Header.Get("Content-Length"), 10, 64)
+		supportsRanges = resp.Header.Get("Accept-Ranges") == "bytes"
 	}
-	defer resp.Body.Close()
-
-	totalSize, _ := strconv.ParseInt(resp.Header.Get("Content-Length"), 10, 64)
-	d.mutex.Lock()
-	d.TotalSize = totalSize
-	d.mutex.Unlock()
-
-	// Log file size information
-	logger.LogDownloadStatus(d.URL, "downloading", "downloading", 0, totalSize)
-
-	// Check if server supports range requests
-	supportsRanges := resp.Header.Get("Accept-Ranges") == "bytes"
 
 	// Create the GET request
 	req, err := http.NewRequest("GET", d.URL, nil)
@@ -334,19 +332,28 @@ func (d *Download) performDownload() error {
 		return fmt.Errorf("failed to create request: %w", err)
 	}
 
-	// If we're resuming and the server supports ranges, set the range header
+	// If we're resuming and we know the server supports ranges, set the range header
 	d.mutex.Lock()
 	startByte := d.Downloaded
 	d.mutex.Unlock()
 
 	if startByte > 0 && supportsRanges {
 		req.Header.Set("Range", fmt.Sprintf("bytes=%d-", startByte))
-		logger.LogDownloadStatus(d.URL, "downloading", "downloading", startByte, totalSize)
 	}
 
 	// Send the request
 	resp, err = d.client.Do(req)
 	if err != nil {
+		// Check for network-related errors
+		if os.IsTimeout(err) || err == io.ErrUnexpectedEOF {
+			d.mutex.Lock()
+			d.Status = "paused"
+			d.isPaused = true
+			d.mutex.Unlock()
+			logger.LogDownloadStatus(d.URL, "downloading", "paused", d.Downloaded, d.TotalSize)
+			return fmt.Errorf("download paused due to network error: %w", err)
+		}
+
 		errorMsg := fmt.Sprintf("failed to send GET request: %v", err)
 		logger.LogDownloadError(d.URL, d.Queue, errorMsg)
 		return fmt.Errorf("failed to send GET request: %w", err)
@@ -360,15 +367,26 @@ func (d *Download) performDownload() error {
 		return fmt.Errorf("server responded with status: %s", resp.Status)
 	}
 
+	// Update total size from GET response if we didn't get it from HEAD
+	if totalSize == 0 {
+		totalSize, _ = strconv.ParseInt(resp.Header.Get("Content-Length"), 10, 64)
+		d.mutex.Lock()
+		d.TotalSize = totalSize
+		d.mutex.Unlock()
+	}
+
+	// If we got a 206 response, the server supports ranges
+	if resp.StatusCode == 206 {
+		supportsRanges = true
+	}
+
 	// Prepare file for writing
 	var file *os.File
 	var openMode int
 
 	if startByte > 0 && supportsRanges {
-		// Append to existing file if resuming
 		openMode = os.O_WRONLY | os.O_APPEND
 	} else {
-		// Create new file
 		openMode = os.O_CREATE | os.O_WRONLY | os.O_TRUNC
 		startByte = 0
 	}
@@ -388,7 +406,6 @@ func (d *Download) performDownload() error {
 	}
 
 	if result.Completed {
-		// Update final download size if we didn't know it before
 		if totalSize <= 0 {
 			d.mutex.Lock()
 			d.TotalSize = result.Downloaded
@@ -399,7 +416,6 @@ func (d *Download) performDownload() error {
 		return nil
 	}
 
-	// If we got most of the file and support ranges, continue downloading
 	if result.Downloaded > (result.TotalSize*95/100) && supportsRanges {
 		d.mutex.Lock()
 		d.Downloaded = result.Downloaded
@@ -527,24 +543,25 @@ func (d *Download) downloadChunks(body io.Reader, file *os.File, startByte, tota
 }
 
 // New creates a new download instance
-func New(url, targetPath, queue string, maxBandwidth int64) *Download {
+func New(url, targetPath, queue string, maxBandwidth int64, scheduledStartTime time.Time) *Download {
 	download := &Download{
-		URL:          url,
-		TargetPath:   targetPath,
-		Filename:     filepath.Base(targetPath),
-		Queue:        queue,
-		Status:       "pending",
-		MaxBandwidth: maxBandwidth,
-		maxRetries:   3,
-		retryDelay:   5 * time.Second,
+		URL:                url,
+		TargetPath:         targetPath,
+		Filename:           filepath.Base(targetPath),
+		Queue:              queue,
+		Status:             "pending",
+		MaxBandwidth:       maxBandwidth,
+		maxRetries:         3,
+		retryDelay:         5 * time.Second,
+		ScheduledStartTime: scheduledStartTime,
 	}
 	download.Initialize()
 	return download
 }
 
 // StartDownload is a convenience function to create and start a download
-func StartDownload(url, targetPath, queue string, maxBandwidth int64) (*Download, error) {
-	download := New(url, targetPath, queue, maxBandwidth)
+func StartDownload(url, targetPath, queue string, maxBandwidth int64, scheduledStartTime time.Time) (*Download, error) {
+	download := New(url, targetPath, queue, maxBandwidth, scheduledStartTime)
 	go download.Start()
 	return download, nil
 }
