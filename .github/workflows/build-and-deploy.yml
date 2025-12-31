@@ -1,0 +1,111 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_only:
+        description: 'Build only (skip deployment)'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  GO_VERSION: '1.21'
+  BINARY_NAME: 'download-manager'
+  BUILD_DIR: 'bin'
+
+jobs:
+  build:
+    name: Build Application
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify Go installation
+        run: |
+          go version || (echo "Go not found. Please install Go ${{ env.GO_VERSION }} or higher." && exit 1)
+
+      - name: Clean previous builds
+        run: |
+          rm -rf ${{ env.BUILD_DIR }}
+          mkdir -p ${{ env.BUILD_DIR }}
+
+      - name: Get dependencies
+        run: go mod download
+
+      - name: Build application
+        run: |
+          go build -v -trimpath -ldflags "-s -w" \
+            -o ${{ env.BUILD_DIR }}/${{ env.BINARY_NAME }} \
+            ./cmd/main.go
+          echo "✓ Build completed: ${{ env.BUILD_DIR }}/${{ env.BINARY_NAME }}"
+
+      - name: Display build info
+        run: |
+          ls -lh ${{ env.BUILD_DIR }}/${{ env.BINARY_NAME }}
+          file ${{ env.BUILD_DIR }}/${{ env.BINARY_NAME }}
+
+      - name: Save build path
+        run: |
+          echo "${{ github.workspace }}/${{ env.BUILD_DIR }}/${{ env.BINARY_NAME }}" > build_path.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.BINARY_NAME }}-${{ github.sha }}
+          path: ${{ env.BUILD_DIR }}/${{ env.BINARY_NAME }}
+          retention-days: 30
+
+  deploy:
+    name: Deploy Application
+    needs: build
+    runs-on: self-hosted
+    if: github.event.inputs.build_only != 'true'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.BINARY_NAME }}-${{ github.sha }}
+          path: ${{ env.BUILD_DIR }}/
+
+      - name: Make binary executable
+        run: chmod +x ${{ env.BUILD_DIR }}/${{ env.BINARY_NAME }}
+
+      - name: Stop existing instance
+        run: |
+          pkill -f "${{ env.BINARY_NAME }}" || echo "No existing instance found"
+
+      - name: Create deployment directories
+        run: |
+          mkdir -p downloads config logs
+          echo "✓ Directories created"
+
+      - name: Deploy binary
+        run: |
+          # Option 1: Copy to /usr/local/bin (requires sudo)
+          # sudo cp ${{ env.BUILD_DIR }}/${{ env.BINARY_NAME }} /usr/local/bin/
+          
+          # Option 2: Keep in project directory (no sudo needed)
+          cp ${{ env.BUILD_DIR }}/${{ env.BINARY_NAME }} ./${{ env.BINARY_NAME }}
+          echo "✓ Binary deployed to: $(pwd)/${{ env.BINARY_NAME }}"
+
+      - name: Verify deployment
+        run: |
+          if [ -f "./${{ env.BINARY_NAME }}" ]; then
+            ./${{ env.BINARY_NAME }} --version 2>/dev/null || echo "Application is ready"
+            echo "✓ Deployment verified"
+          else
+            echo "✗ Deployment failed: binary not found"
+            exit 1
+          fi
+
+      - name: Display deployment info
+        run: |
+          echo "Application deployed to: $(pwd)"
+          echo "To run: ./${{ env.BINARY_NAME }}"
+          echo "Or: cd $(pwd) && ./${{ env.BINARY_NAME }}"
+

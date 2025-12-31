@@ -1,0 +1,64 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+main.exe
+download-manager
+download-manager-*
+bin/
+dist/
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+coverage.html
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+*.code-workspace
+
+# Logs
+*.log
+logs/
+download-logs.log
+
+# Downloads
+downloads/
+*.mp3
+*.mp4
+*.zip
+*.tar
+*.gz
+
+# Config (local)
+config/local.json
+*.local.json
+
+# Environment
+.env
+.env.local
+
+# Build artifacts
+*.a
+*.o
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+

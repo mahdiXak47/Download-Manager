@@ -1,0 +1,50 @@
+# OPTIONAL: Docker Compose configuration (not required for local runner CI/CD)
+# This file is provided for containerized deployment if needed
+# The CI/CD pipeline works without Docker using self-hosted runners
+
+version: '3.8'
+
+services:
+  download-manager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VERSION: ${VERSION:-latest}
+        COMMIT: ${COMMIT:-unknown}
+    image: download-manager:latest
+    container_name: download-manager
+    restart: unless-stopped
+    volumes:
+      # Mount downloads directory
+      - ./downloads:/app/downloads
+      # Mount config directory
+      - ./config:/home/downloader/.config/download-manager
+      # Mount logs directory
+      - ./logs:/app/logs
+    environment:
+      - DOWNLOAD_PATH=/app/downloads
+      - CONFIG_PATH=/home/downloader/.config/download-manager
+      - LOG_PATH=/app/logs
+    # Uncomment if you need to expose ports in the future
+    # ports:
+    #   - "8080:8080"
+    stdin_open: true
+    tty: true
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    # Health check
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "download-manager"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+

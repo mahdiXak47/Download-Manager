@@ -1,0 +1,42 @@
+# Git
+.git
+.gitignore
+.github
+
+# Build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+main.exe
+download-manager
+download-manager-*
+
+# Downloads and logs
+downloads/
+download-logs.log
+logs/
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+*_test.go
+*.test
+
+# Documentation
+README.md
+*.md
+
+# CI/CD
+.github/
+
+# Config (will be mounted as volume)
+config/
+

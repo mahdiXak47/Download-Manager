@@ -205,6 +205,82 @@ The interface supports keyboard navigation with tabs displayed at the bottom of 
 
 This project is a terminal-based download manager with queue support, allowing users to manage multiple downloads efficiently. It features a clean, intuitive terminal user interface with tabbed navigation and supports concurrent downloads, queue management, and more.
 
+## CI/CD Pipeline
+
+This project includes a CI/CD pipeline optimized for **self-hosted runners** (local GitHub Actions runner).
+
+### Workflows
+
+1. **CI/CD Pipeline** (`.github/workflows/ci-cd.yml`)
+   - Lint and format checking
+   - Build Go application
+   - Run tests
+   - Smoke test to verify application starts
+   - **Runs on:** `self-hosted` runner
+
+2. **Build and Deploy** (`.github/workflows/build-and-deploy.yml`)
+   - Build application
+   - Deploy binary to local system
+   - **Runs on:** `self-hosted` runner
+   - **Trigger:** Manual (workflow_dispatch)
+
+### Setup Local Runner
+
+See [LOCAL_RUNNER_SETUP.md](LOCAL_RUNNER_SETUP.md) for detailed instructions.
+
+**Quick setup:**
+```bash
+# Download runner
+mkdir actions-runner && cd actions-runner
+curl -o actions-runner-linux-x64-2.311.0.tar.gz -L \
+  https://github.com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz
+tar xzf ./actions-runner-linux-x64-2.311.0.tar.gz
+
+# Configure (get token from GitHub: Settings → Actions → Runners)
+./config.sh --url https://github.com/YOUR_USERNAME/YOUR_REPO --token YOUR_TOKEN
+
+# Install as service
+sudo ./svc.sh install
+sudo ./svc.sh start
+```
+
+### Building Locally
+
+```bash
+# Build for current platform
+make build
+
+# Build for all platforms
+make build-all
+
+# Run tests
+make test
+
+# Format and lint
+make fmt lint
+
+# Run all checks
+make check
+```
+
+### Running the Application
+
+After build:
+```bash
+# Binary is in bin/ directory
+./bin/download-manager
+
+# Or if deployed
+./download-manager
+```
+
+### Notes
+
+- **Docker is NOT required** - Workflows build and run Go directly
+- All builds happen on your local machine
+- No cloud costs - uses your own hardware
+- See `LOCAL_RUNNER_SETUP.md` for complete setup guide
+
 ## Execution Instructions
 
 To run the application, follow these steps:
@@ -219,8 +295,14 @@ cd download-manager
 # Build the application
 go build
 
+# Or use Make
+make build
+
 # Run the application
 ./download-manager
+
+# Or run directly
+go run ./cmd/main.go
 ```
 
 ## Team Members
